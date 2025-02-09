@@ -2,20 +2,108 @@
 @tailwind components;
 @tailwind utilities;
 
+/* @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"); */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+	--background: #ffffff;
+	--foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+	:root {
+		--background: #0a0a0a;
+		--foreground: #ededed;
+	}
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+	color: var(--foreground);
+	background: var(--background);
+	font-family: var(--font-Oswald);
+}
+.main-img {
+	filter: drop-shadow(3px 3px 1px white);
+}
+.button {
+	width: 150px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	margin-top: 4rem;
+	padding: 1rem 1.5rem;
+	border-radius: 30px;
+	font-weight: bold;
+	text-transform: uppercase;
+	position: relative;
+	background: transparent;
+	border: 2px solid transparent;
+	overflow: hidden;
+	position: relative;
+	transition: transform 0.3s ease-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Border with metallic effect */
+.button::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: 30px;
+	padding: 2px; /* Adjust thickness */
+	background: linear-gradient(120deg, #00c6ff, #00ff88, #00c6ff);
+	-webkit-mask: linear-gradient(white 0 0) content-box,
+		linear-gradient(white 0 0);
+	-webkit-mask-composite: xor;
+	mask-composite: exclude;
+	animation: rotateShine 4s linear infinite;
+}
+.hover {
+	transform: scale(1.1);
+	box-shadow: 0 0 25px rgba(126, 255, 66, 0.5);
+	position: relative;
+	z-index: 100;
+}
+
+/* Hover effect */
+.button:hover {
+	transform: scale(1.1);
+	box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+	cursor: pointer;
+}
+.banner-img {
+	position: absolute;
+	clip-path: circle(20% at 80% 50%);
+	height: 100vh;
+	width: 100vw;
+	transform-origin: 60% 50%;
+	background: url(../../public//images//background_banner.png) 50% 50% no-repeat;
+	background-size: 150%;
+}
+
+/* Rotating shine effect */
+@keyframes rotateShine {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes shine {
+	0% {
+		transform: translateX(-100%) skewX(-15deg);
+	}
+	100% {
+		transform: translateX(100%) skewX(-15deg);
+	}
+}
+.animate-shine {
+	animation: shine 3s infinite linear;
+	mask-image: linear-gradient(
+		90deg,
+		rgba(0, 0, 0, 0) 10%,
+		rgba(0, 0, 0, 0.8) 40%,
+		rgba(0, 0, 0, 0) 60%
+	);
 }

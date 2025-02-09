@@ -1,16 +1,136 @@
-// components/landing.tsx
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import Image from "next/image";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-export default function LandingPage() {
-	const containerRef = useRef < HTMLDivElement > null;
-	const headlineRef = useRef < HTMLDivElement > null;
-	const ctaRef = useRef < HTMLButtonElement > null;
-	const navRef = useRef < HTMLElement > null;
+import Lenis from "@studio-freight/lenis";
+// import Button from "./Button";
+import dynamic from "next/dynamic";
+import ShinyButton from "./ShinyButton";
+import CubeTextAnimation from "./text/MovingText";
+// import ScrollTrigger from "gsap/dist/ScrollTrigger";
+
+// const Button = dynamic(() => import("./Button"), { ssr: false });
+
+export default function Landing() {
+	const containerRef = useRef(null);
+	const headlineRef = useRef(null);
+	const ctaRef = useRef(null);
+	const navRef = useRef(null);
+	const lineRefs = useRef([]);
+	const bannerRef = useRef(null);
+	const [isClient, setIsClient] = useState(false);
+
+	useEffect(() => {
+		gsap.registerPlugin(ScrollTrigger);
+		const lenis = new Lenis({
+			smooth: true,
+			lerp: 0.1, // Adjust for smoothness (0.1 = smoother, 1 = instant)
+		});
+
+		// Function to continuously update GSAP's ScrollTrigger
+		function raf(time) {
+			lenis.raf(time);
+			requestAnimationFrame(raf);
+		}
+		requestAnimationFrame(raf);
+		const mainScreenScrollTimeline = gsap.timeline({
+			scrollTrigger: {
+				trigger: containerRef.current,
+				pin: true,
+				start: "top top",
+
+				end: () => `+=${window.innerHeight * 4}`,
+				onUpdate: (self) => {
+					const progress = self.progress;
+					gsap.to(bannerRef.current, {
+						backgroundSize: `${150 - 50 * progress}%`,
+						borderRadius: `${progress * 50}%`,
+					});
+				},
+				scrub: true,
+
+				markers: true,
+			},
+		});
+		gsap.set(".text-container", {
+			opacity: 0,
+		});
+		gsap.set(".subText", {
+			opacity: 0,
+			y: 200,
+		});
+		gsap.set(".digitalFuture", {
+			opacity: 0,
+			y: 200,
+		});
+
+		mainScreenScrollTimeline
+
+			.to(bannerRef.current, {
+				clipPath: "circle(20% at 50% 50%)",
+				duration: 2,
+			})
+			.to(bannerRef.current, {
+				clipPath: "circle(100% at 50% 50%)",
+				duration: 4,
+			})
+			.to(bannerRef.current, {
+				scale: 0.9,
+				backgroundSize: "80%",
+				duration: 2,
+			})
+			.to(bannerRef.current, {
+				filter: "blur(90px)",
+				duration: 2,
+			})
+			.to(headlineRef.current?.children, {
+				y: -800, // Moves text slightly up
+				// opacity: 0, // Fades out
+				stagger: 0.05, // Creates a smooth stagger effect
+				duration: 3,
+			})
+			.to(".text-container", {
+				opacity: 1,
+				duration: 1,
+				// y: -700,
+				// scale: 0.8,
+			})
+			.to(".subText", {
+				delay: -1,
+				duration: 2,
+				y: -420,
+				ease: "circ.inOut",
+			})
+			.to(".digitalFuture", {
+				opacity: 1,
+				delay: -0.5,
+				y: -0,
+			})
+
+			.to(".button-rounded", {
+				position: "absolute",
+				x: 650,
+				y: -130,
+				scale: 1.2,
+
+				onStart: () => {
+					console.log(document.querySelector(".button"));
+					document.querySelector(".button").classList.add("hover");
+				},
+			});
+		// mainScreenScrollTimeline?.onComplete(() => {
+		// 	console.log(document.querySelector(".button"));
+		// 	document.querySelector(".button").classList.add("hover");
+		// });
+		return () => {
+			mainScreenScrollTimeline.kill();
+		};
+
+		setIsClient(true);
+	}, []);
 
 	// GSAP Animations
 	useGSAP(
@@ -33,6 +153,13 @@ export default function LandingPage() {
 				delay: 0.5,
 			});
 
+			// ScrollTrigger.create({
+			// 	trigger: bannerRef.current,
+			// 	pin: true,
+			// 	markers: true,
+			// });
+
+			// CTA Animation
 			gsap.from(ctaRef.current, {
 				scale: 0.8,
 				opacity: 0,
@@ -41,20 +168,28 @@ export default function LandingPage() {
 				delay: 1.2,
 			});
 
-			// CTA hover animation
-			ctaRef.current?.addEventListener("mouseenter", () => {
-				gsap.to(ctaRef.current, {
-					scale: 1.05,
-					duration: 0.3,
-					ease: "power2.out",
-				});
-			});
+			// Line wave animation
+			lineRefs.current.forEach((line, i) => {
+				if (!line) return;
 
-			ctaRef.current?.addEventListener("mouseleave", () => {
-				gsap.to(ctaRef.current, {
-					scale: 1,
-					duration: 0.3,
-					ease: "power2.out",
+				gsap.fromTo(
+					line,
+					{ strokeDashoffset: 1000 },
+					{
+						strokeDashoffset: 0,
+						duration: 2 + i * 0.2,
+						repeat: -1,
+						ease: "power1.inOut",
+					}
+				);
+
+				gsap.to(line, {
+					opacity: 1,
+					repeat: -1,
+					yoyo: true,
+					duration: 3,
+					delay: i * 0.1,
+					ease: "sine.inOut",
 				});
 			});
 		},
@@ -66,18 +201,42 @@ export default function LandingPage() {
 			ref={containerRef}
 			className="min-h-screen bg-[#090b21] relative overflow-hidden"
 		>
-			{/* Animated Navigation */}
+			<div
+				ref={bannerRef}
+				className="  banner-img"
+				// src="./images/background_banner.png"
+				alt="Picture of the author"
+			/>
+			<div className="outroTextContent absolute w-full">
+				{/* <h1 className="text-8xl font-extrabold absolute text-white  top-[50vh] text-center w-full">
+					Lets Walk Around(Base Text)
+				</h1>
+				<h2 className="text-8xl font-extrabold absolute text-white  top-[40vh] text-center w-full">
+					Some attractive relevant text for my software selling aggenciy
+				</h2>
+			<span>some attractive relevant text</span> */}
+				<CubeTextAnimation />
+			</div>
 			<nav
 				ref={navRef}
-				className="px-8 py-6 fixed w-full top-0 z-50 backdrop-blur-md border-b border-white/10"
+				className="px-12 py-6 fixed w-full top-0 z-50 backdrop-blur-md border-b border-white/10"
 			>
-				<div className="max-w-7xl mx-auto flex justify-between items-center">
-					<span className="text-2xl font-bold text-white">SOLESTYLE</span>
+				<div className="max-w-7xl mx-auto flex justify-between items-center gap-5">
+					<span className="text-2xl font-bold text-white relative -left-[6rem]">
+						SOLESTYLE
+					</span>
 					<div className="space-x-8">
-						{["New Arrivals", "Collections", "About"].map((item) => (
+						{[
+							"Work",
+							"Services",
+							"Templates",
+							"Tech",
+							"Careers",
+							"About Us",
+						].map((item) => (
 							<button
 								key={item}
-								className="text-white/80 hover:text-white transition-colors duration-300 text-lg"
+								className="text-white/80 hover:text-white transition-colors duration-300 text-sm font-bold uppercase"
 							>
 								{item}
 							</button>
@@ -87,76 +246,137 @@ export default function LandingPage() {
 			</nav>
 
 			{/* Main Content */}
-			<div className="h-screen flex items-center px-8">
-				<div className="max-w-7xl mx-auto relative z-10">
-					<div ref={headlineRef} className="space-y-6">
+			<div className="h-screen flex items-center px-8 ">
+				<div className="max-w-7xl ml-[6vw] relative z-10">
+					<div
+						ref={headlineRef}
+						className="space-y-6 w-[100%] mt-[10rem] overflow-hidden"
+					>
 						<div className="overflow-hidden">
-							<h1 className="text-8xl font-bold text-white opacity-0 translate-y-20">
-								Step Into
+							<h1 className="text-8xl font-bold text-white">
+								Elevate Your Style,
 							</h1>
 						</div>
 						<div className="overflow-hidden">
-							<h1 className="text-8xl font-bold text-white opacity-0 translate-y-20">
-								Modern Elegance
-							</h1>
+							<h1 className="text-8xl font-bold text-white">Embrace the</h1>
+						</div>
+						<div className="overflow-hidden">
+							<h1 className="text-8xl font-bold text-white">Extraordinary</h1>
 						</div>
 						<div className="pt-8 overflow-hidden">
-							<p className="text-xl text-white/80 opacity-0 translate-y-20 max-w-2xl">
-								Discover footwear that blends cutting-edge design with
-								unparalleled comfort. Crafted for those who refuse to compromise
-								on style or performance.
+							<p className="text-xl text-white/80 max-w-2xl">
+								A really good website can be a difference between success and a
+								failure !
 							</p>
 						</div>
 					</div>
-
-					{/* Glowing CTA */}
-					<button
-						ref={ctaRef}
-						className="mt-12 px-12 py-4 bg-white text-[#090b21] rounded-full 
-            text-lg font-semibold relative overflow-hidden transform transition-transform
-            hover:shadow-[0_0_30px_5px_rgba(255,255,255,0.3)]"
+					<ShinyButton name={"Explore"} />
+					{/* <button
+						// ref={ctaRef}
+						className="mt-12 px-12 py-4 rounded-full text-lg font-semibold relative overflow-hidden 
+            border-2 border-transparent bg-gradient-to-r from-[#00c6ff] via-[#0072ff] to-[#00c6ff] 
+            bg-[length:200%_100%] hover:shadow-[0_0_30px_5px_rgba(0,194,255,0.5)] transition-all duration-300"
+						style={{
+							backgroundClip: "padding-box",
+							borderImage: "linear-gradient(45deg, #00c6ff, #0072ff) 1",
+							padding: "1rem 3rem",
+						}}
 					>
-						Explore Collection
+						<span className="relative z-10 text-white">Explore Collection</span>
 						<div
-							className="absolute inset-0 border-2 border-white/30 rounded-full 
+							className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.2),transparent)] 
               animate-pulse pointer-events-none"
-						/>
-					</button>
+						></div>
+					</button> */}
 				</div>
+				{/* <img
+					ref={shoeRef}
+					className="scale-150 ml-[2vw] relative -left-10 top-10 rounded-full"
+					src="./images/background_banner.png"
+					height={600}
+					width={500}
+					alt="Picture of the author"
+				/> */}
 			</div>
 
-			{/* Animated Background Elements */}
-			<div className="absolute inset-0 pointer-events-none">
-				{/* SVG Line Patterns */}
-				<svg
-					className="absolute top-0 left-0 w-full h-full opacity-10"
-					viewBox="0 0 100 100"
-				>
-					<path
-						d="M0 50h100M50 0v100"
-						stroke="white"
-						strokeWidth="0.5"
-						vectorEffect="non-scaling-stroke"
-					/>
-					<path
-						d="M0 0l100 100M0 100L100 0"
-						stroke="white"
-						strokeWidth="0.5"
-						vectorEffect="non-scaling-stroke"
-					/>
+			{/* Enhanced Glowing Lines Background */}
+			<div className="absolute inset-0 pointer-events-none min-w-[100vw]">
+				<svg className="w-full h-full opacity-20" viewBox="50 0 100 100">
+					{[...Array(20)].map((_, i) => (
+						<path
+							key={i}
+							ref={(el) => (lineRefs.current[i] = el)}
+							d={`M${i * 30} 0v100M0 ${i * 10}h100`}
+							stroke="url(#lineGradient)"
+							strokeWidth="0.8"
+							strokeDasharray="1000"
+							vectorEffect="non-scaling-stroke"
+						/>
+					))}
+					<defs>
+						<linearGradient
+							id="lineGradient"
+							x1="0%"
+							y1="0%"
+							x2="100%"
+							y2="100%"
+						>
+							<stop offset="0%" stopColor="#00c6ff" stopOpacity="0.8" />
+							<stop offset="50%" stopColor="#0072ff" stopOpacity="0.8" />
+							<stop offset="100%" stopColor="#00c6ff" stopOpacity="0.8" />
+						</linearGradient>
+
+						<filter id="glow">
+							<feGaussianBlur stdDeviation="2" result="coloredBlur" />
+							<feMerge>
+								<feMergeNode in="coloredBlur" />
+								<feMergeNode in="SourceGraphic" />
+							</feMerge>
+						</filter>
+					</defs>
 				</svg>
 
-				{/* Floating Shoe Silhouette (Add your actual shoe image) */}
-				<div className="absolute right-0 top-1/2 -translate-y-1/2 opacity-10 mix-blend-lighten">
-					<Image
-						src="/shoe-silhouette.png"
-						alt="Shoe silhouette"
-						width={800}
-						height={800}
-						className="object-contain"
-					/>
-				</div>
+				{/* Client-side only particles to fix hydration error */}
+				{/* {isClient && (
+					<div className="absolute inset-0">
+						{[...Array(30)].map((_, i) => (
+							<div
+								key={i}
+								className="absolute w-1 h-1 bg-white rounded-full"
+								style={{
+									top: `${Math.random() * 100}%`,
+									left: `${Math.random() * 100}%`,
+									animation: `float ${
+										5 + Math.random() * 10
+									}s infinite ease-in-out`,
+								}}
+							/>
+						))}
+					</div>
+				)} */}
 			</div>
+
+			{/* Global Styles */}
+			<style jsx global>{`
+				@keyframes float {
+					0% {
+						transform: translateY(0) translateX(0);
+						opacity: 0.3;
+					}
+					50% {
+						transform: translateY(-20px) translateX(20px);
+						opacity: 0.8;
+					}
+					100% {
+						transform: translateY(0) translateX(0);
+						opacity: 0.3;
+					}
+				}
+
+				path {
+					filter: url(#glow);
+				}
+			`}</style>
 		</div>
 	);
 }
