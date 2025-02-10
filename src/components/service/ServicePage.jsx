@@ -9,53 +9,6 @@ const ServicePage = () => {
 	const rightViewRef = useRef(null);
 	const textRefs = useRef([]);
 	const imageRefs = useRef([]);
-
-	useEffect(() => {
-		if (typeof window !== "undefined") {
-			gsap.registerPlugin(ScrollTrigger);
-
-			// Pin the rightView (Image container)
-			ScrollTrigger.create({
-				trigger: containerRef.current,
-				pin: rightViewRef.current,
-			});
-
-			// Select all text contents and images dynamically
-			const textContents = textRefs.current.slice(1);
-			const allImages = imageRefs.current.slice(1);
-			const allImageIncluded = imageRefs.current;
-
-			gsap.set(allImages, { yPercent: 101 });
-
-			textContents.forEach((content, index) => {
-				const text = content.querySelector("h1");
-
-				const timeline = gsap
-					.timeline()
-					.to(allImages[index], {
-						yPercent: 0,
-						autoAlpha: 1,
-						ease: "circ.inOut",
-					})
-					.set(allImageIncluded[index], {
-						autoAlpha: 0,
-					});
-
-				ScrollTrigger.create({
-					trigger: text,
-					start: "top 70%",
-					end: "top 10%",
-					animation: timeline,
-					scrub: true,
-					markers: true,
-				});
-			});
-
-			return () => {
-				ScrollTrigger.getAll().forEach((st) => st.kill());
-			};
-		}
-	}, []);
 	const services = [
 		{
 			title: "Web Development",
@@ -87,10 +40,63 @@ const ServicePage = () => {
 		},
 	];
 
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			gsap.registerPlugin(ScrollTrigger);
+
+			// Pin the rightView (Image container)
+			ScrollTrigger.create({
+				trigger: containerRef.current,
+				pin: rightViewRef.current,
+				end: "bottom bottom",
+			});
+
+			// Select all text contents and images dynamically
+			const textContents = textRefs.current.slice(1);
+			const allImages = imageRefs.current.slice(1);
+			const allImageIncluded = imageRefs.current;
+
+			gsap.set(allImages, { yPercent: 101 });
+
+			textContents.forEach((content, index) => {
+				const text = content.querySelector("h1");
+
+				const timeline = gsap
+					.timeline()
+					.to(allImages[index], {
+						yPercent: 0,
+						autoAlpha: 1,
+						ease: "circ.inOut",
+						// onStart: () => {
+						// 	console.log(containerRef?.current);
+						// 	containerRef.current.style.backgroundImage = `url('/images/${services[index].image}')`;
+						// },
+					})
+					.set(allImageIncluded[index], {
+						autoAlpha: 0,
+					});
+
+				ScrollTrigger.create({
+					trigger: text,
+					start: "top 100%",
+					end: "top 10%",
+					animation: timeline,
+					scrub: true,
+					// markers: true,
+				});
+			});
+
+			return () => {
+				ScrollTrigger.getAll().forEach((st) => st.kill());
+			};
+		}
+	}, []);
+
 	return (
 		<div>
-			<div className="spacer"></div>
+			{/* <div className="spacer"></div> */}
 			<div ref={containerRef} className="contentContainer ">
+				{/* <div className="backgroundImage"></div> */}
 				{/* Left Side (Text) */}
 				<div className="leftView view px-10 mt-10 ">
 					{services.map((service, index) => (
@@ -128,7 +134,7 @@ const ServicePage = () => {
 					</div>
 				</div>
 			</div>
-			<div className="spacer"></div>
+			{/* <div className="spacer"></div> */}
 		</div>
 	);
 };

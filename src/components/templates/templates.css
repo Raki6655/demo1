@@ -1,0 +1,114 @@
+/* About Page */
+.aboutPage {
+	/* position: absolute;
+	top: 300vh; */
+	height: 250vh;
+	max-width: 100vw;
+	/* background: yellow; */
+	z-index: 3;
+	padding: 0 5rem;
+	overflow: hidden;
+}
+.aboutPage h2 {
+	font-size: 220px;
+	position: relative;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	margin-top: 6rem;
+	width: 80%;
+	/* font-family: "Bebas Neue", serif; */
+	font-weight: 800;
+	color: #9d9d9d;
+	z-index: 0;
+}
+.blank h3 {
+	font-size: 130px;
+	/* position: absolute; */
+	/* left: 50%;
+	top: 55%;
+	transform: translate(-50%, -50%); */
+	text-align: center;
+
+	width: 80% !important;
+	font-family: "Bebas Neue", serif;
+	font-weight: 800;
+	color: #aeabab;
+	z-index: 2;
+	color: #676666;
+}
+.blank :nth-child(1) {
+	color: #282828;
+	margin-top: 15rem !important;
+}
+.blank :nth-child(2) {
+	/* position: absolute;
+	left: 50%;
+
+	transform: translate(-50%, 0); */
+	font-size: 180px;
+	top: 5rem;
+	width: 80%;
+	margin-bottom: 9rem;
+}
+.aboutPage section {
+	width: 100%;
+	/* height: 100vh; */
+	display: grid;
+	grid-gap: 0.5rem;
+	grid-template-columns: repeat(3, 1fr);
+}
+.line {
+	border-right: 1px solid black;
+	margin: 0 0.5rem;
+}
+.imgg {
+	width: 100%;
+	height: 600px;
+	position: relative;
+	background-size: cover;
+	z-index: 1;
+}
+.imgg::before {
+	content: "";
+	position: absolute;
+	/* height: 100vh; */
+	width: 100%;
+	z-index: 4;
+	top: 0;
+	left: 0;
+	border-right: 1px solid black;
+	/* background: red; */
+}
+.img1 {
+	background: url("https://assets.codepen.io/2621168/img1.jpg");
+}
+.img2 {
+	background: url("https://assets.codepen.io/2621168/img1.jpg");
+}
+.img3 {
+	background: url("https://assets.codepen.io/2621168/img1.jpg");
+}
+.img4 {
+	background: url("https://assets.codepen.io/2621168/img1.jpg");
+}
+.img5 {
+	background: url("https://assets.codepen.io/2621168/img1.jpg");
+}
+.img6 {
+	background: url("https://assets.codepen.io/2621168/img1.jpg");
+}
+.aboutPage .blank {
+	width: 100%;
+	height: 100vh;
+	background: rgb(219, 219, 219);
+	position: relative;
+	bottom: -60vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 2rem;
+	margin-top: 10rem;
+}

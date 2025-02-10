@@ -76,8 +76,8 @@ body {
 	height: 100vh;
 	width: 100vw;
 	transform-origin: 60% 50%;
-	background: url(../../public//images//background_banner.png) 50% 50% no-repeat;
-	background-size: 150%;
+	background: url(../../public//images//57695504619.png) 50% 50% no-repeat;
+	background-size: 200%;
 }
 
 /* Rotating shine effect */
@@ -98,6 +98,9 @@ body {
 		transform: translateX(100%) skewX(-15deg);
 	}
 }
+.display-none {
+	display: none;
+}
 .animate-shine {
 	animation: shine 3s infinite linear;
 	mask-image: linear-gradient(
@@ -106,4 +109,46 @@ body {
 		rgba(0, 0, 0, 0.8) 40%,
 		rgba(0, 0, 0, 0) 60%
 	);
+}
+
+@keyframes float {
+	0% {
+		transform: translateY(0) translateX(0);
+		opacity: 0.3;
+	}
+	50% {
+		transform: translateY(-20px) translateX(20px);
+		opacity: 0.8;
+	}
+	100% {
+		transform: translateY(0) translateX(0);
+		opacity: 0.3;
+	}
+}
+
+path {
+	filter: url(#glow);
+}
+
+@keyframes float {
+	0% {
+		transform: translateY(0) translateX(0);
+	}
+	50% {
+		transform: translateY(-20px) translateX(10px);
+	}
+	100% {
+		transform: translateY(0) translateX(0);
+	}
+}
+@keyframes shinee {
+	0% {
+		transform: translateX(-100%) skewX(-20deg);
+	}
+	100% {
+		transform: translateX(200%) skewX(-20deg);
+	}
+}
+.animate-shinee {
+	animation: shinee 3s infinite linear;
 }

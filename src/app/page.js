@@ -3,7 +3,12 @@
 import HeroSection from "@/components/HeroSection";
 import LandingDeep2 from "@/components/LandingDeepSeek2";
 import LandingPage from "@/components/LandingPage";
+import Navbar from "@/components/Navbar";
+import AboutUs from "@/components/about/AboutUs";
+import ProjectsSection from "@/components/project/OurProjects";
 import ServicePage from "@/components/service/ServicePage";
+import Templates from "@/components/templates/Templates";
+
 // import { Oswald } from "../fonts/Oswald (1)";
 
 export const metadata = {
@@ -14,9 +19,13 @@ export default function Home() {
 	return (
 		<>
 			<div>
+				<Navbar />
 				<LandingPage />
 				{/* <HeroSection /> */}
 				<ServicePage />
+				<AboutUs />
+				{/* <Templates /> */}
+				{/* <ProjectsSection /> */}
 			</div>
 		</>
 	);

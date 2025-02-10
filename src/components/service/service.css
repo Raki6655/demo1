@@ -6,7 +6,8 @@
 	width: 100%;
 	display: flex;
 	overflow: hidden;
-	background-color: aliceblue;
+	background: linear-gradient(120deg, #834b97, #28a6a6, #0c6a14);
+	color: white;
 }
 .leftView {
 	width: 50%;
@@ -17,7 +18,7 @@
 	height: 100vh;
 }
 .rightView {
-	width: 50%;
+	width: 60%;
 	/* height: 100vh; */
 	display: flex;
 	flex-direction: column;
@@ -34,6 +35,9 @@
 	gap: 2rem;
 	/* margin-top: 3rem; */
 	overflow: hidden;
+	position: relative;
+	left: -5%;
+	bottom: 2%;
 }
 .red {
 	/* background-color: red; */
@@ -48,7 +52,12 @@
 	height: 50%;
 	width: 100%;
 	position: absolute;
-	margin: 1rem 0;
+	margin: 5rem 0;
+	/* left: -10%; */
+	/* margin-left: 4rem; */
+	scale: 0.8;
+	transform-origin: 50% 50%;
+	aspect-ratio: 1;
 	/* background: url(/images/Mockup.png); */
 }
 .view {

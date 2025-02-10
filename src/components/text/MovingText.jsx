@@ -129,10 +129,10 @@ export default function CubeTextAnimation() {
 			))}
 
 			{/* Shine Effect */}
-			<div
+			{/* <div
 				className="absolute inset-0 bg-gradient-to-r from-transparent 
         via-white/10 to-transparent animate-shine pointer-events-none w-[100vw]"
-			/>
+			/> */}
 
 			{/* <style jsx global>{`
 				@keyframes shine {

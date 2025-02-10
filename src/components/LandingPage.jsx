@@ -43,16 +43,16 @@ export default function Landing() {
 				start: "top top",
 
 				end: () => `+=${window.innerHeight * 4}`,
-				onUpdate: (self) => {
-					const progress = self.progress;
-					gsap.to(bannerRef.current, {
-						backgroundSize: `${150 - 50 * progress}%`,
-						borderRadius: `${progress * 50}%`,
-					});
-				},
+				// onUpdate: (self) => {
+				// 	const progress = self.progress;
+				// 	gsap.to(bannerRef.current, {
+				// 		backgroundSize: `${150 - 50 * progress}%`,
+				// 		borderRadius: `${progress * 50}%`,
+				// 	});
+				// },
 				scrub: true,
 
-				markers: true,
+				// markers: true,
 			},
 		});
 		gsap.set(".text-container", {
@@ -72,15 +72,17 @@ export default function Landing() {
 			.to(bannerRef.current, {
 				clipPath: "circle(20% at 50% 50%)",
 				duration: 2,
+				backgroundSize: "220%",
 			})
 			.to(bannerRef.current, {
 				clipPath: "circle(100% at 50% 50%)",
 				duration: 4,
+				backgroundSize: "180%",
 			})
 			.to(bannerRef.current, {
 				scale: 0.9,
-				backgroundSize: "80%",
-				duration: 2,
+				backgroundSize: "100%",
+				duration: 4,
 			})
 			.to(bannerRef.current, {
 				filter: "blur(90px)",
@@ -91,10 +93,18 @@ export default function Landing() {
 				// opacity: 0, // Fades out
 				stagger: 0.05, // Creates a smooth stagger effect
 				duration: 3,
+				ease: "power1.out",
 			})
 			.to(".text-container", {
 				opacity: 1,
 				duration: 1,
+				ease: "power1.out",
+				onStart: () => {
+					document
+						.querySelector(".animate-shine")
+						.classList.add("display-none");
+				},
+
 				// y: -700,
 				// scale: 0.8,
 			})
@@ -108,6 +118,7 @@ export default function Landing() {
 				opacity: 1,
 				delay: -0.5,
 				y: -0,
+				ease: "power1.out",
 			})
 
 			.to(".button-rounded", {
@@ -115,6 +126,7 @@ export default function Landing() {
 				x: 650,
 				y: -130,
 				scale: 1.2,
+				ease: "power1.out",
 
 				onStart: () => {
 					console.log(document.querySelector(".button"));
@@ -199,7 +211,7 @@ export default function Landing() {
 	return (
 		<div
 			ref={containerRef}
-			className="min-h-screen bg-[#090b21] relative overflow-hidden"
+			className="min-h-screen bg-[#090b21] relative overflow-hidden "
 		>
 			<div
 				ref={bannerRef}
@@ -217,7 +229,7 @@ export default function Landing() {
 			<span>some attractive relevant text</span> */}
 				<CubeTextAnimation />
 			</div>
-			<nav
+			{/* <nav
 				ref={navRef}
 				className="px-12 py-6 fixed w-full top-0 z-50 backdrop-blur-md border-b border-white/10"
 			>
@@ -243,7 +255,7 @@ export default function Landing() {
 						))}
 					</div>
 				</div>
-			</nav>
+			</nav> */}
 
 			{/* Main Content */}
 			<div className="h-screen flex items-center px-8 ">
@@ -355,9 +367,13 @@ export default function Landing() {
 					</div>
 				)} */}
 			</div>
+			<div
+				className="absolute inset-0 bg-gradient-to-r from-transparent 
+        via-white/10 to-transparent animate-shine pointer-events-none w-[100vw]"
+			></div>
 
 			{/* Global Styles */}
-			<style jsx global>{`
+			{/* <style jsx global>{`
 				@keyframes float {
 					0% {
 						transform: translateY(0) translateX(0);
@@ -376,7 +392,7 @@ export default function Landing() {
 				path {
 					filter: url(#glow);
 				}
-			`}</style>
+			`}</style> */}
 		</div>
 	);
 }
