@@ -61,7 +61,7 @@ export default function ContactSection() {
 
 	return (
 		<>
-			<section className="footerSection min-h-screen w-full relative bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900">
+			<section className="footerSection min-h-screen w-full max-w-full relative bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 overflow-x-hidden">
 				{/* Animated SVG Background */}
 				<svg ref={svgRef} className="absolute inset-0 w-full h-full opacity-10">
 					<path

@@ -79,7 +79,10 @@ export default function CubeTextAnimation() {
 				>
 					{/* Transform Your Digital Presence */}
 					{"Transform Your Digital Presence".split("").map((letter, index) => (
-						<span key={index} className="inline-block span opacity-0">
+						<span
+							key={index}
+							className="inline-block span opacity-0 transformText"
+						>
 							{letter === " " ? "\u00A0" : letter}
 						</span>
 					))}

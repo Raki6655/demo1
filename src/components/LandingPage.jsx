@@ -125,7 +125,7 @@ export default function Landing() {
 					stagger: 0.1, // Creates a smooth stagger effect
 					duration: 3,
 					ease: "power1.out",
-					opacity: 0,
+					// opacity: 0,
 				})
 				.to(".span", {
 					opacity: 1,
@@ -284,7 +284,7 @@ export default function Landing() {
 				<div className="max-w-7xl ml-0 lg:ml-[6vw] relative z-10 flex flex-col items-center lg:block">
 					<div
 						ref={headlineRef}
-						className="space-y-4 w-[100%] mt-[7rem] lg:mt-[6rem] overflow-hidden"
+						className="space-y-4 w-[100%] mt-[7rem] lg:mt-[6rem] "
 					>
 						<div className="overflow-hidden">
 							<h1 className="text-4xl lg:text-8xl font-bold text-white text-center lg:text-start leading-8">

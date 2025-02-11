@@ -50,21 +50,31 @@ function Templates() {
 		},
 		// Add 3 more projects
 	];
+	const mm = gsap.matchMedia();
 	useEffect(() => {
-		const tll = gsap
-			.timeline({
-				scrollTrigger: {
-					trigger: ".aboutPage",
-					start: "top 80%",
-					scrub: true,
-					// markers: true,
-				},
-			})
-			.to(".imgg", {
+		const tll = gsap.timeline({
+			scrollTrigger: {
+				trigger: ".aboutPage",
+				start: "top 80%",
+				scrub: true,
+				// markers: true,
+			},
+		});
+
+		mm.add("(max-width:768px)", () => {
+			tll.to(".imgg", {
+				stagger: 0.1,
+				y: -300,
+				scrub: true,
+			});
+		});
+		mm.add("(min-width:769px)", () => {
+			tll.to(".imgg", {
 				stagger: 0.1,
 				y: -700,
 				scrub: true,
 			});
+		});
 	}, []);
 	return (
 		<div>
@@ -87,7 +97,7 @@ function Templates() {
 						<div
 							key={project.title}
 							// ref={(el) => el && (cardsRef.current[i] = el)}
-							className="imgg relative h-[300px] lg:h-[500px] bg-black/30 backdrop-blur-lg rounded-2xl 
+							className="imgg relative h-[350px] lg:h-[500px] bg-black/30 backdrop-blur-lg rounded-2xl 
                                          border-2 border-white/10 hover:border-[#00ff88]/50 transition-all
                                          overflow-hidden group"
 						>
@@ -97,13 +107,13 @@ function Templates() {
 									src={project.image}
 									alt={project.title}
 									fill
-									className="object-cover grayscale group-hover:grayscale-0 transition-all"
+									className="object-cover grayscale group-hover:grayscale-0 transition-all p-3"
 								/>
 								<div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
 							</div>
 
 							{/* Content */}
-							<div className="p-2 lg:p-6 relative mt-5 lg:mt-0">
+							<div className="px-4 lg:px-0 lg:p-6 relative mt-5 lg:mt-0">
 								<h3 className="text-xl lg:text-2xl font-bold text-white mb-4">
 									{project.title}
 								</h3>

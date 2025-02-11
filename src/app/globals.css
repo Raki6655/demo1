@@ -13,6 +13,9 @@
 		--foreground: #ededed;
 	}
 }
+.transformText {
+	font-family: var(--font-DMserif);
+}
 
 body {
 	color: var(--foreground);

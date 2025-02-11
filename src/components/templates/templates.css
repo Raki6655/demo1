@@ -132,10 +132,12 @@
 		grid-template-columns: repeat(1, 1fr);
 	}
 	.imgg {
-		width: 100%;
+		width: 90%;
 		height: 400px;
 		position: relative;
 		background-size: cover;
 		z-index: 1;
+		left: 50%;
+		transform: translateX(-50%);
 	}
 }

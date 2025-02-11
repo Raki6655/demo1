@@ -172,7 +172,7 @@ function AboutUs() {
 			<Templates />
 			<h1
 				ref={titleRef}
-				className="text-[66px] lg:text-[110px] text-green font-extrabold w-full text-center uppercase"
+				className="text-[56px] lg:text-[110px] text-green font-extrabold w-full text-center uppercase"
 			>
 				{"You Dream, We Build".split("").map((letter, index) => (
 					<span key={index} className="inline-block">

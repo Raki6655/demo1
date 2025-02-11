@@ -134,17 +134,17 @@ const ServicePage = () => {
 					</div>
 				</div>
 			</div>
-			<div className="h-full flex flex-col gap-10 lg:block my-10 service-mobile">
+			<div className="h-full flex flex-col gap-2 lg:block my-10 service-mobile">
 				{services.map((service, index) => (
 					<div
 						key={index}
 						// ref={(el) => (textRefs.current[index] = el)}
-						className="flex flex-col h-full gap-2 px-3 lg:px-0 bg-slate-100 m-2 py-3 rounded-lg shadow-md"
+						className="flex flex-col h-full  px-3 lg:px-0 bg-slate-100 mx-4 lg:mx-2 my-4 py-3 rounded-2xl shadow-md"
 					>
 						<div
 							key={index}
 							// ref={(el) => (imageRefs.current[index] = el)}
-							className={` image ${service.colorClass}  rounded-3xl  `}
+							className={` image ${service.colorClass}  rounded-lg  `}
 							style={{
 								backgroundImage: `url('/images/${service.image}')`,
 								backgroundSize: "cover",
@@ -152,10 +152,10 @@ const ServicePage = () => {
 								backgroundRepeat: "no-repeat",
 							}}
 						></div>
-						<h1 className="text-[24px] lg:text-[56px] font-bold mt-8">
+						<h1 className="text-[24px] lg:text-[56px] font-bold mt-5 lg:mt-8">
 							{service.title}
 						</h1>
-						<p className=" lg:mt-10 text-sm lg:text-lg leading-8">
+						<p className="mt-3 lg:mt-10 text-sm lg:text-lg leading-8">
 							{service.description}
 						</p>
 					</div>
