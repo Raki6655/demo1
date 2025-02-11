@@ -26,5 +26,25 @@
 	font-weight: 900;
 }
 .circle {
-	clip-path: circle(10% at 10% 40%);
+	clip-path: circle(10% at 10% 70%);
+}
+
+@media (max-width: 768) {
+	.slide {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		/* gap: 1rem; */
+		justify-content: center;
+		max-width: 100vw;
+		height: 4rem;
+		overflow: hidden;
+		margin: 0;
+		padding: 2rem 0;
+	}
+	.slide span {
+		color: black;
+		font-size: 56px;
+		font-weight: 700;
+	}
 }

@@ -87,12 +87,12 @@ function Templates() {
 						<div
 							key={project.title}
 							// ref={(el) => el && (cardsRef.current[i] = el)}
-							className="imgg relative h-[500px] bg-black/30 backdrop-blur-lg rounded-2xl 
+							className="imgg relative h-[300px] lg:h-[500px] bg-black/30 backdrop-blur-lg rounded-2xl 
                                          border-2 border-white/10 hover:border-[#00ff88]/50 transition-all
                                          overflow-hidden group"
 						>
 							{/* Image Container */}
-							<div className="relative h-3/4 overflow-hidden">
+							<div className="relative h-3/5 lg:h-3/4 overflow-hidden rounded-md">
 								<Image
 									src={project.image}
 									alt={project.title}
@@ -103,16 +103,18 @@ function Templates() {
 							</div>
 
 							{/* Content */}
-							<div className="p-6 relative">
-								<h3 className="text-2xl font-bold text-white mb-2">
+							<div className="p-2 lg:p-6 relative mt-5 lg:mt-0">
+								<h3 className="text-xl lg:text-2xl font-bold text-white mb-4">
 									{project.title}
 								</h3>
-								<p className="text-white/80 mb-4">{project.desc}</p>
+								<p className="text-white/80 mb-4 text-sm lg:text-md">
+									{project.desc}
+								</p>
 								<div className="flex flex-wrap gap-2">
 									{project.tech.map((tag) => (
 										<span
 											key={tag}
-											className="px-3 py-1 text-sm bg-white/5 rounded-full text-[#00ff88]"
+											className="px-3 py-1 text-xs lg:text-sm bg-white/5 rounded-full text-[#00ff88]"
 										>
 											{tag}
 										</span>

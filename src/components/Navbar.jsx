@@ -4,7 +4,7 @@ import React, { useRef } from "react";
 function Navbar() {
 	const navRef = useRef(null);
 	return (
-		<div>
+		<div className="hidden lg:block">
 			<nav
 				ref={navRef}
 				className="navbar px-12 py-6 fixed w-full top-0 z-50 backdrop-blur-md border-b border-white/10 text-white"

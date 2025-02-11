@@ -19,7 +19,7 @@ export default function ContactSection() {
 			opacity: 0,
 			y: 40,
 			stagger: 0.1,
-			duration: 1,
+			duration: 0.1,
 			scrollTrigger: {
 				trigger: textRef.current,
 				start: "top center",
@@ -61,7 +61,7 @@ export default function ContactSection() {
 
 	return (
 		<>
-			<section className="min-h-screen relative bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900">
+			<section className="footerSection min-h-screen w-full relative bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900">
 				{/* Animated SVG Background */}
 				<svg ref={svgRef} className="absolute inset-0 w-full h-full opacity-10">
 					<path
@@ -84,28 +84,31 @@ export default function ContactSection() {
 					/>
 				</svg>
 
-				<div className="container mx-auto px-4 h-screen flex items-center justify-center">
-					<div ref={textRef} className="text-center space-y-8 relative z-10">
-						<h2 className="text-6xl font-bold text-white mb-8">
+				<div className="container mx-auto px-4 h-screen flex items-center justify-center ">
+					<div
+						ref={textRef}
+						className="text-center space-y-8 relative z-10 px-10 lg:px-0"
+					>
+						<h2 className="text-[3.5rem] lg:text-[8rem] font-bold text-white mb-8 px-2">
 							{`Let's Create`.split("").map((char, i) => (
 								<span
 									key={i}
-									className="inline-block hover:text-cyan-300 transition-all"
+									className="spanText inline-block hover:text-cyan-300 transition-all"
 								>
 									{char}
 								</span>
 							))}
 						</h2>
 
-						<div className="relative group">
+						<div className="relative group mailBox">
 							<input
 								type="email"
 								value={email}
 								onChange={(e) => setEmail(e.target.value)}
 								placeholder="Your email address"
-								className="text-2xl px-8 py-4 bg-transparent border-2 border-white/30 rounded-full
+								className="text-md lg:text-2xl px-8 py-4 bg-transparent border-2 border-white/30 rounded-full
                          text-white placeholder-white/50 focus:outline-none focus:border-cyan-400
-                         transition-all w-96 text-center"
+                         transition-all w-72 lg:w-96 text-center"
 							/>
 							<button
 								className="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 
@@ -127,7 +130,7 @@ export default function ContactSection() {
 							</button>
 						</div>
 
-						<p className="text-xl text-white/80 mt-8">
+						<p className="endText text-sm lg:text-xl text-white/80 mt-8">
 							Let's build something amazing together ✨
 						</p>
 					</div>
@@ -135,7 +138,7 @@ export default function ContactSection() {
 			</section>
 
 			{/* Footer Section */}
-			<div
+			{/* <div
 				ref={footerRef}
 				className="min-h-[50vh] bg-gradient-to-br from-blue-900 to-indigo-900 relative"
 			>
@@ -161,10 +164,10 @@ export default function ContactSection() {
 					))}
 				</div>
 
-				{/* Footer Background Elements */}
+		
 				<div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.02),transparent)]" />
 				<div className="absolute inset-0 bg-[url('/noise.png')] opacity-10 mix-blend-soft-light" />
-			</div>
+			</div> */}
 		</>
 	);
 }

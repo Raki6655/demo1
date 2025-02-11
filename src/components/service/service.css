@@ -66,3 +66,24 @@
 .pink {
 	/* background-color: rgb(243, 92, 117); */
 }
+.service-mobile {
+	display: none;
+}
+@media (max-width: 768px) {
+	.contentContainer {
+		display: none;
+	}
+	.image {
+		position: relative;
+		scale: 1;
+		background-size: cover;
+		margin: 1rem 0;
+		height: 200px;
+		left: 50%;
+
+		transform: translateX(-50%);
+	}
+	.service-mobile {
+		display: flex;
+	}
+}

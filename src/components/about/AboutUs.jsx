@@ -39,19 +39,6 @@ function AboutUs() {
 				y: 220,
 			});
 
-		// gsap.to(".navbar", {
-		// 	color: "black",
-		// 	scrollTrigger: {
-		// 		trigger: aboutRef.current,
-		// 		start: "top top",
-		// 		markers: true,
-		// 		onEnter: () => {
-		// 			gsap.to(".navbar", {
-		// 				color: rgba(40, 40, 40, 0.1),
-		// 			});
-		// 		},
-		// 	},
-		// });
 		ScrollTrigger.create({
 			trigger: aboutRef.current,
 			start: "top top",
@@ -79,11 +66,11 @@ function AboutUs() {
 		const timelinee = gsap.timeline({
 			scrollTrigger: {
 				trigger: titleRef.current,
-				start: "top 20%",
-				end: "+=100%", // Controls how long the section stays pinned
+				start: "top 18%",
+				end: "+=65%", // Controls how long the section stays pinned
 				scrub: true,
 				pin: true, // Keeps the text in place until the animation is done
-				markers: true,
+				// markers: true,
 				pinSpacing: false,
 			},
 		});
@@ -95,33 +82,36 @@ function AboutUs() {
 			duration: 0.5,
 			ease: "power3.out",
 		});
+		gsap.set(".spanText", {
+			opacity: 0,
+			y: 20,
+		});
+		gsap.set(".mailBox .endText", {
+			y: 100,
+			opacity: 0,
+		});
 
 		const endTimeline = gsap
 			.timeline()
 
 			.to(".circle", {
-				clipPath: "circle(10% at 50% 40%)",
+				clipPath: "circle(22% at 50% 75%)",
 				duration: 0.5,
 			})
 			.to(".circle", {
-				clipPath: "circle(200% at 50% 50%)",
-				// onStart: () => {
-				// 	gsap.to(".navbar", {
-				// 		color: "white",
-				// 		ease: "circ.in",
-				// 	});
-				// },
+				clipPath: "circle(200% at 50% 75%)",
 			})
 			.to(".navbar", {
 				color: "white",
 			});
+
 		ScrollTrigger.create({
 			trigger: ".circle",
-			start: "top top",
-			end: "200%",
+			start: "top 0%",
+			end: "100%",
 			scrub: true,
 			pin: true,
-			markers: true,
+			// markers: true,
 			pinSpacing: false,
 			animation: endTimeline,
 			onUpdate: (self) => {
@@ -135,31 +125,37 @@ function AboutUs() {
 						color: "black",
 					});
 				}
-				// gsap.to(".circle", {
-				// 	clipPath: `circle(${20 + 80 * progress}% at 50% 50%)`,
-				// 	x: -200 + progress * 300,
-				// 	//  onLeaveBack:()=>{
-				// 	// 	clipPath: `circle(${20 + 80 * progress}% at 50% 50%)`
-				// 	//  }
-				// });
+				if (progress * 100 > 40) {
+					gsap.to(".spanText", {
+						opacity: 1,
+						y: 0,
+						stagger: 0.1,
+						ease: "ease-in",
+						duration: 0,
+					});
+					gsap.to(".mailBox .endText", {
+						y: 0,
+						opacity: 1,
+						ease: "elastic.inOut",
+						stagger: 0.3,
+					});
+				} else {
+					gsap.to(".spanText", {
+						opacity: 0,
+						y: 20,
+						stagger: 0.1,
+						ease: "ease-out",
+						duration: 0,
+					});
+				}
 			},
-			// onEnter: () => {
-			// 	gsap.to(".navbar", {
-			// 		color: "white",
-			// 	});
-			// },
-			// onLeaveBack: () => {
-			// 	gsap.to(".navbar", {
-			// 		color: "black",
-			// 	});
-			// },
 		});
 	}, []);
 	useGSAP(() => {});
 	return (
-		<div className="w-full h-[550vh] bg-black/20 pt-10" ref={aboutRef}>
+		<div className="w-full h-[675vh] lg:h-[550vh] bg-black/20 " ref={aboutRef}>
 			{" "}
-			<ul>
+			<ul className=" px-2 lg:px-0 flex flex-col gap-5 py-[11rem] lg:py-10">
 				<div className="slide slide1">
 					<span>Discover</span>
 				</div>
@@ -176,7 +172,7 @@ function AboutUs() {
 			<Templates />
 			<h1
 				ref={titleRef}
-				className="text-[110px] text-green font-extrabold w-full text-center uppercase"
+				className="text-[66px] lg:text-[110px] text-green font-extrabold w-full text-center uppercase"
 			>
 				{"You Dream, We Build".split("").map((letter, index) => (
 					<span key={index} className="inline-block">

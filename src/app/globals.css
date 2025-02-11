@@ -59,7 +59,8 @@ body {
 }
 .hover {
 	transform: scale(1.1);
-	box-shadow: 0 0 25px rgba(126, 255, 66, 0.5);
+	box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+
 	position: relative;
 	z-index: 100;
 }
@@ -75,9 +76,21 @@ body {
 	clip-path: circle(20% at 80% 50%);
 	height: 100vh;
 	width: 100vw;
-	transform-origin: 60% 50%;
+	transform-origin: 50% 50%;
 	background: url(../../public//images//57695504619.png) 50% 50% no-repeat;
 	background-size: 200%;
+}
+
+@media (max-width: 768px) {
+	.banner-img {
+		position: absolute;
+		clip-path: circle(15% at 50% 80%);
+		height: 100vh;
+		width: 100vw;
+		transform-origin: 50% 50%;
+		background: url(../../public//images//57695504619.png) 50% 50% no-repeat;
+		background-size: 200%;
+	}
 }
 
 /* Rotating shine effect */

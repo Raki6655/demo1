@@ -39,50 +39,50 @@ const ServicePage = () => {
 			image: "Dashboard1.png",
 		},
 	];
-
+	const mm = gsap.matchMedia();
 	useEffect(() => {
 		if (typeof window !== "undefined") {
 			gsap.registerPlugin(ScrollTrigger);
-
-			// Pin the rightView (Image container)
-			ScrollTrigger.create({
-				trigger: containerRef.current,
-				pin: rightViewRef.current,
-				end: "bottom bottom",
-			});
 
 			// Select all text contents and images dynamically
 			const textContents = textRefs.current.slice(1);
 			const allImages = imageRefs.current.slice(1);
 			const allImageIncluded = imageRefs.current;
-
 			gsap.set(allImages, { yPercent: 101 });
-
-			textContents.forEach((content, index) => {
-				const text = content.querySelector("h1");
-
-				const timeline = gsap
-					.timeline()
-					.to(allImages[index], {
-						yPercent: 0,
-						autoAlpha: 1,
-						ease: "circ.inOut",
-						// onStart: () => {
-						// 	console.log(containerRef?.current);
-						// 	containerRef.current.style.backgroundImage = `url('/images/${services[index].image}')`;
-						// },
-					})
-					.set(allImageIncluded[index], {
-						autoAlpha: 0,
-					});
-
+			mm.add("(min-width:769px", () => {
+				// Pin the rightView (Image container)
 				ScrollTrigger.create({
-					trigger: text,
-					start: "top 100%",
-					end: "top 10%",
-					animation: timeline,
-					scrub: true,
-					// markers: true,
+					trigger: containerRef.current,
+					pin: rightViewRef.current,
+					end: "bottom bottom",
+				});
+
+				textContents.forEach((content, index) => {
+					const text = content.querySelector("h1");
+
+					const timeline = gsap
+						.timeline()
+						.to(allImages[index], {
+							yPercent: 0,
+							autoAlpha: 1,
+							ease: "circ.inOut",
+							// onStart: () => {
+							// 	console.log(containerRef?.current);
+							// 	containerRef.current.style.backgroundImage = `url('/images/${services[index].image}')`;
+							// },
+						})
+						.set(allImageIncluded[index], {
+							autoAlpha: 0,
+						});
+
+					ScrollTrigger.create({
+						trigger: text,
+						start: "top 100%",
+						end: "top 10%",
+						animation: timeline,
+						scrub: true,
+						// markers: true,
+					});
 				});
 			});
 
@@ -133,6 +133,33 @@ const ServicePage = () => {
 						))}
 					</div>
 				</div>
+			</div>
+			<div className="h-full flex flex-col gap-10 lg:block my-10 service-mobile">
+				{services.map((service, index) => (
+					<div
+						key={index}
+						// ref={(el) => (textRefs.current[index] = el)}
+						className="flex flex-col h-full gap-2 px-3 lg:px-0 bg-slate-100 m-2 py-3 rounded-lg shadow-md"
+					>
+						<div
+							key={index}
+							// ref={(el) => (imageRefs.current[index] = el)}
+							className={` image ${service.colorClass}  rounded-3xl  `}
+							style={{
+								backgroundImage: `url('/images/${service.image}')`,
+								backgroundSize: "cover",
+
+								backgroundRepeat: "no-repeat",
+							}}
+						></div>
+						<h1 className="text-[24px] lg:text-[56px] font-bold mt-8">
+							{service.title}
+						</h1>
+						<p className=" lg:mt-10 text-sm lg:text-lg leading-8">
+							{service.description}
+						</p>
+					</div>
+				))}
 			</div>
 			{/* <div className="spacer"></div> */}
 		</div>

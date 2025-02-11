@@ -23,6 +23,7 @@ export default function Landing() {
 	const bannerRef = useRef(null);
 	const [isClient, setIsClient] = useState(false);
 
+	const mm = gsap.matchMedia();
 	useEffect(() => {
 		gsap.registerPlugin(ScrollTrigger);
 		const lenis = new Lenis({
@@ -36,112 +37,137 @@ export default function Landing() {
 			requestAnimationFrame(raf);
 		}
 		requestAnimationFrame(raf);
+
 		const mainScreenScrollTimeline = gsap.timeline({
 			scrollTrigger: {
 				trigger: containerRef.current,
 				pin: true,
 				start: "top top",
-
 				end: () => `+=${window.innerHeight * 4}`,
-				// onUpdate: (self) => {
-				// 	const progress = self.progress;
-				// 	gsap.to(bannerRef.current, {
-				// 		backgroundSize: `${150 - 50 * progress}%`,
-				// 		borderRadius: `${progress * 50}%`,
-				// 	});
-				// },
 				scrub: true,
-
-				// markers: true,
 			},
 		});
-		gsap.set(".text-container", {
+
+		gsap.set(".span", {
 			opacity: 0,
-		});
-		gsap.set(".subText", {
-			opacity: 0,
-			y: 200,
+			y: 50,
 		});
 		gsap.set(".digitalFuture", {
 			opacity: 0,
-			y: 200,
+		});
+		mm.add("(max-width:768px)", () => {
+			return mainScreenScrollTimeline
+				.to(bannerRef.current, {
+					clipPath: "circle(15% at 50% 50%)",
+					duration: 2,
+					backgroundSize: "220%",
+				})
+				.to(bannerRef.current, {
+					clipPath: "circle(100% at 50% 50%)",
+					duration: 3,
+					backgroundSize: "180%",
+				})
+				.to(bannerRef.current, {
+					scale: 0.7,
+					backgroundSize: "100%",
+					duration: 4,
+				})
+				.to(bannerRef.current, {
+					filter: "blur(20px)",
+					duration: 4,
+				})
+				.to(headlineRef.current?.children, {
+					y: -500, // Moves text slightly up
+					// opacity: 0, // Fades out
+					stagger: 0.1, // Creates a smooth stagger effect
+					duration: 3,
+					ease: "power1.out",
+					// opacity: 0,
+				})
+				.to(".span", {
+					opacity: 1,
+					y: 0,
+					stagger: 0.2,
+				})
+				.to(".digitalFuture", {
+					opacity: 1,
+					y: -450,
+					duration: 1.5,
+				});
 		});
 
-		mainScreenScrollTimeline
+		mm.add("(min-width: 769px)", () => {
+			// Animation for small screens
+			return mainScreenScrollTimeline
 
-			.to(bannerRef.current, {
-				clipPath: "circle(20% at 50% 50%)",
-				duration: 2,
-				backgroundSize: "220%",
-			})
-			.to(bannerRef.current, {
-				clipPath: "circle(100% at 50% 50%)",
-				duration: 4,
-				backgroundSize: "180%",
-			})
-			.to(bannerRef.current, {
-				scale: 0.9,
-				backgroundSize: "100%",
-				duration: 4,
-			})
-			.to(bannerRef.current, {
-				filter: "blur(90px)",
-				duration: 2,
-			})
-			.to(headlineRef.current?.children, {
-				y: -800, // Moves text slightly up
-				// opacity: 0, // Fades out
-				stagger: 0.05, // Creates a smooth stagger effect
-				duration: 3,
-				ease: "power1.out",
-			})
-			.to(".text-container", {
-				opacity: 1,
-				duration: 1,
-				ease: "power1.out",
-				onStart: () => {
-					document
-						.querySelector(".animate-shine")
-						.classList.add("display-none");
-				},
+				.to(bannerRef.current, {
+					clipPath: "circle(20% at 50% 50%)",
+					duration: 2,
+					backgroundSize: "220%",
+				})
+				.to(bannerRef.current, {
+					clipPath: "circle(100% at 50% 50%)",
+					duration: 3,
+					backgroundSize: "180%",
+				})
+				.to(bannerRef.current, {
+					scale: 0.7,
+					backgroundSize: "100%",
+					duration: 4,
+				})
+				.to(bannerRef.current, {
+					filter: "blur(80px)",
+					duration: 4,
+				})
+				.to(headlineRef.current?.children, {
+					y: -800, // Moves text slightly up
+					// opacity: 0, // Fades out
+					stagger: 0.1, // Creates a smooth stagger effect
+					duration: 3,
+					ease: "power1.out",
+					opacity: 0,
+				})
+				.to(".span", {
+					opacity: 1,
+					y: 0,
+					stagger: 0.2,
+				})
+				.to(".digitalFuture", {
+					opacity: 1,
+					y: -450,
+					duration: 1.5,
+				})
+				.to(".text-container", {
+					opacity: 1,
+					duration: 1,
+					ease: "power1.out",
+					onStart: () => {
+						document
+							.querySelector(".animate-shine")
+							.classList.add("display-none");
+					},
 
-				// y: -700,
-				// scale: 0.8,
-			})
-			.to(".subText", {
-				delay: -1,
-				duration: 2,
-				y: -420,
-				ease: "circ.inOut",
-			})
-			.to(".digitalFuture", {
-				opacity: 1,
-				delay: -0.5,
-				y: -0,
-				ease: "power1.out",
-			})
+					// y: -700,
+					// scale: 0.8,
+				})
 
-			.to(".button-rounded", {
-				position: "absolute",
-				x: 650,
-				y: -130,
-				scale: 1.2,
-				ease: "power1.out",
+				.to(".button-rounded", {
+					position: "absolute",
+					x: 650,
+					y: -130,
+					scale: 1.2,
+					ease: "power1.out",
 
-				onStart: () => {
-					console.log(document.querySelector(".button"));
-					document.querySelector(".button").classList.add("hover");
-				},
-			});
-		// mainScreenScrollTimeline?.onComplete(() => {
-		// 	console.log(document.querySelector(".button"));
-		// 	document.querySelector(".button").classList.add("hover");
-		// });
+					onStart: () => {
+						console.log(document.querySelector(".button"));
+						document.querySelector(".button").classList.add("hover");
+					},
+				});
+		});
+
 		return () => {
 			mainScreenScrollTimeline.kill();
 		};
-
-		setIsClient(true);
 	}, []);
 
 	// GSAP Animations
@@ -158,7 +184,7 @@ export default function Landing() {
 
 			gsap.from(headlineRef.current?.children || [], {
 				opacity: 0,
-				y: 40,
+				y: 30,
 				stagger: 0.1,
 				duration: 1.2,
 				ease: "expo.out",
@@ -204,6 +230,36 @@ export default function Landing() {
 					ease: "sine.inOut",
 				});
 			});
+			mm.add("(max-width:768px)", () => {
+				gsap.fromTo(
+					bannerRef.current,
+					{
+						clipPath: "circle(15% at 50% 95%)",
+
+						// backgroundSize: "220%",
+						// yoyo: true,
+					},
+					{
+						clipPath: "circle(15% at 50% 75%)",
+						duration: 2,
+					}
+				);
+			});
+			mm.add("(min-width:769px)", () => {
+				gsap.fromTo(
+					bannerRef.current,
+					{
+						clipPath: "circle(20% at 100% 50%)",
+
+						// backgroundSize: "220%",
+						// yoyo: true,
+					},
+					{
+						clipPath: "circle(20% at 80% 50%)",
+						duration: 2,
+					}
+				);
+			});
 		},
 		{ scope: containerRef }
 	);
@@ -220,95 +276,40 @@ export default function Landing() {
 				alt="Picture of the author"
 			/>
 			<div className="outroTextContent absolute w-full">
-				{/* <h1 className="text-8xl font-extrabold absolute text-white  top-[50vh] text-center w-full">
-					Lets Walk Around(Base Text)
-				</h1>
-				<h2 className="text-8xl font-extrabold absolute text-white  top-[40vh] text-center w-full">
-					Some attractive relevant text for my software selling aggenciy
-				</h2>
-			<span>some attractive relevant text</span> */}
 				<CubeTextAnimation />
 			</div>
-			{/* <nav
-				ref={navRef}
-				className="px-12 py-6 fixed w-full top-0 z-50 backdrop-blur-md border-b border-white/10"
-			>
-				<div className="max-w-7xl mx-auto flex justify-between items-center gap-5">
-					<span className="text-2xl font-bold text-white relative -left-[6rem]">
-						SOLESTYLE
-					</span>
-					<div className="space-x-8">
-						{[
-							"Work",
-							"Services",
-							"Templates",
-							"Tech",
-							"Careers",
-							"About Us",
-						].map((item) => (
-							<button
-								key={item}
-								className="text-white/80 hover:text-white transition-colors duration-300 text-sm font-bold uppercase"
-							>
-								{item}
-							</button>
-						))}
-					</div>
-				</div>
-			</nav> */}
 
 			{/* Main Content */}
-			<div className="h-screen flex items-center px-8 ">
-				<div className="max-w-7xl ml-[6vw] relative z-10">
+			<div className="h-screen w-full flex items-start  lg:items-center px-2 lg:px-8 ">
+				<div className="max-w-7xl ml-0 lg:ml-[6vw] relative z-10 flex flex-col items-center lg:block">
 					<div
 						ref={headlineRef}
-						className="space-y-6 w-[100%] mt-[10rem] overflow-hidden"
+						className="space-y-4 w-[100%] mt-[7rem] lg:mt-[6rem] overflow-hidden"
 					>
 						<div className="overflow-hidden">
-							<h1 className="text-8xl font-bold text-white">
+							<h1 className="text-4xl lg:text-8xl font-bold text-white text-center lg:text-start leading-8">
 								Elevate Your Style,
 							</h1>
 						</div>
 						<div className="overflow-hidden">
-							<h1 className="text-8xl font-bold text-white">Embrace the</h1>
+							<h1 className="text-4xl lg:text-8xl font-bold text-white text-center lg:text-start leading-8">
+								Embrace the
+							</h1>
 						</div>
 						<div className="overflow-hidden">
-							<h1 className="text-8xl font-bold text-white">Extraordinary</h1>
+							<h1 className="text-4xl lg:text-8xl font-bold text-white text-center lg:text-start leading-8">
+								Extraordinary
+							</h1>
 						</div>
-						<div className="pt-8 overflow-hidden">
-							<p className="text-xl text-white/80 max-w-2xl">
+						<div className="pt-1 lg:pt-8 ">
+							<p className="text-sm lg:text-xl text-white/80 max-w-2xl text-center lg:text-start">
 								A really good website can be a difference between success and a
 								failure !
 							</p>
 						</div>
 					</div>
 					<ShinyButton name={"Explore"} />
-					{/* <button
-						// ref={ctaRef}
-						className="mt-12 px-12 py-4 rounded-full text-lg font-semibold relative overflow-hidden 
-            border-2 border-transparent bg-gradient-to-r from-[#00c6ff] via-[#0072ff] to-[#00c6ff] 
-            bg-[length:200%_100%] hover:shadow-[0_0_30px_5px_rgba(0,194,255,0.5)] transition-all duration-300"
-						style={{
-							backgroundClip: "padding-box",
-							borderImage: "linear-gradient(45deg, #00c6ff, #0072ff) 1",
-							padding: "1rem 3rem",
-						}}
-					>
-						<span className="relative z-10 text-white">Explore Collection</span>
-						<div
-							className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.2),transparent)] 
-              animate-pulse pointer-events-none"
-						></div>
-					</button> */}
 				</div>
-				{/* <img
-					ref={shoeRef}
-					className="scale-150 ml-[2vw] relative -left-10 top-10 rounded-full"
-					src="./images/background_banner.png"
-					height={600}
-					width={500}
-					alt="Picture of the author"
-				/> */}
 			</div>
 
 			{/* Enhanced Glowing Lines Background */}
@@ -347,25 +348,6 @@ export default function Landing() {
 						</filter>
 					</defs>
 				</svg>
-
-				{/* Client-side only particles to fix hydration error */}
-				{/* {isClient && (
-					<div className="absolute inset-0">
-						{[...Array(30)].map((_, i) => (
-							<div
-								key={i}
-								className="absolute w-1 h-1 bg-white rounded-full"
-								style={{
-									top: `${Math.random() * 100}%`,
-									left: `${Math.random() * 100}%`,
-									animation: `float ${
-										5 + Math.random() * 10
-									}s infinite ease-in-out`,
-								}}
-							/>
-						))}
-					</div>
-				)} */}
 			</div>
 			<div
 				className="absolute inset-0 bg-gradient-to-r from-transparent 

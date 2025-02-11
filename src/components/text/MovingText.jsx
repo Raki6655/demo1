@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import ShinyButton from "../ShinyButton";
@@ -9,26 +9,9 @@ export default function CubeTextAnimation() {
 	const mainTextRef = useRef(null);
 	const subTextRef = useRef(null);
 	const cloneRefs = useRef([]);
+	const titleRef = useRef(null);
 
 	useGSAP(() => {
-		// Initial animation
-		gsap.from([mainTextRef.current, subTextRef.current], {
-			duration: 1.5,
-			opacity: 0,
-			y: 100,
-			stagger: 0.2,
-			ease: "power4.out",
-		});
-
-		// Floating animation
-		gsap.to(mainTextRef.current, {
-			y: -10,
-			duration: 2,
-			repeat: -1,
-			yoyo: true,
-			ease: "sine.inOut",
-		});
-
 		// Hover animations
 		const mainElements = mainTextRef.current?.children;
 		const subElements = subTextRef.current?.children;
@@ -65,47 +48,44 @@ export default function CubeTextAnimation() {
 			});
 		}
 	});
+	useEffect(() => {
+		const letters = titleRef.current?.querySelectorAll(".span");
+
+		// Timeline for Circle clip path animation
+		gsap.set(titleRef.current, {
+			y: -440,
+		});
+		gsap.set(".digitalText", {
+			y: -200,
+		});
+	}, []);
 
 	return (
 		<div className="relative h-[150vh] w-[100vw] overflow-hidden text-container">
-			{/* Main Text Layers */}
-			<div ref={mainTextRef} className="outroTextContent absolute w-full">
-				{/* <h1
-					className="text-[180px] font-extrabold absolute text-transparent 
-          top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2
-          [text-shadow:_0_0_15px_rgba(255,255,255,0.5)] 
-          border-4 border-white/30 p-8 cursor-default"
-					style={{
-						WebkitTextStroke: "2px #fff",
-					}}
-				>
-					<span className="block -translate-z-10">Lets Walk Around</span>
-					<span className="block text-[100px] mt-6 opacity-80">
-						Build Digital Future
-					</span>
-				</h1> */}
-			</div>
-
 			{/* Sub Text Layers */}
 			<div
-				ref={subTextRef}
-				className="absolute w-4/5 top-[60%] left-1/2 
+				// ref={subTextRef}
+				className="absolute w-full lg:w-5/6 top-[55%] left-1/2 
         -translate-x-1/2 -translate-y-1/2 subText"
 			>
 				<h2
-					className="text-[100px] font-bold text-center text-transparent
+					ref={titleRef}
+					className="text-[40px] lg:text-[120px] font-bold text-center text-transparent
           [text-shadow:_0_0_20px_rgba(255,255,255,0.3)]
-           p-6 cursor-default"
+           p-2 cursor-default"
 					style={{
 						WebkitTextStroke: "2.5px #fff",
 					}}
 				>
-					Transform Your Digital Presence
+					{/* Transform Your Digital Presence */}
+					{"Transform Your Digital Presence".split("").map((letter, index) => (
+						<span key={index} className="inline-block span opacity-0">
+							{letter === " " ? "\u00A0" : letter}
+						</span>
+					))}
 				</h2>
-				<span className="digitalFuture relative block text-[22px] mt-12 opacity-60 -top-10   text-center text-gray-400 font-medium left-1/2 -translate-x-1/2 leading-10  ">
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae, sit.
-					Modi fugiat odit veritatis reprehenderit! Id illo eum eos quibusdam
-					quaerat, eius quas pariatur corporis!
+				<span className="digitalFuture relative block text-[14px] lg:text-[22px] mt-20 lg:mt-12  -top-10   text-center text-gray-400 font-medium left-1/2 -translate-x-1/2 leading-10 opacity-0 ">
+					MAKE YOUR WEBSITE CONVERT
 				</span>
 				{/* <ShinyButton name={"Explore"} /> */}
 			</div>
