@@ -17,6 +17,7 @@ export const metadata = {
 };
 
 import { Poppins } from "next/font/google";
+import Navbar from "@/components/Navbar";
 
 const oswald = Poppins({
 	subsets: ["latin"],
@@ -37,6 +38,7 @@ export default function RootLayout({ children }) {
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased ${oswald.variable} ${DMserif.variable}`}
 			>
+				<Navbar />
 				{children}
 			</body>
 		</html>

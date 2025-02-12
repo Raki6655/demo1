@@ -19,7 +19,6 @@ export default function Home() {
 	return (
 		<>
 			<div>
-				<Navbar />
 				<LandingPage />
 				{/* <HeroSection /> */}
 				<ServicePage />
