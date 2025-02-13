@@ -6,7 +6,7 @@
 	width: 100%;
 	display: flex;
 	overflow: hidden;
-	background: linear-gradient(120deg, #834b97, #28a6a6, #0c6a14);
+	/* background: linear-gradient(120deg, #834b97, #28a6a6, #0c6a14); */
 	color: white;
 }
 .leftView {

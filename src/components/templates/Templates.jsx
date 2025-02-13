@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import "./templates.css";
 import gsap from "gsap";
 import Image from "next/image";
+import "../../app/globals.css";
 
 function Templates() {
 	const projects = [

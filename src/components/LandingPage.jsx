@@ -6,8 +6,6 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import Lenis from "@studio-freight/lenis";
-// import Button from "./Button";
-import dynamic from "next/dynamic";
 import ShinyButton from "./ShinyButton";
 import CubeTextAnimation from "./text/MovingText";
 // import ScrollTrigger from "gsap/dist/ScrollTrigger";
@@ -21,7 +19,6 @@ export default function Landing() {
 	const navRef = useRef(null);
 	const lineRefs = useRef([]);
 	const bannerRef = useRef(null);
-	const [isClient, setIsClient] = useState(false);
 
 	const mm = gsap.matchMedia();
 	useEffect(() => {
@@ -191,12 +188,6 @@ export default function Landing() {
 				delay: 0.5,
 			});
 
-			// ScrollTrigger.create({
-			// 	trigger: bannerRef.current,
-			// 	pin: true,
-			// 	markers: true,
-			// });
-
 			// CTA Animation
 			gsap.from(ctaRef.current, {
 				scale: 0.8,
@@ -284,7 +275,7 @@ export default function Landing() {
 				<div className="max-w-7xl ml-0 lg:ml-[6vw] relative z-10 flex flex-col items-center lg:block">
 					<div
 						ref={headlineRef}
-						className="space-y-4 w-[100%] mt-[7rem] lg:mt-[6rem] "
+						className="space-y-4 w-[100%] mt-[10rem] lg:mt-[6rem] "
 					>
 						<div className="overflow-hidden">
 							<h1 className="text-4xl lg:text-8xl font-bold text-white text-center lg:text-start leading-8">
@@ -314,7 +305,7 @@ export default function Landing() {
 
 			{/* Enhanced Glowing Lines Background */}
 			<div className="absolute inset-0 pointer-events-none min-w-[100vw]">
-				<svg className="w-full h-full opacity-20" viewBox="50 0 100 100">
+				<svg className="w-full h-full opacity-20 svg" viewBox="50 0 100 100">
 					{[...Array(20)].map((_, i) => (
 						<path
 							key={i}

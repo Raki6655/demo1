@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React, { useRef } from "react";
 import CustomLink from "./utils/CustomLink";
+import MobileNav from "./MobileNavbar";
 
 function Navbar() {
 	const navRef = useRef(null);
@@ -20,11 +21,11 @@ function Navbar() {
 						</CustomLink>
 						<div className="space-x-8">
 							{[
-								"Work",
+								// "Work",
 								"Services",
 								"Templates",
 								"Tech",
-								"Careers",
+								// "Careers",
 								"About Us",
 							].map((item) => (
 								<CustomLink
@@ -40,7 +41,7 @@ function Navbar() {
 					</div>
 				</nav>
 			</div>
-			<div className="nav-mobile block lg:hidden">
+			{/* <div className="nav-mobile block lg:hidden">
 				<nav
 					ref={navRef}
 					className="navbar px-12 py-6 fixed w-full top-0 z-50 backdrop-blur-md border-b border-white/10 text-white"
@@ -62,7 +63,8 @@ function Navbar() {
 						</div>
 					</div>
 				</nav>
-			</div>
+			</div> */}
+			<MobileNav />
 		</>
 	);
 }

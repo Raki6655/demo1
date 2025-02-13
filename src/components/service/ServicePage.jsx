@@ -49,6 +49,39 @@ const ServicePage = () => {
 			const allImages = imageRefs.current.slice(1);
 			const allImageIncluded = imageRefs.current;
 			gsap.set(allImages, { yPercent: 101 });
+
+			mm.add("(max-width:768px)", () => {
+				ScrollTrigger.create({
+					trigger: containerRef.current,
+					pin: rightViewRef.current,
+					end: "bottom bottom",
+					onEnter: () => {
+						gsap.to(".navbar", {
+							color: "rgba(0,0,0,1)",
+						});
+						gsap.to(".toggleButton svg", {
+							color: "rgba(0,0,0,1)",
+						});
+						// gsap.to(".closeNav", {
+						// 	color: "rgba(0,0,0,1)",
+						// });
+					},
+					onLeaveBack: () => {
+						gsap.to(".navbar", {
+							color: "white",
+							ease: "circ.in",
+						});
+						gsap.to(".toggleButton svg", {
+							color: "white",
+							ease: "circ.in",
+						});
+						// gsap.to(".closeNav", {
+						// 	color: "white",
+						// 	ease: "circ.in",
+						// });
+					},
+				});
+			});
 			mm.add("(min-width:769px", () => {
 				// Pin the rightView (Image container)
 				ScrollTrigger.create({
@@ -95,7 +128,10 @@ const ServicePage = () => {
 	return (
 		<div>
 			{/* <div className="spacer"></div> */}
-			<div ref={containerRef} className="contentContainer ">
+			<div
+				ref={containerRef}
+				className="contentContainer bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 "
+			>
 				{/* <div className="backgroundImage"></div> */}
 				{/* Left Side (Text) */}
 				<div className="leftView view px-10 mt-10 ">
@@ -134,12 +170,12 @@ const ServicePage = () => {
 					</div>
 				</div>
 			</div>
-			<div className="h-full flex flex-col gap-2 lg:block my-10 service-mobile">
+			<div className="h-full mt-16 lg:mt-0 flex flex-col gap-2 lg:none my-10 service-mobile  ">
 				{services.map((service, index) => (
 					<div
 						key={index}
 						// ref={(el) => (textRefs.current[index] = el)}
-						className="flex flex-col h-full  px-3 lg:px-0 bg-slate-100 mx-4 lg:mx-2 my-4 py-3 rounded-2xl shadow-md"
+						className="flex flex-col h-full text-black/60 lg:text-white px-3 lg:px-0 bg-slate-100 mx-4 lg:mx-2 my-4 py-3 rounded-2xl shadow-md"
 					>
 						<div
 							key={index}

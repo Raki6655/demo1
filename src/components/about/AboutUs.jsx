@@ -39,22 +39,22 @@ function AboutUs() {
 				y: 220,
 			});
 
-		ScrollTrigger.create({
-			trigger: aboutRef.current,
-			start: "top top",
-			// markers: true,
-			onEnter: () => {
-				gsap.to(".navbar", {
-					color: "rgba(0,0,0,1)",
-				});
-			},
-			onLeaveBack: () => {
-				gsap.to(".navbar", {
-					color: "white",
-					ease: "circ.in",
-				});
-			},
-		});
+		// ScrollTrigger.create({
+		// 	trigger: aboutRef.current,
+		// 	start: "top top",
+		// 	// markers: true,
+		// 	onEnter: () => {
+		// 		gsap.to(".navbar", {
+		// 			color: "rgba(0,0,0,1)",
+		// 		});
+		// 	},
+		// 	onLeaveBack: () => {
+		// 		gsap.to(".navbar", {
+		// 			color: "white",
+		// 			ease: "circ.in",
+		// 		});
+		// 	},
+		// });
 		// gsap.set(".circle", {
 		// 	y: -400,
 		// 	x: -200,
@@ -101,7 +101,7 @@ function AboutUs() {
 			.to(".circle", {
 				clipPath: "circle(200% at 50% 75%)",
 			})
-			.to(".navbar", {
+			.to([".navbar", ".toggleButton svg"], {
 				color: "white",
 			});
 
@@ -120,8 +120,14 @@ function AboutUs() {
 					gsap.to(".navbar", {
 						color: "white",
 					});
+					gsap.to(".toggleButton svg", {
+						color: "white",
+					});
 				} else {
 					gsap.to(".navbar", {
+						color: "black",
+					});
+					gsap.to(".toggleButton svg", {
 						color: "black",
 					});
 				}
@@ -152,8 +158,9 @@ function AboutUs() {
 		});
 	}, []);
 	useGSAP(() => {});
+
 	return (
-		<div className="w-full h-[675vh] lg:h-[550vh] bg-black/20 " ref={aboutRef}>
+		<div className="w-full h-[700vh] lg:h-[550vh] bg-black/20 " ref={aboutRef}>
 			{" "}
 			<ul className=" px-2 lg:px-0 flex flex-col gap-5 py-[11rem] lg:py-10">
 				<div className="slide slide1">

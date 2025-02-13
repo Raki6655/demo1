@@ -5,7 +5,9 @@ import React from "react";
 const index = () => {
 	return (
 		<PageContainer>
-			<Templates />
+			<div className="bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 mt-20">
+				<Templates />
+			</div>
 		</PageContainer>
 	);
 };

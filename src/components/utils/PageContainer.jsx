@@ -2,9 +2,11 @@
 import Lenis from "@studio-freight/lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 function PageContainer({ children }) {
+	// const [positions, setPositions] = useState([]);
+
 	useEffect(() => {
 		gsap.registerPlugin(ScrollTrigger);
 		const lenis = new Lenis({
@@ -20,7 +22,7 @@ function PageContainer({ children }) {
 		requestAnimationFrame(raf);
 	}, []);
 	return (
-		<div className="pt-20 pageContainer max-w-full min-h-[100vh] h-full text-white ">
+		<div className=" pageContainer max-w-full min-h-[100vh] h-full text-white  absolute top-0 bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950">
 			{children}
 		</div>
 	);
