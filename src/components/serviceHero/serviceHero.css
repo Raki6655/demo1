@@ -1,0 +1,6 @@
+.bgImage {
+	background: url(/images/MobileDev.webp) 50% 50% no-repeat;
+	object-fit: cover;
+	background-size: 95%;
+	filter: blur(10px);
+}

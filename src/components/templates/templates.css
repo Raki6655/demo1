@@ -112,6 +112,14 @@
 	gap: 2rem;
 	margin-top: 10rem;
 }
+.template-image {
+	/* transform: scale(1.6); */
+	transition: transform 0.6s ease-in-out;
+}
+
+/* .template-image:hover {
+	transform: scale(1);
+} */
 
 @media (max-width: 768px) {
 	.aboutPage {

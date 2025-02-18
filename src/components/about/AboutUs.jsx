@@ -8,6 +8,7 @@ import Templates from "../templates/Templates";
 import ContactSection from "../footer/ContactSection";
 import ContactSection2 from "../footer/Contact2";
 import ContactGpt from "../footer/ContactGpt";
+import VerticalSlider from "../VerticalSlider/VerticalSlider";
 
 function AboutUs() {
 	const aboutRef = useRef(null);
@@ -39,22 +40,22 @@ function AboutUs() {
 				y: 220,
 			});
 
-		// ScrollTrigger.create({
-		// 	trigger: aboutRef.current,
-		// 	start: "top top",
-		// 	// markers: true,
-		// 	onEnter: () => {
-		// 		gsap.to(".navbar", {
-		// 			color: "rgba(0,0,0,1)",
-		// 		});
-		// 	},
-		// 	onLeaveBack: () => {
-		// 		gsap.to(".navbar", {
-		// 			color: "white",
-		// 			ease: "circ.in",
-		// 		});
-		// 	},
-		// });
+		ScrollTrigger.create({
+			trigger: aboutRef.current,
+			start: "top top",
+			// markers: true,
+			onEnter: () => {
+				gsap.to(".navbar", {
+					color: "rgba(0,0,0,1)",
+				});
+			},
+			onLeaveBack: () => {
+				gsap.to(".navbar", {
+					color: "white",
+					ease: "circ.in",
+				});
+			},
+		});
 		// gsap.set(".circle", {
 		// 	y: -400,
 		// 	x: -200,
@@ -157,29 +158,29 @@ function AboutUs() {
 			},
 		});
 	}, []);
-	useGSAP(() => {});
 
 	return (
-		<div className="w-full h-[700vh] lg:h-[550vh] bg-black/20 " ref={aboutRef}>
+		<div className="w-full h-[700vh] lg:h-[650vh] bg-black/20 " ref={aboutRef}>
 			{" "}
 			<ul className=" px-2 lg:px-0 flex flex-col gap-5 py-[11rem] lg:py-10">
 				<div className="slide slide1">
-					<span>Discover</span>
+					<span>Reliable</span>
 				</div>
 				<div className="slide slide2 italic">
-					<span>Channelize</span>
+					<span>Customizable</span>
 				</div>
 				<div className="slide slide3 russian">
-					<span>Workshop</span>
+					<span>Effective</span>
 				</div>
 				<div className="slide slide4 french">
-					<span>Safety</span>
+					<span>Fast</span>
 				</div>
 			</ul>
-			<Templates />
+			{/* <Templates /> */}
+			<VerticalSlider />
 			<h1
 				ref={titleRef}
-				className="text-[56px] lg:text-[110px] text-green font-extrabold w-full text-center uppercase"
+				className="relative top-20text-[56px] lg:text-[110px] text-green font-extrabold w-full text-center uppercase"
 			>
 				{"You Dream, We Build".split("").map((letter, index) => (
 					<span key={index} className="inline-block">

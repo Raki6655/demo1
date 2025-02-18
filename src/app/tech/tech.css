@@ -12,3 +12,9 @@
 		opacity: 1;
 	}
 }
+.bgImageTech {
+	background: url(/images/FemaleRobotMorphism.webp) 50% 50% no-repeat;
+	object-fit: cover;
+	background-size: 95%;
+	filter: blur(10px);
+}

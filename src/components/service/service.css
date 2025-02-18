@@ -8,6 +8,7 @@
 	overflow: hidden;
 	/* background: linear-gradient(120deg, #834b97, #28a6a6, #0c6a14); */
 	color: white;
+	background-size: cover;
 }
 .leftView {
 	width: 50%;
@@ -68,6 +69,13 @@
 }
 .service-mobile {
 	display: none;
+}
+.roboImage {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	background: url(/images/FemaleRobotMorphism.webp) 50% 50% no-repeat;
+	background-size: cover;
 }
 @media (max-width: 768px) {
 	.contentContainer {

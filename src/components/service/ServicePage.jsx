@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./service.css";
+import { useGSAP } from "@gsap/react";
 
 const ServicePage = () => {
 	const containerRef = useRef(null);
@@ -41,89 +42,90 @@ const ServicePage = () => {
 	];
 	const mm = gsap.matchMedia();
 	useEffect(() => {
-		if (typeof window !== "undefined") {
-			gsap.registerPlugin(ScrollTrigger);
+		// if (typeof window !== "undefined") {
+		gsap.registerPlugin(ScrollTrigger);
 
-			// Select all text contents and images dynamically
-			const textContents = textRefs.current.slice(1);
-			const allImages = imageRefs.current.slice(1);
-			const allImageIncluded = imageRefs.current;
-			gsap.set(allImages, { yPercent: 101 });
+		// Select all text contents and images dynamically
+		const textContents = textRefs.current.slice(1);
+		const allImages = imageRefs.current.slice(1);
+		const allImageIncluded = imageRefs.current;
+		gsap.set(allImages, { yPercent: 101 });
 
-			mm.add("(max-width:768px)", () => {
-				ScrollTrigger.create({
-					trigger: containerRef.current,
-					pin: rightViewRef.current,
-					end: "bottom bottom",
-					onEnter: () => {
-						gsap.to(".navbar", {
-							color: "rgba(0,0,0,1)",
-						});
-						gsap.to(".toggleButton svg", {
-							color: "rgba(0,0,0,1)",
-						});
-						// gsap.to(".closeNav", {
-						// 	color: "rgba(0,0,0,1)",
-						// });
-					},
-					onLeaveBack: () => {
-						gsap.to(".navbar", {
-							color: "white",
-							ease: "circ.in",
-						});
-						gsap.to(".toggleButton svg", {
-							color: "white",
-							ease: "circ.in",
-						});
-						// gsap.to(".closeNav", {
-						// 	color: "white",
-						// 	ease: "circ.in",
-						// });
-					},
-				});
-			});
-			mm.add("(min-width:769px", () => {
-				// Pin the rightView (Image container)
-				ScrollTrigger.create({
-					trigger: containerRef.current,
-					pin: rightViewRef.current,
-					end: "bottom bottom",
-				});
-
-				textContents.forEach((content, index) => {
-					const text = content.querySelector("h1");
-
-					const timeline = gsap
-						.timeline()
-						.to(allImages[index], {
-							yPercent: 0,
-							autoAlpha: 1,
-							ease: "circ.inOut",
-							// onStart: () => {
-							// 	console.log(containerRef?.current);
-							// 	containerRef.current.style.backgroundImage = `url('/images/${services[index].image}')`;
-							// },
-						})
-						.set(allImageIncluded[index], {
-							autoAlpha: 0,
-						});
-
-					ScrollTrigger.create({
-						trigger: text,
-						start: "top 100%",
-						end: "top 10%",
-						animation: timeline,
-						scrub: true,
-						// markers: true,
+		mm.add("(max-width:768px)", () => {
+			ScrollTrigger.create({
+				trigger: containerRef.current,
+				pin: rightViewRef.current,
+				end: "bottom bottom",
+				onEnter: () => {
+					gsap.to(".navbar", {
+						color: "rgba(0,0,0,1)",
 					});
-				});
+					gsap.to(".toggleButton svg", {
+						color: "rgba(0,0,0,1)",
+					});
+					// gsap.to(".closeNav", {
+					// 	color: "rgba(0,0,0,1)",
+					// });
+				},
+				onLeaveBack: () => {
+					gsap.to(".navbar", {
+						color: "white",
+						ease: "circ.in",
+					});
+					gsap.to(".toggleButton svg", {
+						color: "white",
+						ease: "circ.in",
+					});
+					// gsap.to(".closeNav", {
+					// 	color: "white",
+					// 	ease: "circ.in",
+					// });
+				},
+			});
+		});
+		mm.add("(min-width:769px", () => {
+			// Pin the rightView (Image container)
+			ScrollTrigger.create({
+				trigger: containerRef.current,
+				pin: rightViewRef.current,
+				end: "bottom bottom",
 			});
 
-			return () => {
-				ScrollTrigger.getAll().forEach((st) => st.kill());
-			};
-		}
+			textContents.forEach((content, index) => {
+				const text = content.querySelector("h1");
+
+				const timeline = gsap
+					.timeline()
+					.to(allImages[index], {
+						yPercent: 0,
+						autoAlpha: 1,
+						ease: "circ.inOut",
+						// onStart: () => {
+						// 	console.log(containerRef?.current);
+						// 	containerRef.current.style.backgroundImage = `url('/images/${services[index].image}')`;
+						// },
+					})
+					.set(allImageIncluded[index], {
+						autoAlpha: 0,
+					});
+
+				ScrollTrigger.create({
+					trigger: text,
+					start: "top 100%",
+					end: "top 10%",
+					animation: timeline,
+					scrub: true,
+					// markers: true,
+				});
+			});
+		});
+
+		return () => {
+			mm.revert();
+			ScrollTrigger.getAll().forEach((st) => st.kill());
+		};
 	}, []);
+	useGSAP(() => {});
 
 	return (
 		<div>

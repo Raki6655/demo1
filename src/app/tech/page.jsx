@@ -95,6 +95,7 @@ export default function index() {
 			>
 				{/* Hero Section */}
 				<div className="h-screen flex items-center justify-center relative overflow-hidden">
+					<div className="bgImageTech h-[100vh] w-[100vw] absolute "></div>
 					<div className="text-center max-w-4xl px-4 relative z-10">
 						<h1 className="text-[3.5rem] lg:text-[6rem] font-bold leading-none mb-8">
 							<span className=" bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400">

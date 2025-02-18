@@ -9,42 +9,42 @@ function Templates() {
 	const projects = [
 		{
 			title: "Neon Nexus Dashboard",
-			image: "/projects/dash.png",
+			image: "/images/FashionPage.png",
 			desc: "Real-time analytics platform with AI insights",
 			tech: ["React", "Three.js", "WebGL"],
 			link: "#",
 		},
 		{
 			title: "Cyber Market",
-			image: "/projects/market.png",
+			image: "/images/DentalProject.png",
 			desc: "NFT marketplace with 3D visualization",
 			tech: ["Next.js", "Solidity", "GraphQL"],
 			link: "#",
 		},
 		{
 			title: "Quantum Stream",
-			image: "/projects/stream.png",
+			image: "/images/FashionProject.png",
 			desc: "Low-latency video streaming service",
 			tech: ["WebRTC", "Node.js", "Redis"],
 			link: "#",
 		},
 		{
 			title: "Neon Nexus Dashboardd",
-			image: "/projects/dash.png",
+			image: "/images/Zshop2.png",
 			desc: "Real-time analytics platform with AI insights",
 			tech: ["React", "Three.js", "WebGL"],
 			link: "#",
 		},
 		{
 			title: "Cyber Markett",
-			image: "/projects/market.png",
+			image: "/images/CreativePortfolio.png",
 			desc: "NFT marketplace with 3D visualization",
 			tech: ["Next.js", "Solidity", "GraphQL"],
 			link: "#",
 		},
 		{
 			title: "Quantum Streamm",
-			image: "/projects/stream.png",
+			image: "/images/PinkDashboard.png",
 			desc: "Low-latency video streaming service",
 			tech: ["WebRTC", "Node.js", "Redis"],
 			link: "#",
@@ -108,7 +108,7 @@ function Templates() {
 									src={project.image}
 									alt={project.title}
 									fill
-									className="object-cover grayscale group-hover:grayscale-0 transition-all p-3"
+									className="template-image object-contain grayscale group-hover:grayscale-0 transition-transform duration-500 ease-in-out scale-[1.2] group-hover:scale-100 p-3"
 								/>
 								<div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
 							</div>
