@@ -2,6 +2,7 @@
 
 import HeroSection from "@/components/HeroSection";
 import LandingDeep2 from "@/components/LandingDeepSeek2";
+import LandingDemo from "@/components/LandingDemo";
 import LandingPage from "@/components/LandingPage";
 import Navbar from "@/components/Navbar";
 import AboutUs from "@/components/about/AboutUs";
@@ -20,6 +21,7 @@ export default function Home() {
 		<>
 			<div>
 				<LandingPage />
+				{/* <LandingDemo /> */}
 				{/* <HeroSection /> */}
 				<ServicePage />
 				<AboutUs />

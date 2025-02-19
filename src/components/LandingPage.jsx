@@ -22,19 +22,23 @@ export default function Landing() {
 
 	const mm = gsap.matchMedia();
 	useEffect(() => {
-		gsap.registerPlugin(ScrollTrigger);
-		const lenis = new Lenis({
-			smooth: true,
-			lerp: 0.1, // Adjust for smoothness (0.1 = smoother, 1 = instant)
-		});
+		if (typeof window !== "undefined") {
+			gsap.registerPlugin(ScrollTrigger);
+		}
+		const lenis = new Lenis({ lerp: 0.08, smooth: true });
 
-		// Function to continuously update GSAP's ScrollTrigger
 		function raf(time) {
 			lenis.raf(time);
 			requestAnimationFrame(raf);
 		}
+
 		requestAnimationFrame(raf);
 
+		return () => {
+			lenis.destroy();
+		};
+	}, []);
+	useEffect(() => {
 		const mainScreenScrollTimeline = gsap.timeline({
 			scrollTrigger: {
 				trigger: containerRef.current,
@@ -237,19 +241,18 @@ export default function Landing() {
 				);
 			});
 			mm.add("(min-width:769px)", () => {
-				gsap.fromTo(
-					bannerRef.current,
-					{
-						clipPath: "circle(20% at 100% 50%)",
-
-						// backgroundSize: "220%",
-						// yoyo: true,
-					},
-					{
-						clipPath: "circle(20% at 80% 50%)",
-						duration: 2,
-					}
-				);
+				// gsap.fromTo(
+				// 	bannerRef.current,
+				// 	{
+				// 		clipPath: "circle(20% at 100% 50%)",
+				// 		// backgroundSize: "220%",
+				// 		// yoyo: true,
+				// 	},
+				// 	{
+				// 		clipPath: "circle(20% at 80% 50%)",
+				// 		duration: 2,
+				// 	}
+				// );
 			});
 		},
 		{ scope: containerRef }
@@ -304,7 +307,7 @@ export default function Landing() {
 			</div>
 
 			{/* Enhanced Glowing Lines Background */}
-			<div className="absolute inset-0 pointer-events-none min-w-[100vw]">
+			{/* <div className="absolute inset-0 pointer-events-none min-w-[100vw]">
 				<svg className="w-full h-full opacity-20 svg" viewBox="50 0 100 100">
 					{[...Array(20)].map((_, i) => (
 						<path
@@ -339,7 +342,7 @@ export default function Landing() {
 						</filter>
 					</defs>
 				</svg>
-			</div>
+			</div> */}
 			<div
 				className="absolute inset-0 bg-gradient-to-r from-transparent 
         via-white/10 to-transparent animate-shine pointer-events-none w-[100vw]"
