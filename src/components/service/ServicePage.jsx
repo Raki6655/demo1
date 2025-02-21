@@ -265,7 +265,7 @@ const ServicePage = () => {
 						</p>
 						<ul className="list-disc list-inside mt-10">
 							{service.points.map((point, i) => (
-								<li key={i} className="text-md my-5 text-gray-200">
+								<li key={i} className="text-xs my-5 text-gray-200">
 									{point}
 								</li>
 							))}

@@ -11,7 +11,7 @@ export default function MobileNav() {
 		"Home",
 		// "Work",
 		"Services",
-		"Templates",
+		"Works",
 		"Tech",
 		// "Careers",
 		"About Us",
@@ -40,7 +40,9 @@ export default function MobileNav() {
 			<nav className="navbar px-6 py-4 fixed w-full top-0 z-50 backdrop-blur-md border-b border-white/10 text-white">
 				<div className="max-w-7xl mx-auto flex justify-between items-center">
 					<CustomLink href="/">
-						<span className="text-2xl font-bold  bg-clip-text ">SOLESTYLE</span>
+						<span className="speak text-lg font-bold  relative -left-[0rem] transition-colors duration-100 tracking-[0.2rem]">
+							TWEENLAB
+						</span>
 					</CustomLink>
 
 					<button
