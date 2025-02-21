@@ -215,14 +215,14 @@ const ServicePage = () => {
 				{/* Right Side (Images) */}
 				<div
 					ref={rightViewRef}
-					className="rightView view relative right-10 mt-[10rem] "
+					className="rightView view relative right-10 mt-[5rem] "
 				>
 					<div className="images px-20 mr-10">
 						{services.map((service, index) => (
 							<div
 								key={index}
 								ref={(el) => (imageRefs.current[index] = el)}
-								className={` image ${service.colorClass} top-[8rem] left-1/2 -translate-x-1/2 rounded-3xl  `}
+								className={` image ${service.colorClass} -top-[4rem] left-1/2 -translate-x-1/2 rounded-3xl  `}
 								style={{
 									backgroundImage: `url('/images/${service.image}')`,
 									backgroundSize: "contain",
@@ -263,6 +263,13 @@ const ServicePage = () => {
 						<p className="mt-3 lg:mt-10 text-sm lg:text-lg leading-8">
 							{service.description}
 						</p>
+						<ul className="list-disc list-inside mt-10">
+							{service.points.map((point, i) => (
+								<li key={i} className="text-md my-5 text-gray-200">
+									{point}
+								</li>
+							))}
+						</ul>
 					</div>
 				))}
 			</div>

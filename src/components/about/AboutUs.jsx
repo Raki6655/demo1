@@ -17,7 +17,7 @@ function AboutUs() {
 		// Animation for text down transition
 		const timeline = gsap.timeline({
 			scrollTrigger: {
-				trigger: "ul",
+				trigger: ".mottosTexts ul",
 				start: "top 40%",
 				end: `bottom 50%`,
 				scrub: 2,
@@ -170,7 +170,10 @@ function AboutUs() {
 	}, []);
 
 	return (
-		<div className="w-full h-[550vh] lg:h-[680vh] bg-black/20 " ref={aboutRef}>
+		<div
+			className="mottosTexts w-full h-[560vh] lg:h-[680vh] bg-black/20 "
+			ref={aboutRef}
+		>
 			{" "}
 			<ul className=" px-2 lg:px-0 flex flex-col gap-5 py-[11rem] lg:py-10">
 				<div className="slide slide1">

@@ -108,7 +108,7 @@ export default function ContactSection() {
 					/>
 				</svg>
 
-				<div className="container mx-auto px-4 h-screen flex items-center justify-center ">
+				<div className="container mx-auto px-4 h-[130vh] flex items-center justify-center ">
 					<div
 						ref={textRef}
 						className="text-center space-y-8 relative z-10 px-10 lg:px-0"
