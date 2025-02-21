@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 import { Poppins } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import { usePathname, useSearchParams } from "next/navigation";
-import React, { useEffect, useRef, useState } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import Loader from "@/components/utils/Loader";
 import gsap from "gsap";
 
@@ -38,6 +38,14 @@ const DMserif = DM_Serif_Text({
 });
 
 export default function RootLayout({ children }) {
+	return (
+		<Suspense fallback={<div>Loading...</div>}>
+			<LayoutContent>{children}</LayoutContent>
+		</Suspense>
+	);
+}
+
+function LayoutContent({ children }) {
 	const [loading, setLoading] = useState(true); // Start with loading true
 	const pathname = usePathname();
 	const searchParams = useSearchParams();
