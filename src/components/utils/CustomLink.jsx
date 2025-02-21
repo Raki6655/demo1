@@ -23,11 +23,7 @@ function CustomLink({ children, href }) {
 		await sleep(500);
 		body.classList.remove("transition-page");
 	};
-	return (
-		<Link href={href} onClick={(e) => handleTransition(e)}>
-			{children}
-		</Link>
-	);
+	return <Link href={href}>{children}</Link>;
 }
 
 export default CustomLink;

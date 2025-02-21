@@ -1,6 +1,6 @@
 .italic {
 	font-style: italic;
-	font-size: 290px !important;
+	/* font-size: 290px !important; */
 }
 .russian {
 	font-style: oblique;
@@ -22,7 +22,7 @@
 }
 .slide span {
 	color: black;
-	font-size: 240px;
+	/* font-size: 240px; */
 	font-weight: 900;
 }
 .circle {
@@ -42,9 +42,9 @@
 		margin: 0;
 		padding: 2rem 0;
 	}
-	.slide span {
+	/* .slide span {
 		color: black;
 		font-size: 62px;
 		font-weight: 700;
-	}
+	} */
 }

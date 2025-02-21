@@ -156,10 +156,10 @@ export default function ContactSection() {
 							</button>
 						</div>
 						<div className="flex flex-col items-center w-full">
-							<p className="endText text-sm lg:text-lg text-white/80 mt-2">
+							<p className="endText text-lg font-semibold lg:text-lg text-white/80 mt-2 w-full">
 								Drop your email and we will get back to you.
 							</p>
-							<p className="endText text-sm lg:text-2xl text-white/80 mt-6">
+							<p className="endText text-sm lg:text-2xl text-white/80 mt-6 px-10">
 								Let's build something amazing together ✨
 							</p>
 						</div>

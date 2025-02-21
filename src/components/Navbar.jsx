@@ -15,7 +15,7 @@ function Navbar() {
 				>
 					<div className="max-w-7xl mx-auto flex justify-between items-center gap-5">
 						<CustomLink href={"/"}>
-							<span className="text-2xl font-bold  relative -left-[6rem] transition-colors duration-100">
+							<span className="speak text-2xl font-bold  relative -left-[6rem] transition-colors duration-100 tracking-[0.4rem]">
 								TWEENLAB
 							</span>
 						</CustomLink>
