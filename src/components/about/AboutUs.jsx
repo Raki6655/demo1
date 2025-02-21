@@ -75,6 +75,16 @@ function AboutUs() {
 				pinSpacing: false,
 			},
 		});
+		gsap.to(".workHeader", {
+			opacity: 1,
+			y: 0,
+			stagger: 0.5,
+			scrollTrigger: {
+				trigger: ".workHeader",
+				start: "top 60%",
+				scrub: true,
+			},
+		});
 
 		timelinee.from(letters, {
 			opacity: 0,
@@ -160,7 +170,7 @@ function AboutUs() {
 	}, []);
 
 	return (
-		<div className="w-full h-[700vh] lg:h-[650vh] bg-black/20 " ref={aboutRef}>
+		<div className="w-full h-[550vh] lg:h-[680vh] bg-black/20 " ref={aboutRef}>
 			{" "}
 			<ul className=" px-2 lg:px-0 flex flex-col gap-5 py-[11rem] lg:py-10">
 				<div className="slide slide1">
@@ -177,10 +187,19 @@ function AboutUs() {
 				</div>
 			</ul>
 			{/* <Templates /> */}
+			<div className="max-w-full workHeader ml-6   opacity-0 translate-y-10">
+				<h1 className="text-black text-3xl lg:text-5xl font-bold">
+					Some of our <span className="speak ml-2">BEST </span>Works
+				</h1>
+				<h2 className="text-black/70 text-md lg:text-lg font-medium mt-4 max-w-full">
+					We believe in delivering top-notch solutions with precision and
+					innovation, ensuring quality and reliability in every project.
+				</h2>
+			</div>
 			<VerticalSlider />
 			<h1
 				ref={titleRef}
-				className="relative top-20text-[56px] lg:text-[110px] text-green font-extrabold w-full text-center uppercase"
+				className="relative top-20 text-[48px] lg:text-[110px] text-green font-extrabold w-full text-center uppercase"
 			>
 				{"You Dream, We Build".split("").map((letter, index) => (
 					<span key={index} className="inline-block">

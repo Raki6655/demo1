@@ -8,17 +8,20 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "@studio-freight/lenis";
 import ShinyButton from "./ShinyButton";
 import CubeTextAnimation from "./text/MovingText";
+import BookingModal from "./modal/BookingModal";
 // import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
 // const Button = dynamic(() => import("./Button"), { ssr: false });
 
 export default function Landing() {
+	const [isModalOpen, setIsModalOpen] = useState(false);
 	const containerRef = useRef(null);
 	const headlineRef = useRef(null);
 	const ctaRef = useRef(null);
 	const navRef = useRef(null);
 	const lineRefs = useRef([]);
 	const bannerRef = useRef(null);
+	const modalRef = useRef(null);
 
 	const mm = gsap.matchMedia();
 	useEffect(() => {
@@ -73,10 +76,17 @@ export default function Landing() {
 					backgroundSize: "100%",
 					duration: 4,
 				})
+				.to(".button-rounded", {
+					y: 200,
+					duration: 2,
+					scale: 0.95,
+					ease: "power1.out",
+				})
 				.to(bannerRef.current, {
 					filter: "blur(20px)",
 					duration: 4,
 				})
+
 				.to(headlineRef.current?.children, {
 					y: -500, // Moves text slightly up
 					// opacity: 0, // Fades out
@@ -226,19 +236,18 @@ export default function Landing() {
 				});
 			});
 			mm.add("(max-width:768px)", () => {
-				gsap.fromTo(
-					bannerRef.current,
-					{
-						clipPath: "circle(15% at 50% 95%)",
-
-						// backgroundSize: "220%",
-						// yoyo: true,
-					},
-					{
-						clipPath: "circle(15% at 50% 75%)",
-						duration: 2,
-					}
-				);
+				// gsap.fromTo(
+				// 	bannerRef.current,
+				// 	{
+				// 		clipPath: "circle(15% at 50% 95%)",
+				// 		// backgroundSize: "220%",
+				// 		// yoyo: true,
+				// 	},
+				// 	{
+				// 		clipPath: "circle(15% at 50% 75%)",
+				// 		duration: 2,
+				// 	}
+				// );
 			});
 			mm.add("(min-width:769px)", () => {
 				// gsap.fromTo(
@@ -257,12 +266,49 @@ export default function Landing() {
 		},
 		{ scope: containerRef }
 	);
+	const { contextSafe } = useGSAP(() => {
+		gsap.set(modalRef.current, { opacity: 0, scale: 0.95 });
+	});
 
+	const openModal = contextSafe(() => {
+		console.log("clicked");
+		setIsModalOpen(true);
+		console.log(modalRef.current);
+		// gsap.to(modalRef.current, {
+		// 	opacity: 1,
+		// 	scale: 1,
+		// 	duration: 0.3,
+		// 	ease: "power2.out",
+		// });
+	});
+
+	useEffect(() => {
+		if (isModalOpen && modalRef.current) {
+			console.log("Modal Ref:", modalRef.current);
+			gsap.fromTo(
+				modalRef.current,
+				{ opacity: 0, scale: 0.9 },
+				{
+					opacity: 1,
+					scale: 1,
+					duration: 0.3,
+					ease: "power2.out",
+				}
+			);
+		}
+	}, [isModalOpen]);
 	return (
 		<div
 			ref={containerRef}
 			className="min-h-screen bg-[#090b21] relative overflow-hidden "
 		>
+			{isModalOpen && (
+				<BookingModal
+					ref={modalRef}
+					isModalOpen={isModalOpen}
+					setIsModalOpen={setIsModalOpen}
+				/>
+			)}
 			<div
 				ref={bannerRef}
 				className="  banner-img"
@@ -274,15 +320,15 @@ export default function Landing() {
 			</div>
 
 			{/* Main Content */}
-			<div className="h-screen w-full flex items-start  lg:items-center px-2 lg:px-8 ">
+			<div className="h-[100dvh] lg:h-[100vh] w-full flex items-start  lg:items-center px-2 lg:px-8 ">
 				<div className="max-w-7xl ml-0 lg:ml-[6vw] relative z-10 flex flex-col items-center lg:block">
 					<div
 						ref={headlineRef}
-						className="space-y-4 w-[100%] mt-[10rem] lg:mt-[6rem] "
+						className="space-y-4 w-[100%] mt-[8rem] lg:mt-[6rem] "
 					>
 						<div className="overflow-hidden">
 							<h1 className="text-4xl lg:text-8xl font-bold text-white text-center lg:text-start leading-8">
-								Elevate Your Style,
+								Elevate Your <span className="speak">Brand</span>,
 							</h1>
 						</div>
 						<div className="overflow-hidden">
@@ -292,7 +338,7 @@ export default function Landing() {
 						</div>
 						<div className="overflow-hidden">
 							<h1 className="text-4xl lg:text-8xl font-bold text-white text-center lg:text-start leading-8">
-								Extraordinary
+								<span className="speak">Extraordinary</span>
 							</h1>
 						</div>
 						<div className="pt-1 lg:pt-8 ">
@@ -302,7 +348,7 @@ export default function Landing() {
 							</p>
 						</div>
 					</div>
-					<ShinyButton name={"Explore"} />
+					<ShinyButton name={"Book a Call"} onClick={openModal} />
 				</div>
 			</div>
 

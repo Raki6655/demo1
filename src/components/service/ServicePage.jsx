@@ -16,14 +16,28 @@ const ServicePage = () => {
 			description:
 				"We craft stunning, high-performance websites using modern technologies like Next.js, React, and TailwindCSS. Our web solutions ensure fast loading times, SEO optimization, and seamless user experiences.",
 			colorClass: "web-development red",
-			image: "dashboard_background.png",
+			image: "webBanner.jpg",
+			points: [
+				"⚡ Blazing fast loading speeds for a better user experience",
+				"📈 SEO-optimized to boost your online visibility",
+				"🧩 Modular and maintainable code architecture",
+				"🔒 Robust security practices to protect your data",
+				"💻 Responsive design for all devices",
+			],
 		},
 		{
 			title: "Creative Portfolios",
 			description:
 				"Your online presence matters! We design breathtaking portfolio websites that showcase your work with visually appealing animations, smooth interactions, and an elegant aesthetic.",
 			colorClass: "creative-portfolios green",
-			image: "landing_cover.png",
+			image: "ruthPortfolio.jpg",
+			points: [
+				"🎨 Visually stunning designs that captivate visitors",
+				"✨ Smooth animations and transitions for a dynamic feel",
+				"📸 High-resolution image support for sharp displays",
+				"⚙️ Easy-to-update content management",
+				"🚀 Optimized for fast loading and SEO performance",
+			],
 		},
 		{
 			title: "Mobile & Web Apps",
@@ -31,6 +45,13 @@ const ServicePage = () => {
 				"From native mobile apps to progressive web applications, we build feature-rich, scalable, and responsive solutions that engage users and deliver outstanding performance.",
 			colorClass: "mobile-web-apps blue",
 			image: "Mockup.png",
+			points: [
+				"📱 Cross-platform compatibility for seamless experiences",
+				"⚡ Fast, responsive interfaces with smooth animations",
+				"🔧 Scalable architecture for future growth",
+				"📊 Integrated analytics for data-driven decisions",
+				"🔒 Secure user authentication and data protection",
+			],
 		},
 		{
 			title: "Interactive Dashboards",
@@ -38,6 +59,13 @@ const ServicePage = () => {
 				"We create powerful, data-driven dashboards that visualize complex information with clarity. Our dashboards are intuitive, interactive, and optimized for real-time analytics.",
 			colorClass: "interactive-dashboards pink",
 			image: "Dashboard1.png",
+			points: [
+				"📊 Real-time data visualization for instant insights",
+				"📈 Interactive charts and graphs for better analysis",
+				"🔍 Advanced filtering and search functionality",
+				"⚙️ Customizable layouts to fit your workflow",
+				"🚀 Optimized for performance and accessibility",
+			],
 		},
 	];
 	const mm = gsap.matchMedia();
@@ -119,6 +147,16 @@ const ServicePage = () => {
 				});
 			});
 		});
+		gsap.to(".serviceHeader", {
+			opacity: 1,
+			y: 0,
+			stagger: 0.5,
+			scrollTrigger: {
+				trigger: ".serviceHeader",
+				start: "top 70%",
+				scrub: true,
+			},
+		});
 
 		return () => {
 			mm.revert();
@@ -130,13 +168,31 @@ const ServicePage = () => {
 	return (
 		<div>
 			{/* <div className="spacer"></div> */}
+			<div className="w-full flex flex-col items-center lg:items-start  ml-12 serviceHeader absolute my-10 opacity-0 translate-y-20">
+				<h1 className="text-white text-3xl lg:text-5xl font-bold">
+					Top <span className="speak ml-2">SERVICES</span> We Provide
+				</h1>
+				<h2 className="text-white text-md lg:text-lg font-medium mt-4">
+					We believe in delivering top-notch solutions with precision and
+					innovation, ensuring quality and reliability in every project.
+				</h2>
+			</div>
 			<div
 				ref={containerRef}
 				className="contentContainer bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 "
 			>
+				{/* <div className="w-full flex flex-col items-center lg:items-center absolute">
+					<h1 className="text-white text-3xl lg:text-5xl font-bold">
+						Our Work <span className="speak ml-2">SPEAKS</span>
+					</h1>
+					<h2 className="text-white text-md lg:text-lg font-medium mt-4">
+						We believe in delivering top-notch solutions with precision and
+						innovation, ensuring quality and reliability in every project.
+					</h2>
+				</div> */}
 				{/* <div className="backgroundImage"></div> */}
 				{/* Left Side (Text) */}
-				<div className="leftView view px-10 mt-10 ">
+				<div className="leftView view px-10 mt-60">
 					{services.map((service, index) => (
 						<div
 							key={index}
@@ -144,22 +200,33 @@ const ServicePage = () => {
 							className="content mt-[10rem]"
 						>
 							<h1 className="text-[56px] font-bold">{service.title}</h1>
-							<p className="mt-10 text-lg">{service.description}</p>
+							<p className="mt-10 text-lg leading-7">{service.description}</p>
+							<ul className="list-disc list-inside mt-20">
+								{service.points.map((point, i) => (
+									<li key={i} className="text-md my-5 text-gray-200">
+										{point}
+									</li>
+								))}
+							</ul>
 						</div>
 					))}
 				</div>
 
 				{/* Right Side (Images) */}
-				<div ref={rightViewRef} className="rightView view relative right-10 ">
+				<div
+					ref={rightViewRef}
+					className="rightView view relative right-10 mt-[10rem] "
+				>
 					<div className="images px-20 mr-10">
 						{services.map((service, index) => (
 							<div
 								key={index}
 								ref={(el) => (imageRefs.current[index] = el)}
-								className={` image ${service.colorClass} top-[5rem] left-1/2 -translate-x-1/2 rounded-3xl  `}
+								className={` image ${service.colorClass} top-[8rem] left-1/2 -translate-x-1/2 rounded-3xl  `}
 								style={{
 									backgroundImage: `url('/images/${service.image}')`,
 									backgroundSize: "contain",
+									// aspectRatio: 1,
 
 									backgroundRepeat: "no-repeat",
 								}}
@@ -177,7 +244,7 @@ const ServicePage = () => {
 					<div
 						key={index}
 						// ref={(el) => (textRefs.current[index] = el)}
-						className="flex flex-col h-full text-black/60 lg:text-white px-3 lg:px-0 bg-slate-100 mx-4 lg:mx-2 my-4 py-3 rounded-2xl shadow-md"
+						className="flex flex-col h-full text-white lg:text-white px-3 lg:px-0 bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 mx-4 lg:mx-2 my-4 py-3 rounded-2xl shadow-md"
 					>
 						<div
 							key={index}

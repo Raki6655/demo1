@@ -89,7 +89,7 @@ export default function index() {
 								</span>
 							</h1>
 							<p className="text-md lg:text-2xl text-white/80 bg-white/5 backdrop-blur-sm rounded-full px-8 py-4 inline-block mt-10">
-								Since 2023, we've been transforming ideas into impactful digital
+								Since 2024, we've been transforming ideas into impactful digital
 								solutions
 							</p>
 						</div>
@@ -140,18 +140,32 @@ export default function index() {
 								exploration, and a commitment to excellence.
 							</p>
 						</div>
-						<div className="relative h-24 lg:h-96">
-							<div className="absolute inset-0 bg-[url('/about1.jpg')] bg-cover bg-center rounded-3xl shadow-2xl" />
+						<div className="relative h-24 lg:h-96 ">
+							<div className="absolute inset-0 mt-10  bg-cover bg-center  shadow-2xl ">
+								<img
+									src="/images/whats-your-story.jpg"
+									className="h-full w-full object-cover relative rounded-[5rem] top-28"
+								/>
+							</div>
+							<span className="absolute -bottom-[10rem] left-10 font-medium ">
+								Send us your stories to get read at{" "}
+								<span className="underline">aaa@gmail.com</span>
+							</span>
 						</div>
 					</div>
 
 					{/* Services */}
 					<div
 						ref={(el) => sectionRefs.current.push(el)}
-						className="grid md:grid-cols-2 gap-16 items-center opacity-0 translate-y-[100px] "
+						className="grid md:grid-cols-2 gap-16 items-center opacity-0 translate-y-[100px] relative top-[8rem] "
 					>
 						<div className="relative h-24 lg:h-96 order-2 md:order-1">
-							<div className="absolute inset-0 bg-[url('/services.jpg')] bg-cover bg-center rounded-3xl shadow-2xl" />
+							<div className="absolute inset-0 bg-[url('/services.jpg')] bg-cover bg-center rounded-3xl shadow-2xl">
+								<img
+									src="/images/expertise_wave.jpg"
+									className="h-full w-full object-cover relative rounded-[5rem] top-8"
+								/>
+							</div>
 						</div>
 						<div className="space-y-8 order-1 md:order-2">
 							<h2 className="text-3xl lg:text-5xl font-bold text-white">
@@ -182,7 +196,7 @@ export default function index() {
 					{/* Philosophy */}
 					<div
 						ref={(el) => sectionRefs.current.push(el)}
-						className="grid md:grid-cols-2 gap-16 items-center opacity-0 translate-y-[100px]"
+						className="grid md:grid-cols-2 gap-16 items-center opacity-0 translate-y-[100px] relative top-[8rem]"
 					>
 						<div className="space-y-8">
 							<h2 className="text-3xl lg:text-5xl font-bold text-white">
@@ -196,7 +210,7 @@ export default function index() {
 							</p>
 							<div className="flex gap-4 ">
 								<button className="text-sm lg:text-xl px-4 lg:px-8 py-2 lg:py-4 bg-cyan-400/10 border border-cyan-400/30 rounded-full text-white hover:bg-cyan-400/20 transition-all">
-									Meet Our Team
+									Book a Meeting
 								</button>
 								<button className="text-sm lg:text-xl px-4 lg:px-8 py-2 lg:py-4 bg-white/5 border border-white/10 rounded-full text-white hover:bg-white/10 transition-all">
 									View Portfolio

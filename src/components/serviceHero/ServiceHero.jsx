@@ -1,49 +1,50 @@
 "use client";
-import { useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./serviceHero.css";
+import { useRouter } from "next/navigation";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const servicesList = [
-	{
-		title: "Web Development",
-		icon: "🌐",
-		desc: "Crafting high-performance websites with modern frameworks like Next.js and React. We deliver SEO-optimized, responsive solutions tailored to your business needs.",
-	},
-	{
-		title: "UI/UX Design",
-		icon: "🎨",
-		desc: "Creating intuitive interfaces with user-centered design principles. From wireframes to prototypes, we ensure seamless user experiences.",
-	},
-	{
-		title: "Mobile Apps",
-		icon: "📱",
-		desc: "Developing native iOS and Android applications with cutting-edge features, ensuring smooth performance across all devices.",
-	},
-	{
-		title: "Video Editing",
-		icon: "🎥",
-		desc: "Professional video production services including editing, color grading, motion graphics, and post-production effects.",
-	},
-	{
-		title: "Branding",
-		icon: "🖌️",
-		desc: "Comprehensive branding packages including logo design, brand guidelines, and visual identity systems.",
-	},
-	{
-		title: "AI Solutions",
-		icon: "🤖",
-		desc: "Building custom AI agents, machine learning models, and automation systems to streamline your business processes.",
-	},
-];
 
 export default function ServicesHero() {
 	const containerRef = useRef();
 	const serviceCards = useRef([]);
-
+	const servicesRef = useRef();
+	const router = useRouter(); // Detects page changes
+	const servicesList = [
+		{
+			title: "Web Development",
+			icon: "🌐",
+			desc: "Crafting high-performance websites with modern frameworks like Next.js and React. We deliver SEO-optimized, responsive solutions tailored to your business needs.",
+		},
+		{
+			title: "UI/UX Design",
+			icon: "🎨",
+			desc: "Creating intuitive interfaces with user-centered design principles. From wireframes to prototypes, we ensure seamless user experiences.",
+		},
+		{
+			title: "Mobile Apps",
+			icon: "📱",
+			desc: "Developing native iOS and Android applications with cutting-edge features, ensuring smooth performance across all devices.",
+		},
+		{
+			title: "Video Editing",
+			icon: "🎥",
+			desc: "Professional video production services including editing, color grading, motion graphics, and post-production effects.",
+		},
+		{
+			title: "Branding",
+			icon: "🖌️",
+			desc: "Comprehensive branding packages including logo design, brand guidelines, and visual identity systems.",
+		},
+		{
+			title: "AI Solutions",
+			icon: "🤖",
+			desc: "Building custom AI agents, machine learning models, and automation systems to streamline your business processes.",
+		},
+	];
 	useGSAP(
 		() => {
 			// Hero text animation
@@ -53,19 +54,6 @@ export default function ServicesHero() {
 				duration: 1,
 				stagger: 0.2,
 				ease: "power4.out",
-			});
-
-			// Service cards animation
-			gsap.to(serviceCards.current, {
-				opacity: 1,
-				y: 0,
-				duration: 0.8,
-				stagger: 0.1,
-				scrollTrigger: {
-					trigger: ".services-grid",
-					start: "top center+=100",
-					toggleActions: "play none none none",
-				},
 			});
 
 			// Floating animation
@@ -80,6 +68,65 @@ export default function ServicesHero() {
 		{ scope: containerRef }
 	);
 
+	const cards = document.querySelectorAll(".cards");
+	console.log(cards);
+	useEffect(() => {
+		// Animate service cards on scroll
+		console.log(Array.from(servicesRef.current.children));
+		// Array.from(servicesRef.current.children).forEach((serviceCard) => {
+		// 	gsap.to(serviceCard, {
+		// 		opacity: 1,
+		// 		y: 0,
+		// 		duration: 0.8,
+		// 		stagger: 0.7,
+		// 		scrollTrigger: {
+		// 			trigger: serviceCard,
+		// 			start: "top center",
+		// 			toggleActions: "play none none reverse",
+		// 		},
+		// 	});
+		// });
+		// 	gsap.to(serviceCard, {
+		// 		opacity: 1,
+		// 		y: 0,
+		// 		duration: 0.8,
+		// 		stagger: 0.7,
+		// 		scrollTrigger: {
+		// 			trigger: serviceCard,
+		// 			start: "top center",
+		// 			toggleActions: "play none none reverse",
+		// 		},
+		// 	});
+
+		if (servicesRef.current) {
+			// Get all child elements as an array
+			const serviceCards = gsap.utils.toArray(servicesRef.current.children);
+
+			// Animate each card with stagger effect
+			gsap.fromTo(
+				serviceCards,
+				{ opacity: 0, y: 50 }, // Start state
+				{
+					opacity: 1,
+					y: 0,
+					duration: 0.8,
+					stagger: 0.2, // Stagger each element
+					scrollTrigger: {
+						trigger: servicesRef.current,
+						start: "top 80%",
+						end: "bottom top",
+						toggleActions: "play none none reverse",
+					},
+				}
+			);
+		}
+
+		return () => {
+			// router.events.off("routeChangeComplete", handleRouteChange);
+			ScrollTrigger.getAll().forEach((trigger) => trigger.kill()); // Clean up triggers
+		};
+	}, [servicesRef.current]);
+
 	return (
 		<div
 			ref={containerRef}
@@ -92,7 +139,7 @@ export default function ServicesHero() {
 					<h1 className="hero-text translate-y-[1.5rem] leading-none opacity-0 text-[4rem] md:text-[6rem] font-bold  bg-clip-text  mb-8">
 						Digital Excellence
 					</h1>
-					<p className="hero-text translate-y-[1.5rem] opacity-0 text-xl md:text-2xl text-white/80 max-w-2xl mx-auto">
+					<p className="hero-text translate-y-[1.5rem] opacity-0 text-md md:text-xl text-white/80 max-w-2xl mx-auto">
 						Transforming visions into cutting-edge digital solutions through
 						innovative technology and creative expertise. We specialize in
 						delivering comprehensive digital services that drive business growth
@@ -120,12 +167,15 @@ export default function ServicesHero() {
 					</p>
 				</div>
 
-				<div className="services-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+				<div
+					className="services-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+					ref={servicesRef}
+				>
 					{servicesList.map((service, i) => (
 						<div
 							key={i}
 							ref={(el) => (serviceCards.current[i] = el)}
-							className="p-8 bg-white/5 rounded-2xl border border-white/10 hover:border-cyan-400/30 translate-y-[2rem] opacity-0 transition-all group"
+							className="cards p-8 bg-white/5 rounded-2xl border border-white/10 hover:border-cyan-400/30 translate-y-[2rem] opacity-0 transition-all group"
 						>
 							<div className="text-4xl mb-6 opacity-80 group-hover:opacity-100 transition-opacity">
 								{service.icon}

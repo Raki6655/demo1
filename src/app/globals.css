@@ -48,8 +48,14 @@ body {
 .main-img {
 	filter: drop-shadow(3px 3px 1px white);
 }
+.speak {
+	background: -webkit-linear-gradient(to right, #6a82fb, #fc5c7d);
+	background: linear-gradient(to right, #6a82fb, #fc5c7d);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
 .button {
-	width: 150px;
+	max-width: 170px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -125,7 +131,7 @@ body {
 @media (max-width: 768px) {
 	.banner-img {
 		position: absolute;
-		clip-path: circle(15% at 50% 85%);
+		clip-path: circle(15% at 50% 75%);
 		height: 100vh;
 		width: 100vw;
 		transform-origin: 50% 50%;

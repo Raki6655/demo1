@@ -17,12 +17,14 @@ const sliderData = [
 	{
 		imgSrc: "/images/FashionProject.png",
 		title: "Fancy Store",
-		description: "Description 2",
+		description:
+			"A fashion collection store site showcasing the products they sell in a interactive manner.",
 	},
 	{
 		imgSrc: "/images/DentalProject.png",
 		title: "Modern Cosmetic Brand",
-		description: "Description 3",
+		description:
+			"A fashion collection store site showcasing the products they sell in a interactive manner.",
 	},
 ];
 
@@ -55,7 +57,7 @@ function VerticalSlider() {
 					ref={(el) => (slidesRef.current[index] = el)}
 				>
 					<img src={slide.imgSrc} alt={`Slide ${index + 1}`} />
-					<div>
+					<div className="absolute bottom-36 lg:bottom-10 left-3 lg:left-10 flex flex-col">
 						<h1>{slide.title}</h1>
 						<h2>{slide.description}</h2>
 					</div>

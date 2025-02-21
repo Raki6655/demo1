@@ -58,6 +58,30 @@ export default function ContactSection() {
 			},
 		});
 	});
+	const sendEmail = async () => {
+		if (email.length <= 0) return;
+		try {
+			const response = await fetch(
+				"http://localhost:4000/message/send-message",
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({ email: email }),
+				}
+			);
+
+			if (!response.ok) {
+				throw new Error("Something went wrong. Please try again.");
+			}
+
+			const data = await response.json();
+			console.log("API Response:", data);
+
+			setIsSubmitted(true);
+		} catch (err) {}
+	};
 
 	return (
 		<>
@@ -102,6 +126,7 @@ export default function ContactSection() {
 
 						<div className="relative group mailBox">
 							<input
+								required={true}
 								type="email"
 								value={email}
 								onChange={(e) => setEmail(e.target.value)}
@@ -113,6 +138,7 @@ export default function ContactSection() {
 							<button
 								className="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 
                 transition-opacity"
+								onClick={sendEmail}
 							>
 								<svg
 									className="w-8 h-8 text-cyan-400"
@@ -129,10 +155,14 @@ export default function ContactSection() {
 								</svg>
 							</button>
 						</div>
-
-						<p className="endText text-sm lg:text-xl text-white/80 mt-8">
-							Let's build something amazing together ✨
-						</p>
+						<div className="flex flex-col items-center w-full">
+							<p className="endText text-sm lg:text-lg text-white/80 mt-2">
+								Drop your email and we will get back to you.
+							</p>
+							<p className="endText text-sm lg:text-2xl text-white/80 mt-6">
+								Let's build something amazing together ✨
+							</p>
+						</div>
 					</div>
 				</div>
 			</section>

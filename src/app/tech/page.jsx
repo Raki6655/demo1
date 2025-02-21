@@ -77,14 +77,14 @@ export default function index() {
 	}, []);
 
 	const technologies = [
-		{ name: "React", icon: "/tech/react.svg" },
-		{ name: "Next.js", icon: "/tech/nextjs.svg" },
-		{ name: "Node.js", icon: "/tech/nodejs.svg" },
-		{ name: "Three.js", icon: "/tech/threejs.svg" },
-		{ name: "GSAP", icon: "/tech/gsap.svg" },
-		{ name: "Figma", icon: "/tech/figma.svg" },
-		{ name: "Blender", icon: "/tech/blender.svg" },
-		{ name: "WebGL", icon: "/tech/webgl.svg" },
+		{ name: "React", icon: "/techIcons/reactjs.png" },
+		{ name: "Next.js", icon: "/techIcons/nextjs.png" },
+		{ name: "Node.js", icon: "/techIcons/nodejs.jpeg" },
+		{ name: "Three.js", icon: "/techIcons/threejs.png" },
+		{ name: "GSAP", icon: "/techIcons/gsap.png" },
+		{ name: "Figma", icon: "/techIcons/figma.png" },
+		{ name: "Blender", icon: "/techIcons/blender.png" },
+		{ name: "WebGL", icon: "/techIcons/webgl.png" },
 	];
 
 	return (
@@ -109,7 +109,7 @@ export default function index() {
 					</div>
 
 					{/* Floating Tech Elements */}
-					{isClient && (
+					{/* {isClient && (
 						<div className="absolute inset-0 pointer-events-none">
 							{[...Array(8)].map((_, i) => (
 								<img
@@ -125,7 +125,7 @@ export default function index() {
 								/>
 							))}
 						</div>
-					)}
+					)} */}
 				</div>
 
 				{/* Content Sections */}
@@ -180,7 +180,7 @@ export default function index() {
 									<img
 										src={tech.icon}
 										alt={tech.name}
-										className="w-24 h-24 mx-auto"
+										className="w-24 h-24 mx-auto object-contain"
 									/>
 									<p className="text-center text-white/80 mt-4">{tech.name}</p>
 								</div>

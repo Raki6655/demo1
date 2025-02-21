@@ -15,6 +15,6 @@
 .bgImageTech {
 	background: url(/images/FemaleRobotMorphism.webp) 50% 50% no-repeat;
 	object-fit: cover;
-	background-size: 95%;
+	background-size: 115%;
 	filter: blur(10px);
 }
