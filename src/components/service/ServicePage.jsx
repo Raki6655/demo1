@@ -168,11 +168,11 @@ const ServicePage = () => {
 	return (
 		<div>
 			{/* <div className="spacer"></div> */}
-			<div className="w-full flex flex-col items-center lg:items-start  ml-12 serviceHeader absolute my-10 opacity-0 translate-y-20">
-				<h1 className="text-white text-3xl lg:text-5xl font-bold">
+			<div className="max-w-full flex flex-col px-5 lg:px-0 lg:items-start  ml-0 lg:ml-12  serviceHeader relative lg:absolute my-10 opacity-0 translate-y-20">
+				<h1 className="text-black lg:text-white text-3xl lg:text-5xl font-bold">
 					Top <span className="speak ml-2">SERVICES</span> We Provide
 				</h1>
-				<h2 className="text-white text-md lg:text-lg font-medium mt-4">
+				<h2 className="text-black lg:text-white  text-md lg:text-lg font-medium mt-4">
 					We believe in delivering top-notch solutions with precision and
 					innovation, ensuring quality and reliability in every project.
 				</h2>
@@ -192,7 +192,7 @@ const ServicePage = () => {
 				</div> */}
 				{/* <div className="backgroundImage"></div> */}
 				{/* Left Side (Text) */}
-				<div className="leftView view px-10 mt-60">
+				<div className="leftView view px-10 mt-20">
 					{services.map((service, index) => (
 						<div
 							key={index}
@@ -200,7 +200,7 @@ const ServicePage = () => {
 							className="content mt-[10rem]"
 						>
 							<h1 className="text-[56px] font-bold">{service.title}</h1>
-							<p className="mt-10 text-lg leading-7">{service.description}</p>
+							<p className="mt-5 text-lg leading-7">{service.description}</p>
 							<ul className="list-disc list-inside mt-20">
 								{service.points.map((point, i) => (
 									<li key={i} className="text-md my-5 text-gray-200">
