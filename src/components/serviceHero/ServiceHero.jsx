@@ -68,8 +68,8 @@ export default function ServicesHero() {
 		{ scope: containerRef }
 	);
 
-	const cards = document.querySelectorAll(".cards");
-	console.log(cards);
+	// console.log(cards);
+	// const cards = document.querySelectorAll(".cards");
 	useEffect(() => {
 		// Animate service cards on scroll
 		console.log(Array.from(servicesRef.current.children));
