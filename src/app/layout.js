@@ -68,7 +68,7 @@ export default function RootLayout({ children }) {
 		handleRouteChange(); // Show loader initially
 		const timeout = setTimeout(() => {
 			handleRouteComplete(); // Hide loader after a delay (simulate page load)
-		}, 3000); // Adjust the delay as needed
+		}, 1000); // Adjust the delay as needed
 
 		return () => {
 			clearTimeout(timeout); // Clean up the timeout

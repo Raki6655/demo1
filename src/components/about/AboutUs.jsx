@@ -68,7 +68,7 @@ function AboutUs() {
 			scrollTrigger: {
 				trigger: titleRef.current,
 				start: "top 18%",
-				end: "+=95%", // Controls how long the section stays pinned
+				end: "95%", // Controls how long the section stays pinned
 				scrub: true,
 				pin: true, // Keeps the text in place until the animation is done
 				// markers: true,
@@ -86,21 +86,21 @@ function AboutUs() {
 			},
 		});
 
-		timelinee.from(letters, {
-			opacity: 0,
-			y: -50,
+		timelinee.to(letters, {
+			opacity: 1,
+			y: 0,
 			stagger: 0.1,
 			duration: 0.5,
 			ease: "power3.out",
 		});
-		gsap.set(".spanText", {
-			opacity: 0,
-			y: 20,
-		});
-		gsap.set(".mailBox .endText", {
-			y: 100,
-			opacity: 0,
-		});
+		// gsap.set(".spanText", {
+		// 	opacity: 0,
+		// 	y: 20,
+		// });
+		// gsap.set(".mailBox .endText", {
+		// 	y: 100,
+		// 	opacity: 0,
+		// });
 
 		const endTimeline = gsap
 			.timeline()
@@ -202,10 +202,10 @@ function AboutUs() {
 			<VerticalSlider />
 			<h1
 				ref={titleRef}
-				className="relative top-20 text-[48px] lg:text-[110px] text-green font-extrabold w-full text-center uppercase"
+				className="relative top-20 text-[39px] lg:text-[110px] text-green font-extrabold w-full text-center uppercase"
 			>
 				{"You Dream, We Build".split("").map((letter, index) => (
-					<span key={index} className="inline-block">
+					<span key={index} className="inline-block opacity-0 -translate-y-20">
 						{letter === " " ? "\u00A0" : letter}
 					</span>
 				))}

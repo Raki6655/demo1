@@ -169,7 +169,7 @@ const ServicePage = () => {
 	return (
 		<div>
 			{/* <div className="spacer"></div> */}
-			{/* <div className="max-w-full flex flex-col px-5 lg:px-0 lg:items-start  ml-0 lg:ml-12  serviceHeader relative lg:absolute my-10 opacity-0 translate-y-20 none">
+			<div className="max-w-full flex flex-col px-5 lg:px-0 lg:items-start  ml-0 lg:ml-12  serviceHeader relative lg:absolute my-10 opacity-0 translate-y-20 none">
 				<h1 className="text-black lg:text-white text-3xl lg:text-5xl font-bold">
 					Top <span className="speak ml-2">SERVICES</span> We Provide
 				</h1>
@@ -177,7 +177,7 @@ const ServicePage = () => {
 					We believe in delivering top-notch solutions with precision and
 					innovation, ensuring quality and reliability in every project.
 				</h2>
-			</div> */}
+			</div>
 			<div
 				ref={containerRef}
 				className="contentContainer bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 "

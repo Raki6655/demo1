@@ -50,7 +50,6 @@ export default function Landing() {
 				end: () => `+=${window.innerHeight * 4}`,
 				scrub: true,
 				// pinSpacing: false,
-				pinSpacer: false,
 			},
 		});
 
