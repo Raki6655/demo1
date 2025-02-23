@@ -113,7 +113,7 @@ export default function ContactSection() {
 						ref={textRef}
 						className="text-center space-y-8 relative z-10 px-10 lg:px-0"
 					>
-						<h2 className="text-[3.5rem] lg:text-[8rem] font-bold text-white mb-8 px-2">
+						<h2 className="text-[3rem] lg:text-[8rem] font-bold text-white mb-8 px-1">
 							{`Let's Create`.split("").map((char, i) => (
 								<span
 									key={i}

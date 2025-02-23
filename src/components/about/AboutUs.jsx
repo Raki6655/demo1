@@ -18,8 +18,8 @@ function AboutUs() {
 		const timeline = gsap.timeline({
 			scrollTrigger: {
 				trigger: ".mottosTexts ul",
-				start: "top 40%",
-				end: `bottom 50%`,
+				start: "top 20%",
+				end: `bottom 30%`,
 				scrub: 2,
 				ease: "ease",
 				duration: 3,
@@ -175,7 +175,7 @@ function AboutUs() {
 			ref={aboutRef}
 		>
 			{" "}
-			<ul className=" px-2 lg:px-0 flex flex-col gap-5 py-[11rem] lg:py-10 text-[40px] lg:text-[240px]">
+			<ul className=" px-2 lg:px-0 flex flex-col gap-5 lg:gap-5 py-[10rem] lg:py-10 text-[72px] lg:text-[240px]">
 				<div className="slide slide1">
 					<span>Reliable</span>
 				</div>

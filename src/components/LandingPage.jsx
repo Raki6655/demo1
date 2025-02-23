@@ -49,6 +49,8 @@ export default function Landing() {
 				start: "top top",
 				end: () => `+=${window.innerHeight * 4}`,
 				scrub: true,
+				// pinSpacing: false,
+				pinSpacer: false,
 			},
 		});
 

@@ -41,6 +41,11 @@
 		overflow: hidden;
 		margin: 0;
 		padding: 2rem 0;
+		letter-spacing: -3px;
+	}
+	.slide2 {
+		font-size: 50px;
+		letter-spacing: -4px;
 	}
 	/* .slide span {
 		color: black;

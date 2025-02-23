@@ -154,6 +154,7 @@ const ServicePage = () => {
 			scrollTrigger: {
 				trigger: ".serviceHeader",
 				start: "top 70%",
+				end: "top 50%",
 				scrub: true,
 			},
 		});
