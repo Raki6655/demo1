@@ -68,7 +68,7 @@ function VerticalSlider() {
 					</div>
 					<a
 						href="#" // Replace with actual URL
-						className="visit-link"
+						className="visit-link ml-[0.5rem] lg:ml-0"
 						onClick={(e) => {
 							e.preventDefault();
 							// Add your click handler here

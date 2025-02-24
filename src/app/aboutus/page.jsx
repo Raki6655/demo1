@@ -67,7 +67,7 @@ export default function index() {
 			{" "}
 			<div
 				ref={containerRef}
-				className="relative min-h-[200vh] min-w-[100vw] bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 "
+				className="relative min-h-[300vh] min-w-[100vw] bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 "
 			>
 				{/* Hero Section */}
 				<div className="h-screen flex items-center justify-center relative overflow-hidden">
@@ -133,21 +133,21 @@ export default function index() {
 								Our Story
 							</h2>
 							<p className="text-sm lg:text-xl text-white/80 leading-relaxed">
-								Founded in 2023, we started as a small team of passionate
+								Founded in 2024, we started as a small team of passionate
 								creators. Today, we've grown into a full-service digital agency,
 								delivering innovative solutions to clients worldwide. Our
 								journey has been marked by continuous learning, creative
 								exploration, and a commitment to excellence.
 							</p>
 						</div>
-						<div className="relative h-24 lg:h-96 ">
+						<div className="relative h-24 lg:h-96 mb-40 lg:mb-0 ">
 							<div className="absolute inset-0 mt-10  bg-cover bg-center  shadow-2xl ">
 								<img
 									src="/images/whats-your-story.jpg"
-									className="h-full w-full object-cover relative rounded-[5rem] top-28"
+									className=" w-full object-cover relative rounded-[1rem] top-5 h-[150px] lg:h-[250px]"
 								/>
 							</div>
-							<span className="absolute -bottom-[10rem] left-10 font-medium ">
+							<span className="absolute -bottom-[11rem] left-0 font-medium ">
 								Send us your stories to get read at{" "}
 								<span className="underline">aaa@gmail.com</span>
 							</span>
@@ -217,9 +217,9 @@ export default function index() {
 								</button>
 							</div>
 						</div>
-						<div className="relative h-24 lg:h-96">
+						{/* <div className="relative h-24 lg:h-96">
 							<div className="absolute inset-0 bg-[url('/philosophy.jpg')] bg-cover bg-center rounded-3xl shadow-2xl" />
-						</div>
+						</div> */}
 					</div>
 				</div>
 

@@ -88,9 +88,9 @@ const ServicePage = () => {
 					gsap.to(".navbar", {
 						color: "rgba(0,0,0,1)",
 					});
-					gsap.to(".toggleButton svg", {
-						color: "rgba(0,0,0,1)",
-					});
+					// gsap.to(".toggleButton svg", {
+					// 	color: "rgba(0,0,0,1)",
+					// });
 					// gsap.to(".closeNav", {
 					// 	color: "rgba(0,0,0,1)",
 					// });
@@ -100,10 +100,10 @@ const ServicePage = () => {
 						color: "white",
 						ease: "circ.in",
 					});
-					gsap.to(".toggleButton svg", {
-						color: "white",
-						ease: "circ.in",
-					});
+					// gsap.to(".toggleButton svg", {
+					// 	color: "white",
+					// 	ease: "circ.in",
+					// });
 					// gsap.to(".closeNav", {
 					// 	color: "white",
 					// 	ease: "circ.in",
@@ -167,21 +167,22 @@ const ServicePage = () => {
 	useGSAP(() => {});
 
 	return (
-		<div>
+		<div className="lg-background">
 			{/* <div className="spacer"></div> */}
-			<div className="max-w-full flex flex-col px-5 lg:px-0 lg:items-start  ml-0 lg:ml-12  serviceHeader relative lg:absolute my-10 opacity-0 translate-y-20 none">
-				<h1 className="text-black lg:text-white text-3xl lg:text-5xl font-bold">
+			{/* <div className="max-w-full flex flex-col px-5 lg:px-0 lg:items-start  ml-0 lg:ml-12  serviceHeader relative lg:absolute mt-10 pt-10 opacity-0 translate-y-20 none">
+				<h1 className="text-white lg:text-white text-3xl lg:text-5xl font-bold">
 					Top <span className="speak ml-2">SERVICES</span> We Provide
 				</h1>
-				<h2 className="text-black lg:text-white  text-md lg:text-lg font-medium mt-4">
+				<h2 className="text-white lg:text-white  text-md lg:text-lg font-medium mt-4">
 					We believe in delivering top-notch solutions with precision and
 					innovation, ensuring quality and reliability in every project.
 				</h2>
-			</div>
-			<div
+			</div> */}
+			{/* <div
 				ref={containerRef}
 				className="contentContainer bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 "
-			>
+			> */}
+			<div ref={containerRef} className="contentContainer ">
 				{/* <div className="w-full flex flex-col items-center lg:items-center absolute">
 					<h1 className="text-white text-3xl lg:text-5xl font-bold">
 						Our Work <span className="speak ml-2">SPEAKS</span>

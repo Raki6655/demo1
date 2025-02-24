@@ -48,11 +48,17 @@ function AboutUs() {
 				gsap.to(".navbar", {
 					color: "rgba(0,0,0,1)",
 				});
+				gsap.to(".toggleButton svg", {
+					color: "rgba(0,0,0,1)",
+				});
 			},
 			onLeaveBack: () => {
 				gsap.to(".navbar", {
 					color: "white",
 					ease: "circ.in",
+				});
+				gsap.to(".toggleButton svg", {
+					color: "white",
 				});
 			},
 		});

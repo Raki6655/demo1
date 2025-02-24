@@ -47,7 +47,7 @@ export default function Landing() {
 				trigger: containerRef.current,
 				pin: true,
 				start: "top top",
-				end: () => `+=${window.innerHeight * 4}`,
+				end: () => `+=${window.innerHeight * 3.5}`,
 				scrub: true,
 				// pinSpacing: false,
 			},
