@@ -87,7 +87,7 @@ function AboutUs() {
 			stagger: 0.5,
 			scrollTrigger: {
 				trigger: ".workHeader",
-				start: "top 60%",
+				start: "top 35%",
 				scrub: true,
 			},
 		});

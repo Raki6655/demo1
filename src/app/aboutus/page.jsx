@@ -7,6 +7,7 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./about.css";
+import BookingModal from "@/components/modal/BookingModal";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -14,6 +15,8 @@ export default function index() {
 	const containerRef = useRef(null);
 	const sectionRefs = useRef([]);
 	const [particles, setParticles] = useState([]);
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const modalRef = useRef(null);
 
 	useEffect(() => {
 		const generatedParticles = Array.from({ length: 30 }, (_, i) => ({
@@ -61,10 +64,39 @@ export default function index() {
 			ease: "sine.inOut",
 		});
 	}, []);
+	const { contextSafe } = useGSAP(() => {
+		gsap.set(modalRef.current, { opacity: 0, scale: 0.95 });
+	});
+	const openModal = contextSafe(() => {
+		console.log("clicked");
+		setIsModalOpen(true);
+		console.log(modalRef.current);
+		// gsap.to(modalRef.current, {
+		// 	opacity: 1,
+		// 	scale: 1,
+		// 	duration: 0.3,
+		// 	ease: "power2.out",
+		// });
+	});
+
+	useEffect(() => {
+		if (isModalOpen && modalRef.current) {
+			console.log("Modal Ref:", modalRef.current);
+			gsap.fromTo(
+				modalRef.current,
+				{ opacity: 0, scale: 0.9 },
+				{
+					opacity: 1,
+					scale: 1,
+					duration: 0.3,
+					ease: "power2.out",
+				}
+			);
+		}
+	}, [isModalOpen]);
 
 	return (
 		<PageContainer>
-			{" "}
 			<div
 				ref={containerRef}
 				className="relative min-h-[300vh] min-w-[100vw] bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 "
@@ -132,22 +164,46 @@ export default function index() {
 							<h2 className="text-3xl lg:text-5xl font-bold text-white">
 								Our Story
 							</h2>
-							<p className="text-sm lg:text-xl text-white/80 leading-relaxed">
-								Founded in 2024, we started as a small team of passionate
-								creators. Today, we've grown into a full-service digital agency,
-								delivering innovative solutions to clients worldwide. Our
-								journey has been marked by continuous learning, creative
-								exploration, and a commitment to excellence.
+							<p className="text-sm lg:text-lg text-white/80 leading-relaxed">
+								In 2024, a group of young, ambitious developers came together
+								with a shared vision—to build something extraordinary from the
+								ground up. What started as late-night brainstorming sessions and
+								lines of code written in coffee shops soon evolved into a
+								full-fledged digital agency. With passion as our foundation and
+								creativity as our driving force, we took on our first projects,
+								learning, refining, and pushing boundaries every step of the
+								way.
+							</p>
+							<p className="text-sm lg:text-lg text-white/80 leading-relaxed">
+								As we grew, so did our expertise and ambition. From tackling
+								small-scale projects to handling complex digital
+								transformations, we honed our craft, embraced new technologies,
+								and delivered solutions that exceeded expectations. Our
+								dedication to quality and innovation quickly gained recognition,
+								allowing us to work with businesses across industries. Word
+								spread, and before we knew it, we were serving more than a dozen
+								clients, helping brands elevate their digital presence with
+								cutting-edge design, seamless development, and strategic growth
+								solutions.
+							</p>
+							<p className="text-sm lg:text-lg text-white/80 leading-relaxed">
+								Today, we stand as a full-service digital agency, driven by the
+								same hunger for innovation that fueled our beginnings. Our
+								journey has been one of resilience, collaboration, and an
+								unwavering commitment to excellence. But this is just the
+								beginning—our passion for building exceptional digital
+								experiences continues to push us forward, shaping the future of
+								technology and creativity.
 							</p>
 						</div>
-						<div className="relative h-24 lg:h-96 mb-40 lg:mb-0 ">
+						<div className="relative h-24 lg:h-64 mb-4 lg:mb-0 ">
 							<div className="absolute inset-0 mt-10  bg-cover bg-center  shadow-2xl ">
 								<img
 									src="/images/whats-your-story.jpg"
-									className=" w-full object-cover relative rounded-[1rem] top-5 h-[150px] lg:h-[250px]"
+									className=" w-full object-cover relative rounded-[1rem] top-5 h-[150px] lg:h-[350px]"
 								/>
 							</div>
-							<span className="absolute -bottom-[11rem] left-0 font-medium ">
+							<span className="absolute -bottom-[12rem] left-0 font-medium ">
 								Send us your stories to get read at{" "}
 								<span className="underline">aaa@gmail.com</span>
 							</span>
@@ -194,6 +250,15 @@ export default function index() {
 					</div>
 
 					{/* Philosophy */}
+					{isModalOpen && (
+						<div className="max-h-screen max-w-full absolute w-full flex justify-center left-1/2 -translate-x-1/2 z-10 botttom-[16rem]">
+							<BookingModal
+								ref={modalRef}
+								isModalOpen={isModalOpen}
+								setIsModalOpen={setIsModalOpen}
+							/>
+						</div>
+					)}
 					<div
 						ref={(el) => sectionRefs.current.push(el)}
 						className="grid md:grid-cols-2 gap-16 items-center opacity-0 translate-y-[100px] relative top-[8rem]"
@@ -209,12 +274,15 @@ export default function index() {
 								every solution we create is both innovative and impactful.
 							</p>
 							<div className="flex gap-4 ">
-								<button className="text-sm lg:text-xl px-4 lg:px-8 py-2 lg:py-4 bg-cyan-400/10 border border-cyan-400/30 rounded-full text-white hover:bg-cyan-400/20 transition-all">
+								<button
+									onClick={openModal}
+									className="text-sm lg:text-xl px-4 lg:px-8 py-2 lg:py-4 bg-cyan-400/10 border border-cyan-400/30 rounded-full text-white hover:bg-cyan-400/20 transition-all"
+								>
 									Book a Meeting
 								</button>
-								<button className="text-sm lg:text-xl px-4 lg:px-8 py-2 lg:py-4 bg-white/5 border border-white/10 rounded-full text-white hover:bg-white/10 transition-all">
+								{/* <button className="text-sm lg:text-xl px-4 lg:px-8 py-2 lg:py-4 bg-white/5 border border-white/10 rounded-full text-white hover:bg-white/10 transition-all">
 									View Portfolio
-								</button>
+								</button> */}
 							</div>
 						</div>
 						{/* <div className="relative h-24 lg:h-96">
