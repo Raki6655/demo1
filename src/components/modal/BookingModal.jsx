@@ -60,7 +60,7 @@ export const BookingModal = React.forwardRef((props, ref) => {
 
 		try {
 			const response = await fetch(
-				"http://localhost:4000/api/book-appointment",
+				"https://tweenlab-backend.vercel.app/api/book-appointment",
 				{
 					method: "POST",
 					headers: {

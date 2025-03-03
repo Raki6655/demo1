@@ -60,9 +60,9 @@ export default function Landing() {
 		gsap.set(".digitalFuture", {
 			opacity: 0,
 		});
-		gsap.set(bannerRef.current, { backgroundSize: "350%" }); // Ensure initial state
 
 		mm.add("(max-width:768px)", () => {
+			gsap.set(bannerRef.current, { backgroundSize: "350%" }); // Ensure initial state
 			return mainScreenScrollTimeline
 				.to(bannerRef.current, {
 					clipPath: "circle(15% at 50% 50%)",
