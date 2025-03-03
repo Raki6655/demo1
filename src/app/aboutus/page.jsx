@@ -99,7 +99,7 @@ export default function index() {
 		<PageContainer>
 			<div
 				ref={containerRef}
-				className="relative min-h-[300vh] min-w-[100vw] bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 "
+				className="relative min-h-[340vh] min-w-[100vw] bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 "
 			>
 				{/* Hero Section */}
 				<div className="h-screen flex items-center justify-center relative overflow-hidden">

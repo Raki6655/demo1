@@ -133,12 +133,15 @@ body {
 @media (max-width: 768px) {
 	.banner-img {
 		position: absolute;
-		clip-path: circle(15% at 50% 70%);
+		clip-path: circle(15% at 50% 72%);
 		height: 100vh;
 		width: 100vw;
 		transform-origin: 50% 50%;
 		background: url(../../public//images//57695504619.png) 50% 50% no-repeat;
 		background-size: 250%;
+	}
+	.button {
+		margin-top: 3rem;
 	}
 }
 

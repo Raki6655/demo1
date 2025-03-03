@@ -62,7 +62,7 @@ function VerticalSlider() {
 
 	return (
 		<div>
-			<div className="categoriesContainer">
+			<div className="categoriesContainer bg-black">
 				{sliderData.map((slide, index) => (
 					<div
 						key={index}
@@ -89,7 +89,7 @@ function VerticalSlider() {
 			</div>
 			{pathName === "/" && (
 				<CustomLink href={"/works"}>
-					<div className="relative -bottom-36  z-10  ">
+					<div className="relative -bottom-24 lg:-bottom-28  z-10  ">
 						<span className=" absolute left-1/2 -translate-x-1/2   text-2xl font-bold cursor-pointer text-black/90 hover:text-black/100 hover:scale-105 ease-in-out duration-100">
 							See All
 						</span>

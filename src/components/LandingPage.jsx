@@ -66,8 +66,8 @@ export default function Landing() {
 			return mainScreenScrollTimeline
 				.to(bannerRef.current, {
 					clipPath: "circle(15% at 50% 50%)",
-					duration: 2,
-					backgroundSize: "200%",
+					duration: 4,
+					backgroundSize: "220%",
 				})
 				.to(bannerRef.current, {
 					clipPath: "circle(100% at 50% 50%)",
@@ -77,17 +77,18 @@ export default function Landing() {
 				.to(bannerRef.current, {
 					scale: 0.7,
 					backgroundSize: "100%",
-					duration: 4,
+					duration: 1,
 				})
 				.to(".button-rounded", {
-					y: 200,
+					y: 250,
 					duration: 2,
+
 					scale: 0.95,
 					ease: "power1.out",
 				})
 				.to(bannerRef.current, {
 					filter: "blur(20px)",
-					duration: 4,
+					duration: 2,
 				})
 
 				.to(headlineRef.current?.children, {
@@ -238,34 +239,6 @@ export default function Landing() {
 					ease: "sine.inOut",
 				});
 			});
-			mm.add("(max-width:768px)", () => {
-				// gsap.fromTo(
-				// 	bannerRef.current,
-				// 	{
-				// 		clipPath: "circle(15% at 50% 95%)",
-				// 		// backgroundSize: "220%",
-				// 		// yoyo: true,
-				// 	},
-				// 	{
-				// 		clipPath: "circle(15% at 50% 75%)",
-				// 		duration: 2,
-				// 	}
-				// );
-			});
-			mm.add("(min-width:769px)", () => {
-				// gsap.fromTo(
-				// 	bannerRef.current,
-				// 	{
-				// 		clipPath: "circle(20% at 100% 50%)",
-				// 		// backgroundSize: "220%",
-				// 		// yoyo: true,
-				// 	},
-				// 	{
-				// 		clipPath: "circle(20% at 80% 50%)",
-				// 		duration: 2,
-				// 	}
-				// );
-			});
 		},
 		{ scope: containerRef }
 	);
@@ -327,7 +300,7 @@ export default function Landing() {
 				<div className="max-w-7xl ml-0 lg:ml-[6vw] relative z-10 flex flex-col items-center lg:block">
 					<div
 						ref={headlineRef}
-						className="space-y-4 w-[100%] mt-[7rem] lg:mt-[6rem] "
+						className="space-y-4 w-[100%] mt-[8.5rem] lg:mt-[6rem] "
 					>
 						<div className="overflow-hidden">
 							<h1 className="text-4xl lg:text-8xl font-bold text-white text-center lg:text-start leading-8">
@@ -344,10 +317,10 @@ export default function Landing() {
 								<span className="speak">Extraordinary</span>
 							</h1>
 						</div>
-						<div className="pt-1 lg:pt-8 ">
+						<div className="pt-1 lg:pt-8 px-2 lg:px-0 ">
 							<p className="text-sm lg:text-xl text-white/80 max-w-2xl text-center lg:text-start">
-								A really good website can be a difference between success and a
-								failure !
+								A good looking website might be a difference between success and
+								a failure !
 							</p>
 						</div>
 					</div>
