@@ -78,9 +78,6 @@ export default function RootLayout({ children }) {
 
 	return (
 		<html lang="en">
-			<Head>
-				<title>TWEENLAB | Build your dream site</title>
-			</Head>
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased ${oswald.variable} ${DMserif.variable}`}
 			>

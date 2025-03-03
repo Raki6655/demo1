@@ -1,20 +1,38 @@
 // "use client";
 
-import HeroSection from "@/components/HeroSection";
-import LandingDeep2 from "@/components/LandingDeepSeek2";
-import LandingDemo from "@/components/LandingDemo";
 import LandingPage from "@/components/LandingPage";
-import Navbar from "@/components/Navbar";
 import AboutUs from "@/components/about/AboutUs";
-import ProjectsSection from "@/components/project/OurProjects";
 import ServicePage from "@/components/service/ServicePage";
-import Templates from "@/components/templates/Templates";
-
-// import { Oswald } from "../fonts/Oswald (1)";
 
 export const metadata = {
-	title: "Page Title",
-	description: "Page Description",
+	title: "TWEENLAB | Your One-Stop Solution for All Tech Services",
+	description:
+		"TWEENLAB is a top software development agency providing web development, mobile apps, UI/UX design, cloud solutions, AI development, and more.",
+	keywords:
+		"software development, web development, mobile app development, UI/UX design, cloud solutions, AI development, machine learning, blockchain, SaaS development, IT consulting, tech agency, software company, custom software solutions, Next.js development, React development, full-stack development",
+	openGraph: {
+		title: "TWEENLAB | Your One-Stop Solution for All Tech Services",
+		description:
+			"TWEENLAB provides cutting-edge software solutions, including web & mobile app development, AI, cloud solutions, and more. Let's build something great together.",
+		url: "https://tweenlab.com", // Replace with your actual domain
+		siteName: "TWEENLAB",
+		images: [
+			{
+				url: "/images/TLlogo.webp", // Replace with your actual image
+				width: 1200,
+				height: 630,
+				alt: "TWEENLAB - Software Development Agency",
+			},
+		],
+		type: "website",
+	},
+	twitter: {
+		card: "summary_large_image",
+		title: "TWEENLAB | Your One-Stop Solution for All Tech Services",
+		description:
+			"Need top-notch software solutions? TWEENLAB delivers web & mobile apps, AI, cloud services, and more. Contact us today!",
+		images: ["https://tweenlab.com/twitter-card.jpg"], // Replace with your actual image
+	},
 };
 export default function Home() {
 	return (

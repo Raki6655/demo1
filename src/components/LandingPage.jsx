@@ -60,17 +60,19 @@ export default function Landing() {
 		gsap.set(".digitalFuture", {
 			opacity: 0,
 		});
+		gsap.set(bannerRef.current, { backgroundSize: "350%" }); // Ensure initial state
+
 		mm.add("(max-width:768px)", () => {
 			return mainScreenScrollTimeline
 				.to(bannerRef.current, {
 					clipPath: "circle(15% at 50% 50%)",
 					duration: 2,
-					backgroundSize: "220%",
+					backgroundSize: "200%",
 				})
 				.to(bannerRef.current, {
 					clipPath: "circle(100% at 50% 50%)",
 					duration: 3,
-					backgroundSize: "180%",
+					backgroundSize: "160%",
 				})
 				.to(bannerRef.current, {
 					scale: 0.7,
@@ -325,7 +327,7 @@ export default function Landing() {
 				<div className="max-w-7xl ml-0 lg:ml-[6vw] relative z-10 flex flex-col items-center lg:block">
 					<div
 						ref={headlineRef}
-						className="space-y-4 w-[100%] mt-[10rem] lg:mt-[6rem] "
+						className="space-y-4 w-[100%] mt-[7rem] lg:mt-[6rem] "
 					>
 						<div className="overflow-hidden">
 							<h1 className="text-4xl lg:text-8xl font-bold text-white text-center lg:text-start leading-8">
