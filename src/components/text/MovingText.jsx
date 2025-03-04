@@ -64,16 +64,16 @@ export default function CubeTextAnimation() {
       {/* Sub Text Layers */}
       <div
         // ref={subTextRef}
-        className="absolute w-full lg:w-5/6 top-[55%] left-1/2 
+        className="absolute w-full lg:w-5/6 top-[63%] left-1/2 
         -translate-x-1/2 -translate-y-1/2 subText"
       >
         <h2
           ref={titleRef}
-          className="text-[40px] lg:text-[120px] font-bold text-center text-transparent
-          [text-shadow:_0_0_20px_rgba(255,255,255,0.3)]
-           p-2 cursor-default"
+          className="ml-2 w-full text-wrap  text-[60px] lg:text-[120px] font-extrabold text-start lg:text-center tracking-wider leading-[6rem] lg:leading-[9rem] text-transparent
+          [text-shadow:_0_0_10px_rgba(255,255,255,0.25)]
+           p-2 cursor-default "
           style={{
-            WebkitTextStroke: "2.5px #fff",
+            WebkitTextStroke: "2px #fff",
           }}
         >
           {/* Transform Your Digital Presence */}
@@ -86,7 +86,7 @@ export default function CubeTextAnimation() {
             </span>
           ))}
         </h2>
-        <span className="digitalFuture relative block text-[14px] lg:text-[22px] mt-20 lg:mt-12 top-28  text-center text-gray-400 font-medium left-1/2 -translate-x-1/2 leading-10 opacity-0 ">
+        <span className="digitalFuture relative block text-[18px] lg:text-[22px] mt-20 lg:mt-12  -top-10   text-center text-gray-400 font-bold left-1/2 -translate-x-1/2 leading-10 opacity-0 ">
           MAKE YOUR WEBSITE CONVERT
         </span>
         {/* <ShinyButton name={"Explore"} /> */}
@@ -94,21 +94,21 @@ export default function CubeTextAnimation() {
 
       {/* Animated Clones */}
       {/* {[0, 1].map((i) => (
-        <div
-          key={i}
-          ref={(el) => el && (cloneRefs.current[i] = el)}
-          className=" text-[180px] font-extrabold text-white 
+				<div
+					key={i}
+					ref={(el) => el && (cloneRefs.current[i] = el)}
+					className=" text-[180px] font-extrabold text-white 
             opacity-0 top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2
             pointer-events-none"
-        >
-          <span className="block">Lets Walk Around</span>
-          {i === 0 && (
-            <span className="block text-[100px] mt-6 opacity-60">
-              Build Digital Future
-            </span>
-          )}
-        </div>
-      ))} */}
+				>
+					<span className="block">Lets Walk Around</span>
+					{i === 0 && (
+						<span className="block text-[100px] mt-6 opacity-60">
+							Build Digital Future
+						</span>
+					)}
+				</div>
+			))} */}
 
       {/* Shine Effect */}
       {/* <div

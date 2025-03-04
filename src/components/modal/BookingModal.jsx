@@ -7,6 +7,8 @@ export const BookingModal = React.forwardRef((props, ref) => {
 	const { isModalOpen, setIsModalOpen } = props;
 	const [isSubmitted, setIsSubmitted] = useState(false);
 	const [submitError, setSubmitError] = useState("");
+	const [isLoading, setIsLoading] = useState(false);
+
 	useEffect(() => {
 		console.log(ref.current);
 	}, [ref.current]);
@@ -37,6 +39,7 @@ export const BookingModal = React.forwardRef((props, ref) => {
 		});
 		setIsModalOpen(false);
 		setIsSubmitted(false);
+		setIsLoading(false);
 		setFormData({
 			phone: "",
 			email: "",
@@ -50,6 +53,7 @@ export const BookingModal = React.forwardRef((props, ref) => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setSubmitError("");
+		setIsLoading(true);
 
 		if (!formData.phone && !formData.email) {
 			setSubmitError("Please provide either phone number or email");
@@ -60,7 +64,7 @@ export const BookingModal = React.forwardRef((props, ref) => {
 
 		try {
 			const response = await fetch(
-				"http://localhost:4000/api/book-appointment",
+				"https://tweenlab-backend.vercel.app/api/book-appointment",
 				{
 					method: "POST",
 					headers: {
@@ -78,7 +82,10 @@ export const BookingModal = React.forwardRef((props, ref) => {
 			console.log("API Response:", data);
 
 			setIsSubmitted(true);
-		} catch (err) {}
+		} catch (err) {
+		} finally {
+			setIsLoading(false);
+		}
 	};
 
 	return (
@@ -95,7 +102,12 @@ export const BookingModal = React.forwardRef((props, ref) => {
 					ref={ref}
 					className="bg-gray-900 rounded-2xl p-2 lg:p-8 max-w-md w-full relative border border-gray-700"
 				>
-					{!isSubmitted ? (
+					{isLoading ? (
+						<div className="flex flex-col items-center justify-center py-12">
+							<div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+							<p className="text-gray-300">Submitting your request...</p>
+						</div>
+					) : !isSubmitted ? (
 						<form onSubmit={handleSubmit} className="space-y-6">
 							<h2 className="text-lg lg:text-2xl font-bold text-white mb-6">
 								Schedule a Call
@@ -219,13 +231,13 @@ export const BookingModal = React.forwardRef((props, ref) => {
 								<button
 									type="button"
 									onClick={closeModal}
-									className="px-2 py-1 lg:px-6 lg:py-3 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors flex-1"
+									className="p-2 py-2  lg:px-6 lg:py-3 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors flex-1"
 								>
 									Cancel
 								</button>
 								<button
 									type="submit"
-									className="px-2 py-1 lg:px-6 lg:py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex-1"
+									className="p-2 py-2  lg:px-6 lg:py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex-1"
 								>
 									Schedule Now
 								</button>

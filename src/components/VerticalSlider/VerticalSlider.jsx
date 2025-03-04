@@ -61,8 +61,8 @@ function VerticalSlider({ data }) {
 
   return (
     <div>
-      <div className="categoriesContainer">
-        {data?.map((slide, index) => (
+      <div className="categoriesContainer bg-black">
+        {sliderData.map((slide, index) => (
           <div
             key={index}
             className={`imageCard card${index + 1}`}
@@ -71,7 +71,7 @@ function VerticalSlider({ data }) {
             <div className="image-wrapper">
               <img src={slide.imgSrc} alt={`Slide ${index + 1}`} />
             </div>
-            <div className="absolute bottom-32 lg:bottom-10 left-3 lg:left-10 flex flex-col">
+            <div className="absolute bottom-36 lg:bottom-10 left-3 lg:left-10 flex flex-col">
               <h1>{slide.title}</h1>
               <h2>{slide.description}</h2>
             </div>
@@ -88,7 +88,7 @@ function VerticalSlider({ data }) {
       </div>
       {pathName === "/" && (
         <CustomLink href={"/works"}>
-          <div className="relative -bottom-36  z-10  ">
+          <div className="relative -bottom-24 lg:-bottom-28  z-10  ">
             <span className=" absolute left-1/2 -translate-x-1/2   text-2xl font-bold cursor-pointer text-black/90 hover:text-black/100 hover:scale-105 ease-in-out duration-100">
               See All
             </span>

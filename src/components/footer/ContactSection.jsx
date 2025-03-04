@@ -62,7 +62,7 @@ export default function ContactSection() {
 		if (email.length <= 0) return;
 		try {
 			const response = await fetch(
-				"http://localhost:4000/message/send-message",
+				"https://tweenlab-backend.vercel.app/message/send-message",
 				{
 					method: "POST",
 					headers: {
