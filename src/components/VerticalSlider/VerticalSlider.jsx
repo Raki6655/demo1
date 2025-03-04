@@ -17,7 +17,7 @@ const sliderData = [
 		description:
 			"A fashion collection store site showcasing the products they sell in an interactive manner.",
 		info: "Explore the latest trends in modern fashion.",
-		link: "https://fashion-eight-eta.vercel.app/",
+		link: "https://fashion-store-beryl.vercel.app/",
 	},
 	{
 		imgSrc: "/images/FashionProject.png",
