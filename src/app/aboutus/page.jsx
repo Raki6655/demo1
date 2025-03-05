@@ -215,7 +215,7 @@ export default function index() {
 						ref={(el) => sectionRefs.current.push(el)}
 						className="grid md:grid-cols-2 gap-16 items-center opacity-0 translate-y-[100px] relative top-[8rem] "
 					>
-						<div className="relative h-24 lg:h-96 order-2 md:order-1">
+						<div className="relative h-28 lg:h-96 order-2 md:order-1">
 							<div className="absolute inset-0 bg-[url('/services.jpg')] bg-cover bg-center rounded-3xl shadow-2xl">
 								<img
 									src="/images/expertise_wave.jpg"
@@ -223,7 +223,7 @@ export default function index() {
 								/>
 							</div>
 						</div>
-						<div className="space-y-8 order-1 md:order-2">
+						<div className="space-y-8 order-1 md:order-2 mt-[5rem] lg:mt-0">
 							<h2 className="text-3xl lg:text-5xl font-bold text-white">
 								Our Expertise
 							</h2>
@@ -264,7 +264,7 @@ export default function index() {
 						className="grid md:grid-cols-2 gap-16 items-center opacity-0 translate-y-[100px] relative top-[8rem]"
 					>
 						<div className="space-y-8">
-							<h2 className="text-3xl lg:text-5xl font-bold text-white">
+							<h2 className="text-3xl lg:text-5xl font-bold text-white mt-3 lg:mt-0 ">
 								Our Philosophy
 							</h2>
 							<p className="text-sm lg:text-xl text-white/80 leading-relaxed">

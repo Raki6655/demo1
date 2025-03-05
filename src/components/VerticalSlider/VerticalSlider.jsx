@@ -20,12 +20,12 @@ const sliderData = [
 		link: "https://fashion-store-beryl.vercel.app/",
 	},
 	{
-		imgSrc: "/images/FashionProject.png",
-		title: "Fancy Store",
+		imgSrc: "/images/SophiaCover.png",
+		title: "Perfume Store",
 		description:
-			"A fashion collection store site showcasing the products they sell in an interactive manner.",
+			"A perfume collection store site showcasing the products they sell in an interactive manner.",
 		info: "Discover exclusive designs and styles.",
-		link: "https://cosmetic-store-iota.vercel.app/",
+		link: "https://sophia-tau-one.vercel.app/",
 	},
 	{
 		imgSrc: "/images/MakeupSite.png",
@@ -33,6 +33,14 @@ const sliderData = [
 		description:
 			"A fashion collection store site showcasing the products they sell in an interactive manner.",
 		info: "Revolutionize your beauty routine with our products.",
+		link: "https://cosmetic-store-iota.vercel.app/",
+	},
+	{
+		imgSrc: "/images/FashionProject.png",
+		title: "Fancy Store",
+		description:
+			"A fashion collection store site showcasing the products they sell in an interactive manner.",
+		info: "Discover exclusive designs and styles.",
 		link: "https://cosmetic-store-iota.vercel.app/",
 	},
 ];
