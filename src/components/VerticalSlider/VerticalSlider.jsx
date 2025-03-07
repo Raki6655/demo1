@@ -40,8 +40,16 @@ const sliderData = [
 		title: "Perfume Store",
 		description:
 			"A perfume collection store site showcasing the products they sell in an interactive manner.",
-		info: "Discover exclusive designs and styles.",
+		info: "Modern fregrense selling site",
 		link: "https://sophia-tau-one.vercel.app/",
+	},
+	{
+		imgSrc: "/images/HotelSiteCover.png",
+		title: "Hotel Booking Page",
+		description:
+			"A minimalistic hotel booking web app featuring clean and smooth UI",
+		info: "A hotel booking site",
+		link: "https://hotelhub-one.vercel.app/",
 	},
 	{
 		imgSrc: "/images/FashionProject.png",
@@ -49,7 +57,7 @@ const sliderData = [
 		description:
 			"A fashion collection store site showcasing the products they sell in an interactive manner.",
 		info: "Discover exclusive designs and styles.",
-		link: "https://cosmetic-store-iota.vercel.app/",
+		link: "#",
 	},
 ];
 
