@@ -20,12 +20,12 @@ const sliderData = [
 		link: "https://fashion-store-beryl.vercel.app/",
 	},
 	{
-		imgSrc: "/images/SophiaCover.png",
-		title: "Perfume Store",
+		imgSrc: "/images/videoPortfolio.png",
+		title: "Video Portfolio",
 		description:
-			"A perfume collection store site showcasing the products they sell in an interactive manner.",
-		info: "Discover exclusive designs and styles.",
-		link: "https://sophia-tau-one.vercel.app/",
+			"A video portfolio site for featuring your vidoes in smooth and unique way.",
+		info: "Video Animation control on scroll.",
+		link: "https://coopgraphy.vercel.app/",
 	},
 	{
 		imgSrc: "/images/MakeupSite.png",
@@ -34,6 +34,14 @@ const sliderData = [
 			"A fashion collection store site showcasing the products they sell in an interactive manner.",
 		info: "Revolutionize your beauty routine with our products.",
 		link: "https://cosmetic-store-iota.vercel.app/",
+	},
+	{
+		imgSrc: "/images/SophiaCover.png",
+		title: "Perfume Store",
+		description:
+			"A perfume collection store site showcasing the products they sell in an interactive manner.",
+		info: "Discover exclusive designs and styles.",
+		link: "https://sophia-tau-one.vercel.app/",
 	},
 	{
 		imgSrc: "/images/FashionProject.png",
@@ -67,11 +75,12 @@ function VerticalSlider() {
 			}
 		});
 	}, []);
+	let updatedData = pathName === "/" ? sliderData.slice(0, 3) : sliderData;
 
 	return (
 		<div>
 			<div className="categoriesContainer bg-black">
-				{sliderData.map((slide, index) => (
+				{updatedData.map((slide, index) => (
 					<div
 						key={index}
 						className={`imageCard card${index + 1}`}
