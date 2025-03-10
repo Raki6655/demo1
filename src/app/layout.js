@@ -1,6 +1,6 @@
 import Head from "next/head";
 import RootLayout from "./RootLayout";
-import { Analytics } from "@vercel/analytics";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata = {
 	title: "Your SEO-Optimized Title",
