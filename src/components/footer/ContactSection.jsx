@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { FollowOnFacebook } from "../utils/FacebookFollowButton";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -162,6 +163,10 @@ export default function ContactSection() {
 							<p className="endText text-sm lg:text-2xl text-white/80 mt-6 px-10">
 								Let's build something amazing together ✨
 							</p>
+
+							<div className="mt-10">
+								<FollowOnFacebook />
+							</div>
 						</div>
 					</div>
 				</div>

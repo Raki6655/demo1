@@ -203,9 +203,14 @@ export default function index() {
 									className=" w-full object-cover relative rounded-[1rem] top-5 h-[150px] lg:h-[350px]"
 								/>
 							</div>
-							<span className="absolute -bottom-[12rem] left-0 font-medium ">
+							<span className="absolute -bottom-[12rem] left-0 font-medium">
 								Send us your stories to get read at{" "}
-								<span className="underline">aaa@gmail.com</span>
+								<a
+									href="mailto:tweenlab81@gmail.com"
+									className="underline text-blue-600 hover:text-blue-800"
+								>
+									tweenlab81@gmail.com
+								</a>
 							</span>
 						</div>
 					</div>

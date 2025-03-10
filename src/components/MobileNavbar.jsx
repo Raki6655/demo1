@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { gsap } from "gsap";
 import CustomLink from "./utils/CustomLink";
+import { FollowOnFacebook } from "./utils/FacebookFollowButton";
 
 export default function MobileNav() {
 	const [isModalOpen, setIsModalOpen] = useState(false);
@@ -121,6 +122,9 @@ export default function MobileNav() {
 							</CustomLink>
 						</div>
 					))}
+					<div className="absolute bottom-10 mt-40">
+						<FollowOnFacebook />
+					</div>
 				</div>
 			</div>
 		</div>
