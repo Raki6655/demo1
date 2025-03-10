@@ -177,7 +177,7 @@ function AboutUs() {
 
 	return (
 		<div
-			className="mottosTexts w-full min-h-[580vh] lg:h-[680vh] bg-black/20 "
+			className="mottosTexts w-full min-h-[600vh] lg:h-[680vh] bg-black/20 "
 			ref={aboutRef}
 		>
 			{" "}

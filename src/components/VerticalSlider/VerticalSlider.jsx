@@ -182,10 +182,12 @@ function VerticalSlider() {
 					>
 						<h2
 							ref={endTextRef}
-							className="mt-[0vh] text-center text-xl lg:text-4xl font-medium lg:font-extrabold px-4 lg:px-20 leading-[2rem] lg:leading-[3.5rem] tracking-wide z-100 text-black-600 translate-y-20 opacity-0 "
+							className="mt-[0vh] text-start text-xl lg:text-4xl font-medium lg:font-extrabold px-4 lg:px-20 leading-[2rem] lg:leading-[3.5rem] tracking-wide z-100 text-black-600 translate-y-20 opacity-0 "
 						>
 							We craft more than just websites—we build digital experiences that
-							embody your brand. With seamless animations, strategic design, and{" "}
+							embody your brand all within very affordable price.
+							<br />
+							<br /> With seamless animations, strategic design, and{" "}
 							<div className="inline relative w-full">
 								<span className="speak rounded-md text-white spanText ">
 									revenue-driven
@@ -208,7 +210,7 @@ function VerticalSlider() {
 							href="mailto:tweenlab81@gmail.com"
 							className="mt-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg text-lg shadow-md transition-all translate-y-20 opacity-0"
 						>
-							Reach Out to use
+							Reach Out on Mail
 						</a>
 					</div>
 				)}
