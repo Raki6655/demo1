@@ -1,5 +1,7 @@
 import Head from "next/head";
 import RootLayout from "./RootLayout";
+import { Analytics } from "@vercel/analytics";
+
 export const metadata = {
 	title: "Your SEO-Optimized Title",
 	description: "A well-crafted description that helps with search rankings.",
@@ -33,6 +35,7 @@ export default function layout({ children }) {
 				<title>HELLO</title>
 			</Head>
 			{children}
+			<Analytics debug={true} />
 		</RootLayout>
 	);
 }

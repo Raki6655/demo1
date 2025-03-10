@@ -70,7 +70,6 @@ function VerticalSlider() {
 	const messageRef = useRef(null);
 	const buttonRef = useRef(null);
 	const buttonRefBottom = useRef(null);
-	console.log(pathName);
 
 	useEffect(() => {
 		slidesRef.current.forEach((item, index) => {

@@ -9,9 +9,7 @@ export const BookingModal = React.forwardRef((props, ref) => {
 	const [submitError, setSubmitError] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 
-	useEffect(() => {
-		console.log(ref.current);
-	}, [ref.current]);
+	useEffect(() => {}, [ref.current]);
 
 	const [formData, setFormData] = useState({
 		phone: "",
@@ -59,8 +57,6 @@ export const BookingModal = React.forwardRef((props, ref) => {
 			setSubmitError("Please provide either phone number or email");
 			return;
 		}
-		console.log(formData);
-		console.log(JSON.stringify(formData));
 
 		try {
 			const response = await fetch(
@@ -79,7 +75,6 @@ export const BookingModal = React.forwardRef((props, ref) => {
 			}
 
 			const data = await response.json();
-			console.log("API Response:", data);
 
 			setIsSubmitted(true);
 		} catch (err) {

@@ -78,7 +78,6 @@ export default function ContactSection() {
 			}
 
 			const data = await response.json();
-			console.log("API Response:", data);
 
 			setIsSubmitted(true);
 		} catch (err) {}

@@ -27,7 +27,7 @@ export default function index() {
 		}));
 		setParticles(generatedParticles);
 	}, []);
-	console.log(sectionRefs);
+
 	useEffect(() => {
 		// Refresh ScrollTrigger after all elements are mounted
 		ScrollTrigger.refresh();
@@ -68,9 +68,8 @@ export default function index() {
 		gsap.set(modalRef.current, { opacity: 0, scale: 0.95 });
 	});
 	const openModal = contextSafe(() => {
-		console.log("clicked");
 		setIsModalOpen(true);
-		console.log(modalRef.current);
+
 		// gsap.to(modalRef.current, {
 		// 	opacity: 1,
 		// 	scale: 1,
@@ -81,7 +80,6 @@ export default function index() {
 
 	useEffect(() => {
 		if (isModalOpen && modalRef.current) {
-			console.log("Modal Ref:", modalRef.current);
 			gsap.fromTo(
 				modalRef.current,
 				{ opacity: 0, scale: 0.9 },

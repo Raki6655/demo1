@@ -129,7 +129,7 @@ const ServicePage = () => {
 						autoAlpha: 1,
 						ease: "circ.inOut",
 						// onStart: () => {
-						// 	console.log(containerRef?.current);
+
 						// 	containerRef.current.style.backgroundImage = `url('/images/${services[index].image}')`;
 						// },
 					})

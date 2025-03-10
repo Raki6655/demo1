@@ -174,7 +174,6 @@ export default function Landing() {
 					ease: "power1.out",
 
 					onStart: () => {
-						console.log(document.querySelector(".button"));
 						document.querySelector(".button").classList.add("hover");
 					},
 				});
@@ -247,9 +246,8 @@ export default function Landing() {
 	});
 
 	const openModal = contextSafe(() => {
-		console.log("clicked");
 		setIsModalOpen(true);
-		console.log(modalRef.current);
+
 		// gsap.to(modalRef.current, {
 		// 	opacity: 1,
 		// 	scale: 1,
@@ -260,7 +258,6 @@ export default function Landing() {
 
 	useEffect(() => {
 		if (isModalOpen && modalRef.current) {
-			console.log("Modal Ref:", modalRef.current);
 			gsap.fromTo(
 				modalRef.current,
 				{ opacity: 0, scale: 0.9 },

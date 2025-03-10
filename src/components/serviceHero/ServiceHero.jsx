@@ -68,11 +68,10 @@ export default function ServicesHero() {
 		{ scope: containerRef }
 	);
 
-	// console.log(cards);
 	// const cards = document.querySelectorAll(".cards");
 	useEffect(() => {
 		// Animate service cards on scroll
-		console.log(Array.from(servicesRef.current.children));
+
 		// Array.from(servicesRef.current.children).forEach((serviceCard) => {
 		// 	gsap.to(serviceCard, {
 		// 		opacity: 1,
