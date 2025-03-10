@@ -63,25 +63,89 @@ const sliderData = [
 
 function VerticalSlider() {
 	const slidesRef = useRef([]);
+	const endTextRef = useRef(null);
 	const router = useRouter();
 	const pathName = usePathname();
+	const containerRef = useRef(null);
+	const messageRef = useRef(null);
+	const buttonRef = useRef(null);
+	const buttonRefBottom = useRef(null);
 	console.log(pathName);
 
 	useEffect(() => {
 		slidesRef.current.forEach((item, index) => {
-			if (index !== slidesRef.current.length - 1) {
+			if (true) {
 				gsap.to(item, {
 					scale: 0.9,
 					opacity: 0,
 					scrollTrigger: {
 						trigger: item,
-						start: "top 2%",
+						start: "top 60%",
 						end: "bottom 2%",
 						scrub: true,
 					},
 				});
 			}
 		});
+		// gsap.set(endTextRef.current, {
+		// 	opacity: 0,
+		// });
+		// gsap.to(endTextRef.current, {
+		// 	y: 0,
+		// 	opacity: 1,
+		// 	scrollTrigger: {
+		// 		trigger: endTextRef.current,
+		// 		start: "top 60%",
+		// 		scrub: true,
+		// 	},
+		// });
+	}, []);
+	useEffect(() => {
+		const tl = gsap.timeline({
+			scrollTrigger: {
+				trigger: containerRef.current,
+				start: "top 40%",
+				toggleActions: "play none none none",
+				scrub: true,
+			},
+		});
+
+		tl.to(endTextRef.current, {
+			opacity: 1,
+			y: 0,
+
+			ease: "power3.out",
+		})
+			.to(
+				messageRef.current,
+				{
+					opacity: 1,
+					y: 0,
+					duration: 1,
+					ease: "power3.out",
+				},
+				"-=0.6"
+			) // Start slightly before previous animation ends
+			.to(
+				buttonRef.current,
+				{
+					opacity: 1,
+					y: 0,
+					duration: 1,
+					ease: "power3.out",
+				},
+				"-=0.9"
+			)
+			.to(
+				buttonRefBottom.current,
+				{
+					opacity: 1,
+					y: 0,
+					duration: 1,
+					ease: "power3.out",
+				},
+				"-=0.9"
+			);
 	}, []);
 	let updatedData = pathName === "/" ? sliderData.slice(0, 3) : sliderData;
 
@@ -111,6 +175,43 @@ function VerticalSlider() {
 						</Link>
 					</div>
 				))}
+				{pathName === "/works" && (
+					<div
+						className="h-[100vh] w-full flex flex-col items-center justify-center"
+						ref={containerRef}
+					>
+						<h2
+							ref={endTextRef}
+							className="mt-[0vh] text-center text-xl lg:text-4xl font-medium lg:font-extrabold px-4 lg:px-20 leading-[2rem] lg:leading-[3.5rem] tracking-wide z-100 text-black-600 translate-y-20 opacity-0 "
+						>
+							We craft more than just websites—we build digital experiences that
+							embody your brand. With seamless animations, strategic design, and{" "}
+							<div className="inline relative w-full">
+								<span className="speak rounded-md text-white spanText ">
+									revenue-driven
+								</span>{" "}
+							</div>
+							solutions, we ensure your online presence is both impactful and
+							profitable.
+						</h2>
+
+						<p
+							ref={messageRef}
+							className="mt-6 text-lg text-gray-500 text-center max-w-xl px-6 translate-y-20 opacity-0"
+						>
+							Take just <span className="font-semibold">5 minutes</span> of your
+							time—it could exponentially boost your brand and sales!
+						</p>
+
+						<a
+							ref={buttonRef}
+							href="mailto:tweenlab81@gmail.com"
+							className="mt-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg text-lg shadow-md transition-all translate-y-20 opacity-0"
+						>
+							Reach Out to use
+						</a>
+					</div>
+				)}
 			</div>
 			{pathName === "/" && (
 				<CustomLink href={"/works"}>
