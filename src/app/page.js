@@ -3,6 +3,7 @@
 import LandingPage from "@/components/LandingPage";
 import AboutUs from "@/components/about/AboutUs";
 import ServicePage from "@/components/service/ServicePage";
+import "./config.js";
 
 export const metadata = {
 	title: "TWEENLAB | Your One-Stop Solution for All Tech Services",
@@ -35,6 +36,7 @@ export const metadata = {
 	},
 };
 export default function Home() {
+	console.warn = () => {};
 	return (
 		<>
 			<div className="">

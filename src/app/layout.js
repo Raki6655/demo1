@@ -35,7 +35,7 @@ export default function layout({ children }) {
 				<title>HELLO</title>
 			</Head>
 			{children}
-			<Analytics debug={true} />
+			<Analytics debug={true} mode="production" />
 		</RootLayout>
 	);
 }

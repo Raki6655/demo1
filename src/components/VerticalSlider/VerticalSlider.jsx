@@ -79,7 +79,7 @@ function VerticalSlider() {
 					opacity: 0,
 					scrollTrigger: {
 						trigger: item,
-						start: "top 60%",
+						start: "top -25%",
 						end: "bottom 2%",
 						scrub: true,
 					},
