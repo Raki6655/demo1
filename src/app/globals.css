@@ -133,7 +133,7 @@ body {
 @media (max-width: 768px) {
 	.banner-img {
 		position: absolute;
-		clip-path: circle(15% at 50% 72%);
+		clip-path: circle(15% at 50% 73%);
 		height: 100vh;
 		width: 100vw;
 		transform-origin: 50% 50%;

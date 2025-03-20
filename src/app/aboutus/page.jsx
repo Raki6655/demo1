@@ -97,11 +97,11 @@ export default function index() {
 		<PageContainer>
 			<div
 				ref={containerRef}
-				className="relative min-h-[340vh] min-w-[100vw] bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 "
+				className="relative min-h-[350vh] lg:min-h-[340vh] min-w-[100vw] bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 "
 			>
 				{/* Hero Section */}
-				<div className="h-screen flex items-center justify-center relative overflow-hidden">
-					<div className="text-center max-w-4xl px-4 relative">
+				<div className="h-[80vh] lg:h-screen flex items-center justify-center relative overflow-hidden">
+					<div className="text-center max-w-4xl px-4 relative mt-32 lg:mt-0">
 						{/* Gradient Background Block */}
 						<div className="absolute -inset-8 bg-gradient-to-r from-cyan-300/20 to-blue-400/20 blur-3xl rounded-full z-0" />
 
@@ -152,11 +152,11 @@ export default function index() {
 				</div>
 
 				{/* About Sections */}
-				<div className="container mx-auto px-4 space-y-12 lg:space-y-48 py-12 lg:py-48">
+				<div className="container mx-auto px-4 space-y-12 lg:space-y-48 pb-12 lg:pt-12  lg:py-48">
 					{/* Our Story */}
 					<div
 						ref={(el) => sectionRefs.current.push(el)}
-						className="grid md:grid-cols-2 gap-16 items-center opacity-0 translate-y-[100px] "
+						className="grid md:grid-cols-2 gap-16 lg:items-center opacity-0 translate-y-[100px] "
 					>
 						<div className="space-y-8  translate-y-[100px]">
 							<h2 className="text-3xl lg:text-5xl font-bold text-white">

@@ -13,11 +13,15 @@ function Navbar() {
 					ref={navRef}
 					className="navbar px-12 py-6 fixed w-full top-0 z-50 backdrop-blur-md border-b border-white/10 text-white"
 				>
-					<div className="max-w-7xl mx-auto flex justify-between items-center gap-5">
+					<div className="relative max-w-7xl mx-auto flex justify-between items-center gap-5 h-[1.6rem]">
 						<CustomLink href={"/"}>
-							<span className="speak text-2xl font-bold  relative -left-[6rem] transition-colors duration-100 tracking-[0.4rem]">
+							{/* <span className="speak text-2xl font-bold  relative -left-[6rem] transition-colors duration-100 tracking-[0.4rem]">
 								TWEENLAB
-							</span>
+							</span> */}
+							<img
+								src="/images/updatedLogo.png"
+								className="relative right-36 h-36 w-60"
+							/>
 						</CustomLink>
 						<div className="space-x-8">
 							{[

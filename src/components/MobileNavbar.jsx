@@ -39,11 +39,15 @@ export default function MobileNav() {
 	return (
 		<div className="nav-mobile block lg:hidden max-w-[100vw]">
 			<nav className="navbar px-6 py-4 fixed w-full top-0 z-50 backdrop-blur-md border-b border-white/10 text-white">
-				<div className="max-w-7xl mx-auto flex justify-between items-center">
+				<div className="max-w-7xl mx-auto flex justify-between items-center h-[1.8rem]">
 					<CustomLink href="/">
-						<span className="speak text-lg font-bold  relative -left-[0rem] transition-colors duration-100 tracking-[0.2rem]">
+						{/* <span className="speak text-lg font-bold  relative -left-[0rem] transition-colors duration-100 tracking-[0.2rem]">
 							TWEENLAB
-						</span>
+						</span> */}
+						<img
+							src="/images/updatedLogo.png"
+							className="relative right-12 h-32 w-56"
+						/>
 					</CustomLink>
 
 					<button
