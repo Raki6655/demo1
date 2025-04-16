@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FollowOnFacebook } from "../utils/FacebookFollowButton";
+import { FollowOnInstagram } from "../utils/InstagramFollowButton";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -165,6 +166,7 @@ export default function ContactSection() {
 
 							<div className="mt-10">
 								<FollowOnFacebook />
+								<FollowOnInstagram />
 							</div>
 						</div>
 					</div>
