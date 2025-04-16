@@ -4,7 +4,10 @@ import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 export const FollowOnInstagram = () => {
 	const handleFollow = () => {
-		window.open("https://www.instagram.com/your_username_here", "_blank"); // Replace with your actual Instagram link
+		window.open(
+			"https://www.instagram.com/tween_lab/?locale=zh_CN&hl=zh-tw",
+			"_blank"
+		);
 	};
 
 	return (
