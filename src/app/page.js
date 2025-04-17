@@ -4,6 +4,7 @@ import LandingPage from "@/components/LandingPage";
 import AboutUs from "@/components/about/AboutUs";
 import ServicePage from "@/components/service/ServicePage";
 import "./config.js";
+import ContactSidebar from "@/components/utils/SideBar.jsx";
 
 export const metadata = {
 	title: "TWEENLAB | Your One-Stop Solution for All Tech Services",
@@ -40,6 +41,7 @@ export default function Home() {
 	return (
 		<>
 			<div className="">
+				<ContactSidebar />
 				<LandingPage />
 				{/* <LandingDemo /> */}
 				{/* <HeroSection /> */}
