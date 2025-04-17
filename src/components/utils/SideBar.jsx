@@ -84,7 +84,7 @@ export default function ContactSidebar() {
 
 	return (
 		<div
-			className={`fixed top-[37%] right-0 z-50 transition-all duration-300 ease-in-out ${
+			className={`fixed top-[42%] lg:top-[40%] right-0 z-50 transition-all duration-300 ease-in-out ${
 				isOpen ? "translate-x-0" : "translate-x-[85%]"
 			}`}
 		>
@@ -92,7 +92,7 @@ export default function ContactSidebar() {
 				{/* Toggle Button */}
 				<div
 					onClick={toggleSidebar}
-					className="absolute left-[-20px] top-1/2 -translate-y-1/2 w-6 h-10 bg-white/70 hover:bg-white/90 backdrop-blur-lg rounded-r-full shadow-lg flex items-center justify-center cursor-pointer z-50 transition-all duration-300"
+					className="absolute left-[-20px] top-1/2 -translate-y-1/2 w-4 h-8 lg-w-6 lg-h-10 bg-white/70 hover:bg-white/90 backdrop-blur-lg rounded-r-full shadow-lg flex items-center justify-center cursor-pointer z-50 transition-all duration-300"
 				>
 					<FontAwesomeIcon
 						icon={isOpen ? faChevronRight : faChevronLeft}
