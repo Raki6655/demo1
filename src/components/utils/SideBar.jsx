@@ -88,7 +88,7 @@ export default function ContactSidebar() {
 				isOpen ? "translate-x-0" : "translate-x-[85%]"
 			}`}
 		>
-			<div className="relative bg-gradient-to-b from-[#6a82fb]/90 to-[#fc5c7d]/90 shadow-2xl backdrop-blur-md rounded-l-3xl py-6 p-3 flex flex-col items-center gap-8">
+			<div className="relative bg-gradient-to-b from-[#6a82fb]/90 to-[#fc5c7d]/90 shadow-2xl backdrop-blur-md rounded-l-3xl py-3 px-2 flex flex-col items-center gap-4">
 				{/* Toggle Button */}
 				<div
 					onClick={toggleSidebar}
@@ -106,13 +106,13 @@ export default function ContactSidebar() {
 						href="https://wa.me/+9779765878107"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="relative p-3 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-lg transition-all duration-300"
+						className="relative p-2  rounded-full bg-green-500 hover:bg-green-600 text-white shadow-lg transition-all duration-300 flex items-center justify-center"
 					>
 						{/* Oscillating Ring */}
 						<span className="absolute inset-0 rounded-full border-4 border-white opacity-20 animate-ping-slow pointer-events-none"></span>
 						<FontAwesomeIcon
 							icon={faWhatsapp}
-							className="relative z-10 text-xl animate-pulse"
+							className="relative z-10 text-sm h-6 w-6 animate-pulse"
 						/>
 					</a>
 					<span className="absolute right-12 top-1/2 -translate-y-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
@@ -124,9 +124,9 @@ export default function ContactSidebar() {
 				<div className="group relative">
 					<a
 						href="tel:+9779765878107"
-						className="bg-blue-500 hover:bg-blue-600 p-3 rounded-full text-white shadow-md transition duration-300"
+						className="bg-blue-500 hover:bg-blue-600 p-2 rounded-full text-white shadow-md transition duration-300 flex items-center justify-center"
 					>
-						<FontAwesomeIcon icon={faPhone} className="text-lg" />
+						<FontAwesomeIcon icon={faPhone} className="text-lg h-6 w-6" />
 					</a>
 					<span className="absolute right-12 top-1/2 -translate-y-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
 						Call
@@ -137,9 +137,9 @@ export default function ContactSidebar() {
 				<div className="group relative">
 					<a
 						href="mailto:alannpn75@gmail.com"
-						className="bg-rose-500 hover:bg-rose-600 p-3 rounded-full text-white shadow-md transition duration-300"
+						className="bg-rose-500 hover:bg-rose-600 p-2 rounded-full text-white shadow-md transition duration-300 flex items-center justify-center"
 					>
-						<FontAwesomeIcon icon={faEnvelope} className="text-lg" />
+						<FontAwesomeIcon icon={faEnvelope} className="text-lg h-6 w-6" />
 					</a>
 					<span className="absolute right-12 top-1/2 -translate-y-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
 						Mail

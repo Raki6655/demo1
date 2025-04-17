@@ -88,7 +88,7 @@ export default function ContactSection() {
 		<>
 			<section className="footerSection min-h-screen w-full max-w-full relative bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 overflow-x-hidden">
 				{/* Animated SVG Background */}
-				<span className="absolute bottom-[2vh] lg:bottom-[15vh] right-10 text-md text-white">
+				<span className="absolute bottom-[6vh] lg:bottom-[15vh] right-10 text-md text-white">
 					© {new Date().getFullYear()} TweenLab. All Rights Reserved.
 				</span>
 				<svg ref={svgRef} className="absolute inset-0 w-full h-full opacity-10">
