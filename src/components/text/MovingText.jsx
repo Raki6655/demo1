@@ -125,7 +125,7 @@ export default function CubeTextAnimation() {
 					100% {
 						transform: translateX(100%) skewX(-15deg);
 					}
-				}
+				} 
 				.animate-shine {
 					animation: shine 3s infinite linear;
 					mask-image: linear-gradient(

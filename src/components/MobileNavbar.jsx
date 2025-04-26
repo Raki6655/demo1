@@ -15,7 +15,8 @@ export default function MobileNav() {
 		"Services",
 		"Works",
 		"Tech",
-		// "Careers",
+		"Pricing",
+		"Blog",
 		"About Us",
 	];
 

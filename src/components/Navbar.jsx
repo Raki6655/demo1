@@ -31,9 +31,11 @@ function Navbar() {
 								"Tech",
 								// "Careers",
 								"About Us",
+								"Pricing",
+								"Blog",
 							].map((item) => (
 								<CustomLink
-									href={`${item.toLowerCase().replace(/\s+/g, "")}`}
+									href={`/${item.toLowerCase().replace(/\s+/g, "")}`}
 									key={item}
 								>
 									<button className=" hover:text-white transition-colors duration-100 text-sm font-bold uppercase">
