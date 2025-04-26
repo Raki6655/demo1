@@ -14,7 +14,7 @@ const BlogCard = ({ post }) => {
 	return (
 		<div
 			ref={cardRef}
-			className="blog-card bg-[#111] rounded-2xl overflow-hidden opacity-0 translate-y-8"
+			className="blog-card bg-[#111] rounded-2xl overflow-hidden opacity-0 translate-y-8 "
 		>
 			<div className="aspect-[16/9] overflow-hidden">
 				<img
@@ -241,7 +241,6 @@ const BlogPage = () => {
 				scrollTrigger: {
 					trigger: card,
 					start: "top 80%",
-					toggleActions: "play none none reverse",
 				},
 			});
 
