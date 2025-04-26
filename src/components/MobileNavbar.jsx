@@ -120,7 +120,7 @@ export default function MobileNav() {
 										: item.toLowerCase().replace(/\s+/g, "")
 								}`}
 							>
-								<div className="p-4 hover:bg-white/5 rounded-lg transition-all transform hover:translate-x-2">
+								<div className="px-4 py-2 hover:bg-white/5 rounded-lg transition-all transform hover:translate-x-2">
 									<span className="text-lg font-medium text-white bg-clip-text ">
 										{item}
 									</span>
