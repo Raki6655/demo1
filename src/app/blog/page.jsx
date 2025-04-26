@@ -162,8 +162,61 @@ const BlogPage = () => {
 	// 	},
 	// ];
 
+	// useEffect(() => {
+	// 	// Heading animation
+	// 	gsap.set(headingRef.current, { opacity: 1, y: 0 });
+	// 	gsap.from(headingRef.current, {
+	// 		opacity: 0,
+	// 		y: 50,
+	// 		duration: 1,
+	// 		scrollTrigger: {
+	// 			trigger: headingRef.current,
+	// 			start: "top 85%",
+	// 			toggleActions: "play none none reverse",
+	// 		},
+	// 	});
+
+	// 	// Blog cards stagger animation
+	// 	const cards = document.querySelectorAll(".blog-card");
+
+	// 	gsap.to(cards, {
+	// 		opacity: 1,
+	// 		y: 0,
+	// 		duration: 1,
+	// 		stagger: 0.2,
+	// 		ease: "power3.out",
+	// 		scrollTrigger: {
+	// 			trigger: sectionRef.current,
+	// 			start: "top 70%",
+	// 		},
+	// 	});
+
+	// 	// Card content animations
+	// 	cards.forEach((card) => {
+	// 		const elements = card.querySelectorAll(
+	// 			".category-tag, .card-title, .card-excerpt, .card-author, .card-button"
+	// 		);
+	// 		gsap.set(elements, { opacity: 1, y: 0 });
+	// 		gsap.from(elements, {
+	// 			opacity: 0,
+	// 			y: 20,
+	// 			duration: 0.8,
+	// 			stagger: 0.1,
+	// 			ease: "power2.out",
+	// 			scrollTrigger: {
+	// 				trigger: card,
+	// 				start: "top 85%",
+	// 				toggleActions: "play none none reverse",
+	// 			},
+	// 		});
+	// 	});
+
+	// 	return () => {
+	// 		ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+	// 	};
+	// }, []);
+
 	useEffect(() => {
-		// Heading animation
 		gsap.set(headingRef.current, { opacity: 1, y: 0 });
 		gsap.from(headingRef.current, {
 			opacity: 0,
@@ -176,24 +229,23 @@ const BlogPage = () => {
 			},
 		});
 
-		// Blog cards stagger animation
 		const cards = document.querySelectorAll(".blog-card");
-		gsap.set(cards, { opacity: 0, y: 100 });
-		gsap.to(cards, {
-			opacity: 1,
-			y: 0,
-			duration: 1,
-			stagger: 0.2,
-			ease: "power3.out",
-			scrollTrigger: {
-				trigger: sectionRef.current,
-				start: "top 70%",
-				toggleActions: "play none none reverse",
-			},
-		});
 
-		// Card content animations
 		cards.forEach((card) => {
+			// Animate the card itself
+			gsap.to(card, {
+				opacity: 1,
+				y: 0,
+				duration: 1,
+				ease: "power3.out",
+				scrollTrigger: {
+					trigger: card,
+					start: "top 80%",
+					toggleActions: "play none none reverse",
+				},
+			});
+
+			// Animate card internal elements
 			const elements = card.querySelectorAll(
 				".category-tag, .card-title, .card-excerpt, .card-author, .card-button"
 			);
