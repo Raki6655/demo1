@@ -178,10 +178,10 @@ const BlogPage = () => {
 
 		// Blog cards stagger animation
 		const cards = document.querySelectorAll(".blog-card");
-		gsap.set(cards, { opacity: 1, y: 0 });
-		gsap.from(cards, {
-			opacity: 0,
-			y: 100,
+		gsap.set(cards, { opacity: 0, y: 100 });
+		gsap.to(cards, {
+			opacity: 1,
+			y: 0,
 			duration: 1,
 			stagger: 0.2,
 			ease: "power3.out",
