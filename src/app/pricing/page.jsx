@@ -182,7 +182,7 @@ const PricingCards = () => {
 			opacity: 0,
 			y: 100,
 			duration: 1,
-			stagger: 0.2,
+			stagger: 0.1,
 			ease: "power3.out",
 			scrollTrigger: {
 				trigger: sectionRef.current,

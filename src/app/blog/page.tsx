@@ -21,11 +21,12 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
 	useEffect(() => {
 		const card = cardRef.current;
 		if (!card) return;
-
-		gsap.from(card, {
-			y: 100,
-			opacity: 0,
-			duration: 1,
+		gsap.set(card, { opacity: 0, y: 200 });
+		gsap.to(card, {
+			y: 0,
+			opacity: 1,
+			duration: 3,
+			ease: "ease-in",
 			scrollTrigger: {
 				trigger: card,
 				start: "top 80%",
@@ -54,7 +55,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
 						alt={post.title}
 						width={800}
 						height={450}
-						className="w-full h-full object-cover card-image hover:scale-105 transition-transform duration-700"
+						className="w-full h-full object-cover card-image hover:scale-105 transition-transform "
 					/>
 				</div>
 				<div className="p-8">
@@ -144,8 +145,8 @@ const BlogPage: React.FC = () => {
 		gsap.from(cards, {
 			opacity: 0,
 			y: 100,
-			duration: 1,
-			stagger: 0.2,
+			duration: 2,
+			stagger: 0.5,
 			ease: "power3.out",
 			scrollTrigger: {
 				trigger: sectionRef.current,
@@ -163,12 +164,12 @@ const BlogPage: React.FC = () => {
 			gsap.from(elements, {
 				opacity: 0,
 				y: 20,
-				duration: 0.8,
+				duration: 2,
 				stagger: 0.1,
-				ease: "power2.out",
+				ease: "ease-in",
 				scrollTrigger: {
 					trigger: card,
-					start: "top 85%",
+					start: "top 70%",
 					toggleActions: "play none none reverse",
 				},
 			});

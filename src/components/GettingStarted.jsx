@@ -16,6 +16,8 @@ const GettingStarted = () => {
 	const sectionRef = useRef(null);
 	const headingRef = useRef(null);
 	const contentRef = useRef(null);
+	const ceoImageRef = useRef(null);
+
 	const contactRef = useRef(null);
 	const cardRef = useRef(null);
 
@@ -99,6 +101,20 @@ const GettingStarted = () => {
 			scrollTrigger: {
 				trigger: contentRef.current,
 				start: "top 80%",
+				toggleActions: "play none none reverse",
+			},
+		});
+
+		// Card reveal animation with initial state set
+		gsap.set(ceoImageRef.current, { opacity: 1, y: 0 }); // Ensure visible by default
+		gsap.from(ceoImageRef.current, {
+			y: 100,
+			opacity: 0,
+			duration: 1,
+			scrollTrigger: {
+				trigger: ceoImageRef.current,
+				start: "top 80%",
+				end: "top 20%",
 				toggleActions: "play none none reverse",
 			},
 		});
@@ -196,6 +212,7 @@ const GettingStarted = () => {
 
 						<div className="flex flex-col items-end space-y-6 lg:w-[300px]">
 							<img
+								ref={ceoImageRef}
 								src="/images/Parker.webp"
 								alt="Vitalik Vinnikov"
 								className="w-full aspect-[3/4] object-cover rounded-2xl shadow-xl"
